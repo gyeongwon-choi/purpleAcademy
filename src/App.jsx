@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom";
-import Header from "./components/Header";
+import Header from "@/components/Header";
 import { motion } from "motion/react";
 
 export default function App() {
