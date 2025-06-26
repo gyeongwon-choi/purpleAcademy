@@ -5,8 +5,8 @@
       "stageId": "1",
       "word": "apple",
       "activities": [
-        { "id": "1", "english": "Shall we learn how to spell 'apple'?", "korean": "Activity 1 지문: apple의 철자를 배워볼까요?" },
-        { "id": "2", "english": "Try pronouncing 'apple'.", "korean": "Activity 2 지문: apple을 발음해보세요." },
+        { "id": "1", "english": "Shall we learn how to spell 'apple'?", "korean": "버니를 클릭해서 단어 소리를 듣고, 그림을 확인해주세요." },
+        { "id": "2", "english": "", "korean": "" },
         { "id": "3", "english": "Listen to a sentence with 'apple'.", "korean": "Activity 3 지문: 문장을 들어보세요." },
         { "id": "4", "english": "Guess the meaning of 'apple'.", "korean": "Activity 4 지문: 뜻을 맞춰보세요." },
         { "id": "5", "english": "Pick the picture that shows 'apple'.", "korean": "Activity 5 지문: 그림 중 apple을 고르세요." },

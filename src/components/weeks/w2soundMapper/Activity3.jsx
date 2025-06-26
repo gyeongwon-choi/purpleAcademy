@@ -1,10 +1,14 @@
-export default function Activity3({ stageData }) {
+import useSize from "@/hooks/useSize";
+import styled from "@emotion/styled";
+import DragSample1 from "@/pages/samples/DragSample1";
+
+export default function Activity3({ stageData, activityId, goToNextActivity, goToPrevActivity, goToActivity }) {
+  const { resizedWidth, resizedHeight } = useSize();
+
   return (
-    <div>
-      <h3>Activity 3</h3>
-      <p>단어: {stageData.word ?? "단어 없음"}</p>
-      <p>스테이지넘버: {stageData.stageId ?? "스테이지넘버 없음"}</p>
-      <p>액티비티넘버: {stageData.activities[0].id ?? "액티비티넘버 없음"}</p>
-    </div>
+    <>
+      <DragSample1 />
+    </>
   );
 }
+

@@ -3,7 +3,7 @@ import useActivityNavigator from "@/hooks/useActivityNavigator";
 export default function ActivityManager({ stageData, renderActivity }) {
   const activities = stageData.activities || [];
 
-  const { activity, goToNextActivity, goToPrevActivity } = useActivityNavigator(activities.map(a => a.id));
+  const { activity, goToNextActivity, goToPrevActivity, goToActivity } = useActivityNavigator(activities.map(a => a.id));
 
   const activityIndex = activities.findIndex(a => a.id === activity);
   const activityData = activities[activityIndex];
@@ -11,8 +11,9 @@ export default function ActivityManager({ stageData, renderActivity }) {
 
   return (
     <div>
-      {renderActivity(activityId, activityData)}
+      {renderActivity(activityId, goToNextActivity, goToPrevActivity, goToActivity)}
 
+      <span style={{position: "fixed", bottom: "20px", left: "0%", zIndex: "1000"}}>액티비티 : {activityId}</span>
       <button onClick={goToPrevActivity} disabled={activityIndex === 0} style={{position: "fixed", bottom: "20px", left: "5%", zIndex: "1000"}}>
         이전 액티비티
       </button>

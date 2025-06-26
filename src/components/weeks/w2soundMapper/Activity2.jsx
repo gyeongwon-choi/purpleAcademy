@@ -1,8 +1,14 @@
-export default function Activity2({ stageData }) {
+import useSize from "@/hooks/useSize";
+import useTimeout from "@/hooks/useTimeout";
+import styled from "@emotion/styled";
+
+export default function Activity2({ stageData, activityId, goToNextActivity, goToPrevActivity, goToActivity }) {
+  const { resizedWidth, resizedHeight } = useSize();
+  useTimeout(goToNextActivity, 2000);
+
   return (
-    <div>
-      <h3>Activity 2</h3>
-      <p>단어: {stageData.word ?? "단어 없음"}</p>
-    </div>
+    <>
+      
+    </>
   );
 }

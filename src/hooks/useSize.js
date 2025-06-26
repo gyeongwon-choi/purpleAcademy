@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useAspectRatioStore from "@/store/useAspectRatioStore";
 
+// 반응형 사이즈 조절
 const useSize = () => {
   const aspectRatio = useAspectRatioStore(state => state.aspectRatio);
 

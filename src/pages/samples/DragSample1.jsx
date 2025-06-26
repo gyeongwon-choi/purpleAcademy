@@ -1,9 +1,12 @@
 import { gsap, useGSAP, Draggable } from "@/libs/gsapSetup";
+import useSize from "@/hooks/useSize";
 import { useRef } from "react";
 
 export default function DragSample1() {
 	const boxesRef = useRef([]);
 	const dropZonesRef = useRef([]);
+
+	const { resizedWidth, resizedHeight } = useSize();
 
 	// 드래그 대상과 드롭 대상의 정답 매핑
 	const correctMatches = {
@@ -73,13 +76,14 @@ export default function DragSample1() {
 				data-color="#fcbf49"
 				ref={(el) => (boxesRef.current[index] = el)}
 				style={{
-					width: 80,
-					height: 80,
+					position: "absolute",
+					width: resizedWidth * 0.1,
+					height: resizedHeight * 0.1,
 					backgroundColor: "#fcbf49",
-					margin: 10,
-					display: "inline-block",
 					cursor: "grab",
-					position: "relative",
+					// 예: 박스 위치 가로 10%, 25%, 40%, 세로 5% 고정
+					left: resizedWidth * (0.1 + index * 0.15),
+					top: resizedHeight * 0.05,
 				}}
 			>
 				{id}
@@ -94,12 +98,13 @@ export default function DragSample1() {
 				data-id={id}
 				ref={(el) => (dropZonesRef.current[index] = el)}
 				style={{
-					width: 100,
-					height: 100,
+					position: "absolute",
+					width: resizedWidth * 0.12,
+					height: resizedHeight * 0.12,
 					border: "2px dashed #aaa",
-					margin: 20,
-					display: "inline-block",
-					verticalAlign: "top",
+					// 예: 드롭존 위치 가로 10%, 30%, 50%, 세로 30% 고정
+					left: resizedWidth * (0.1 + index * 0.2),
+					top: resizedHeight * 0.3,
 				}}
 			>
 				{id}
@@ -107,12 +112,12 @@ export default function DragSample1() {
 		));
 
 	return (
-		<div style={{ padding: 20 }}>
+		<>
 			<h3>드래그 박스</h3>
-			<div>{renderDraggables()}</div>
+			{renderDraggables()}
 
 			<h3>드롭존</h3>
-			<div>{renderDropZones()}</div>
-		</div>
+			{renderDropZones()}
+		</>
 	);
 }

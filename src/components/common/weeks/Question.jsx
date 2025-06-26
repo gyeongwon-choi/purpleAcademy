@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
 import useSize from "@/hooks/useSize";
+import styled from "@emotion/styled";
 
 const StyledQuestion = styled.div`
   width: ${({ resizedWidth }) => resizedWidth * 0.9}px;

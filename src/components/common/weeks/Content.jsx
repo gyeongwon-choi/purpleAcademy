@@ -1,8 +1,9 @@
-import styled from "@emotion/styled";
 import useSize from "@/hooks/useSize";
+import styled from "@emotion/styled";
 
 const StyledContent = styled.div`
   position: absolute;
+  background-color: rgba(0,0,0,0.3);
   width: ${({ resizedWidth }) => resizedWidth}px;
   height: ${({ resizedHeight }) => resizedHeight}px;
   bottom: ${({ resizedWidth, resizedHeight }) =>
