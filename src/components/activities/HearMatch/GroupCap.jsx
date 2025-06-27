@@ -2,9 +2,9 @@ import useSize from "@/hooks/useSize";
 import useTimeout from "@/hooks/useTimeout";
 import styled from "@emotion/styled";
 
-export default function GroupCap({ stageData, activityId, goToNextActivity, goToPrevActivity, goToActivity }) {
+export default function GroupCap({ quizData, screenId, goToNextScreen, goToPrevScreen, goToScreen }) {
   const { resizedWidth, resizedHeight } = useSize();
-  useTimeout(goToNextActivity, 2000);
+  useTimeout(goToNextScreen, 2000);
 
   return (
     <>

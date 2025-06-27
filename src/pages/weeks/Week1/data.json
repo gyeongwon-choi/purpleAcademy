@@ -1,57 +1,323 @@
 {
-  "dataType": "word",
-  "stages": [
-    {
-      "stageId": "1",
-      "word": "apple",
-      "activities": [
-        { "id": "1", "english": "Shall we learn how to spell 'apple'?", "korean": "버니를 클릭해서 단어 소리를 듣고, 그림을 확인해주세요." },
-        { "id": "2", "english": "", "korean": "" },
-        { "id": "3", "english": "Listen to a sentence with 'apple'.", "korean": "Activity 3 지문: 문장을 들어보세요." },
-        { "id": "4", "english": "Guess the meaning of 'apple'.", "korean": "Activity 4 지문: 뜻을 맞춰보세요." },
-        { "id": "5", "english": "Pick the picture that shows 'apple'.", "korean": "Activity 5 지문: 그림 중 apple을 고르세요." },
-        { "id": "6-1", "english": "Repeat a sentence that uses 'apple'.", "korean": "Activity 6-1 지문: apple 관련 문장을 따라 말해보세요." },
-        { "id": "6-2", "english": "Make your own sentence using 'apple'.", "korean": "Activity 6-2 지문: apple을 사용해 문장을 만들어보세요." }
-      ]
+  "activityType": "hearMatch",
+  "thumbnailTitle": "단모음 a, i",
+  "thumbnailWeek": "W1",
+  "effectSounds": {
+    "correct": "/week1/sounds/effects/correct.mp3"
+  },
+  "quizOrder": ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6"],
+  "quizMap": {
+    "Q1": {
+      "quizId": "Q1",
+      "word": "cap",
+      "screenOrder": ["S1", "S2", "S3", "S4"],
+      "screenMap": {
+        "S1": {
+          "english": "This is a cap.",
+          "korean": "이것은 모자입니다.",
+          "correct": "cap",
+          "incorrects": ["pencil", "zipper"],
+          "sounds": {
+            "c": "/week1/sounds/quizs/q1/s1/c.mp3",
+            "cap": "/week1/sounds/quizs/q1/s1/cap.mp3",
+            "pencil_fake": "/week1/sounds/quizs/q1/s1/pencil_fake.mp3",
+            "zipper": "/week1/sounds/quizs/q1/s1/zipper.mp3"
+          }
+        },
+        "S2": {
+          "english": "This is a cap.",
+          "korean": "이것은 모자입니다.",
+          "correct": "c",
+          "incorrects": ["p", "z"],
+          "sounds": {
+            "c": "/week1/sounds/quizs/q1/s2/c.mp3",
+            "p": "/week1/sounds/quizs/q1/s2/p.mp3",
+            "z": "/week1/sounds/quizs/q1/s2/z.mp3",
+            "cap": "/week1/sounds/quizs/q1/s2/cap.mp3"
+          }
+        },
+        "S3": {
+          "english": "This is a cap.",
+          "korean": "이것은 모자입니다.",
+          "sounds": {
+            "cap_1": "/week1/sounds/quizs/q1/s3/cap_1.mp3",
+            "cap_2": "/week1/sounds/quizs/q1/s3/cap_2.mp3",
+            "cap_3": "/week1/sounds/quizs/q1/s3/cap_3.mp3",
+            "cap_all": "/week1/sounds/quizs/q1/s3/cap_all.mp3"
+          }
+        },
+        "S4": {
+          "english": "Let's spell 'cap'",
+          "korean": "'cap'을 철자대로 말해봐요.",
+          "sounds": {
+            "cap_1": "/week1/sounds/quizs/q1/s4/cap_1.mp3",
+            "cap_2": "/week1/sounds/quizs/q1/s4/cap_2.mp3",
+            "cap_3": "/week1/sounds/quizs/q1/s4/cap_3.mp3",
+            "cap_all": "/week1/sounds/quizs/q1/s4/cap_all.mp3"
+          }
+        }
+      }
     },
-    {
-      "stageId": "2",
-      "word": "banana",
-      "activities": [
-        { "id": "1", "english": "Shall we learn how to spell 'banana'?", "korean": "Activity 1 지문: banana의 철자를 배워볼까요?" },
-        { "id": "2", "english": "Try pronouncing 'banana'.", "korean": "Activity 2 지문: banana을 발음해보세요." },
-        { "id": "3", "english": "Listen to a sentence with 'banana'.", "korean": "Activity 3 지문: 문장을 들어보세요." },
-        { "id": "4", "english": "Guess the meaning of 'banana'.", "korean": "Activity 4 지문: 뜻을 맞춰보세요." },
-        { "id": "5", "english": "Pick the picture that shows 'banana'.", "korean": "Activity 5 지문: 그림 중 banana을 고르세요." },
-        { "id": "6-1", "english": "Repeat a sentence that uses 'banana'.", "korean": "Activity 6-1 지문: banana 관련 문장을 따라 말해보세요." },
-        { "id": "6-2", "english": "Make your own sentence using 'banana'.", "korean": "Activity 6-2 지문: banana을 사용해 문장을 만들어보세요." }
-      ]
+    "Q2": {
+      "quizId": "Q2",
+      "word": "cap",
+      "screenOrder": ["S1", "S2", "S3", "S4"],
+      "screenMap": {
+        "S1": {
+          "english": "This is a cap.",
+          "korean": "이것은 모자입니다.",
+          "correct": "cap",
+          "incorrects": ["pencil", "zipper"],
+          "sounds": {
+            "fish": "/week1/sounds/quizs/q2/s1/fish.mp3",
+            "queen": "/week1/sounds/quizs/q2/s1/queen.mp3",
+            "y": "/week1/sounds/quizs/q2/s1/y.mp3",
+            "yarn": "/week1/sounds/quizs/q2/s1/yarn.mp3"
+          }
+        },
+        "S2": {
+          "english": "This is a cap.",
+          "korean": "이것은 모자입니다.",
+          "correct": "c",
+          "incorrects": ["p", "z"],
+          "sounds": {
+            "f": "/week1/sounds/quizs/q2/s2/f.mp3",
+            "q": "/week1/sounds/quizs/q2/s2/q.mp3",
+            "y": "/week1/sounds/quizs/q2/s2/y.mp3",
+            "yarn": "/week1/sounds/quizs/q2/s2/yarn.mp3"
+          }
+        },
+        "S3": {
+          "english": "This is a cap.",
+          "korean": "이것은 모자입니다.",
+          "sounds": {
+            "yarn_1": "/week1/sounds/quizs/q2/s3/yarn_1.mp3",
+            "yarn_2": "/week1/sounds/quizs/q2/s3/yarn_2.mp3",
+            "yarn_3": "/week1/sounds/quizs/q2/s3/yarn_3.mp3",
+            "yarn_all": "/week1/sounds/quizs/q2/s3/yarn_all.mp3"
+          }
+        },
+        "S4": {
+          "english": "Let's spell 'cap'",
+          "korean": "'cap'을 철자대로 말해봐요.",
+          "sounds": {
+            "yarn_1": "/week1/sounds/quizs/q2/s4/yarn_1.mp3",
+            "yarn_2": "/week1/sounds/quizs/q2/s4/yarn_2.mp3",
+            "yarn_3": "/week1/sounds/quizs/q2/s4/yarn_3.mp3",
+            "yarn_all": "/week1/sounds/quizs/q2/s4/yarn_all.mp3"
+          }
+        }
+      }
     },
-    {
-      "stageId": "3",
-      "word": "tree",
-      "activities": [
-        { "id": "1", "english": "Shall we learn how to spell 'tree'?", "korean": "Activity 1 지문: tree의 철자를 배워볼까요?" },
-        { "id": "2", "english": "Try pronouncing 'tree'.", "korean": "Activity 2 지문: tree을 발음해보세요." },
-        { "id": "3", "english": "Listen to a sentence with 'tree'.", "korean": "Activity 3 지문: 문장을 들어보세요." },
-        { "id": "4", "english": "Guess the meaning of 'tree'.", "korean": "Activity 4 지문: 뜻을 맞춰보세요." },
-        { "id": "5", "english": "Pick the picture that shows 'tree'.", "korean": "Activity 5 지문: 그림 중 tree을 고르세요." },
-        { "id": "6-1", "english": "Repeat a sentence that uses 'tree'.", "korean": "Activity 6-1 지문: tree 관련 문장을 따라 말해보세요." },
-        { "id": "6-2", "english": "Make your own sentence using 'tree'.", "korean": "Activity 6-2 지문: tree을 사용해 문장을 만들어보세요." }
-      ]
+    "Q3": {
+      "quizId": "Q3",
+      "word": "cap",
+      "screenOrder": ["S1", "S2", "S3", "S4"],
+      "screenMap": {
+        "S1": {
+          "english": "This is a cap.",
+          "korean": "이것은 모자입니다.",
+          "correct": "cap",
+          "incorrects": ["pencil", "zipper"],
+          "sounds": {
+            "bus": "/week1/sounds/quizs/q3/s1/bus.mp3",
+            "ham": "/week1/sounds/quizs/q3/s1/ham.mp3",
+            "m": "/week1/sounds/quizs/q3/s1/m.mp3",
+            "pig": "/week1/sounds/quizs/q3/s1/pig.mp3"
+          }
+        },
+        "S2": {
+          "english": "This is a cap.",
+          "korean": "이것은 모자입니다.",
+          "correct": "c",
+          "incorrects": ["p", "z"],
+          "sounds": {
+            "g": "/week1/sounds/quizs/q3/s2/g.mp3",
+            "ham": "/week1/sounds/quizs/q3/s2/ham.mp3",
+            "m": "/week1/sounds/quizs/q3/s2/m.mp3",
+            "s": "/week1/sounds/quizs/q3/s2/s.mp3"
+          }
+        },
+        "S3": {
+          "english": "This is a cap.",
+          "korean": "이것은 모자입니다.",
+          "sounds": {
+            "ham_1": "/week1/sounds/quizs/q3/s3/ham_1.mp3",
+            "ham_2": "/week1/sounds/quizs/q3/s3/ham_2.mp3",
+            "ham_3": "/week1/sounds/quizs/q3/s3/ham_3.mp3",
+            "ham_all": "/week1/sounds/quizs/q3/s3/ham_all.mp3"
+          }
+        },
+        "S4": {
+          "english": "Let's spell 'cap'",
+          "korean": "'cap'을 철자대로 말해봐요.",
+          "sounds": {
+            "ham_1": "/week1/sounds/quizs/q3/s4/ham_1.mp3",
+            "ham_2": "/week1/sounds/quizs/q3/s4/ham_2.mp3",
+            "ham_3": "/week1/sounds/quizs/q3/s4/ham_3.mp3",
+            "ham_all": "/week1/sounds/quizs/q3/s4/ham_all.mp3"
+          }
+        }
+      }
     },
-    {
-      "stageId": "4",
-      "word": "monkey",
-      "activities": [
-        { "id": "1", "english": "Shall we learn how to spell 'monkey'?", "korean": "Activity 1 지문: monkey의 철자를 배워볼까요?" },
-        { "id": "2", "english": "Try pronouncing 'monkey'.", "korean": "Activity 2 지문: monkey을 발음해보세요." },
-        { "id": "3", "english": "Listen to a sentence with 'monkey'.", "korean": "Activity 3 지문: 문장을 들어보세요." },
-        { "id": "4", "english": "Guess the meaning of 'monkey'.", "korean": "Activity 4 지문: 뜻을 맞춰보세요." },
-        { "id": "5", "english": "Pick the picture that shows 'monkey'.", "korean": "Activity 5 지문: 그림 중 monkey을 고르세요." },
-        { "id": "6-1", "english": "Repeat a sentence that uses 'monkey'.", "korean": "Activity 6-1 지문: monkey 관련 문장을 따라 말해보세요." },
-        { "id": "6-2", "english": "Make your own sentence using 'monkey'.", "korean": "Activity 6-2 지문: monkey을 사용해 문장을 만들어보세요." }
-      ]
+    "Q4": {
+      "quizId": "Q4",
+      "word": "cap",
+      "screenOrder": ["S1", "S2", "S3", "S4"],
+      "screenMap": {
+        "S1": {
+          "english": "This is a cap.",
+          "korean": "이것은 모자입니다.",
+          "correct": "cap",
+          "incorrects": ["pencil", "zipper"],
+          "sounds": {
+            "hook_all": "/week1/sounds/quizs/q4/s1/hook_all.mp3",
+            "k": "/week1/sounds/quizs/q4/s1/k.mp3",
+            "pet_all": "/week1/sounds/quizs/q4/s1/pet_all.mp3",
+            "roof_all": "/week1/sounds/quizs/q4/s1/roof_all.mp3"
+          }
+        },
+        "S2": {
+          "english": "This is a cap.",
+          "korean": "이것은 모자입니다.",
+          "correct": "c",
+          "incorrects": ["p", "z"],
+          "sounds": {
+            "f": "/week1/sounds/quizs/q4/s2/f.mp3",
+            "k": "/week1/sounds/quizs/q4/s2/k.mp3",
+            "t": "/week1/sounds/quizs/q4/s2/t.mp3",
+            "hook": "/week1/sounds/quizs/q4/s2/hook.mp3"
+          }
+        },
+        "S3": {
+          "english": "This is a cap.",
+          "korean": "이것은 모자입니다.",
+          "sounds": {
+            "hook_1": "/week1/sounds/quizs/q4/s3/hook_1.mp3",
+            "hook_2": "/week1/sounds/quizs/q4/s3/hook_2.mp3",
+            "hook_3": "/week1/sounds/quizs/q4/s3/hook_3.mp3",
+            "hook_all": "/week1/sounds/quizs/q4/s3/hook_all.mp3"
+          }
+        },
+        "S4": {
+          "english": "Let's spell 'cap'",
+          "korean": "'cap'을 철자대로 말해봐요.",
+          "sounds": {
+            "hook_1": "/week1/sounds/quizs/q4/s4/hook_1.mp3",
+            "hook_2": "/week1/sounds/quizs/q4/s4/hook_2.mp3",
+            "hook_3": "/week1/sounds/quizs/q4/s4/hook_3.mp3",
+            "hook_all": "/week1/sounds/quizs/q4/s4/hook_all.mp3"
+          }
+        }
+      }
+    },
+    "Q5": {
+      "quizId": "Q5",
+      "word": "cap",
+      "screenOrder": ["S1", "S2", "S3", "S4"],
+      "screenMap": {
+        "S1": {
+          "english": "This is a cap.",
+          "korean": "이것은 모자입니다.",
+          "correct": "cap",
+          "incorrects": ["pencil", "zipper"],
+          "sounds": {
+            "robot_fake": "/week1/sounds/quizs/q5/s1/robot_fake.mp3",
+            "seven": "/week1/sounds/quizs/q5/s1/seven.mp3",
+            "v": "/week1/sounds/quizs/q5/s1/v.mp3",
+            "wagon": "/week1/sounds/quizs/q5/s1/wagon.mp3"
+          }
+        },
+        "S2": {
+          "english": "This is a cap.",
+          "korean": "이것은 모자입니다.",
+          "correct": "c",
+          "incorrects": ["p", "z"],
+          "sounds": {
+            "b": "/week1/sounds/quizs/q5/s2/b.mp3",
+            "g": "/week1/sounds/quizs/q5/s2/g.mp3",
+            "v": "/week1/sounds/quizs/q5/s2/v.mp3",
+            "seven": "/week1/sounds/quizs/q5/s2/seven.mp3"
+          }
+        },
+        "S3": {
+          "english": "This is a cap.",
+          "korean": "이것은 모자입니다.",
+          "sounds": {
+            "seven_1": "/week1/sounds/quizs/q5/s3/seven_1.mp3",
+            "seven_2": "/week1/sounds/quizs/q5/s3/seven_2.mp3",
+            "seven_3": "/week1/sounds/quizs/q5/s3/seven_3.mp3",
+            "seven_4": "/week1/sounds/quizs/q5/s3/seven_4.mp3",
+            "seven_all": "/week1/sounds/quizs/q5/s3/seven_all.mp3"
+          }
+        },
+        "S4": {
+          "english": "Let's spell 'cap'",
+          "korean": "'cap'을 철자대로 말해봐요.",
+          "sounds": {
+            "seven_1": "/week1/sounds/quizs/q5/s4/seven_1.mp3",
+            "seven_2": "/week1/sounds/quizs/q5/s4/seven_2.mp3",
+            "seven_3": "/week1/sounds/quizs/q5/s4/seven_3.mp3",
+            "seven_4": "/week1/sounds/quizs/q5/s4/seven_4.mp3",
+            "seven_all": "/week1/sounds/quizs/q5/s4/seven_all.mp3"
+          }
+        }
+      }
+    },
+    "Q6": {
+      "quizId": "Q6",
+      "word": "cap",
+      "screenOrder": ["S1", "S2", "S3", "S4"],
+      "screenMap": {
+        "S1": {
+          "english": "This is a cap.",
+          "korean": "이것은 모자입니다.",
+          "correct": "cap",
+          "incorrects": ["pencil", "zipper"],
+          "sounds": {
+            "seven_1": "/week1/sounds/quizs/q6/s1/seven_1.mp3",
+            "seven_2": "/week1/sounds/quizs/q6/s1/seven_2.mp3",
+            "seven_3": "/week1/sounds/quizs/q6/s1/seven_3.mp3",
+            "seven_4": "/week1/sounds/quizs/q6/s1/seven_4.mp3"
+          }
+        },
+        "S2": {
+          "english": "This is a cap.",
+          "korean": "이것은 모자입니다.",
+          "correct": "c",
+          "incorrects": ["p", "z"],
+          "sounds": {
+            "m": "/week1/sounds/quizs/q6/s2/m.mp3",
+            "n": "/week1/sounds/quizs/q6/s2/n.mp3",
+            "t": "/week1/sounds/quizs/q6/s2/t.mp3",
+            "peanut": "/week1/sounds/quizs/q6/s2/peanut.mp3"
+          }
+        },
+        "S3": {
+          "english": "This is a cap.",
+          "korean": "이것은 모자입니다.",
+          "sounds": {
+            "peanut_1": "/week1/sounds/quizs/q6/s3/peanut_1.mp3",
+            "peanut_2": "/week1/sounds/quizs/q6/s3/peanut_2.mp3",
+            "peanut_3": "/week1/sounds/quizs/q6/s3/peanut_3.mp3",
+            "peanut_4": "/week1/sounds/quizs/q6/s3/peanut_4.mp3",
+            "peanut_5": "/week1/sounds/quizs/q6/s3/peanut_5.mp3",
+            "peanut_all": "/week1/sounds/quizs/q6/s3/peanut_all.mp3"
+          }
+        },
+        "S4": {
+          "english": "Let's spell 'cap'",
+          "korean": "'cap'을 철자대로 말해봐요.",
+          "sounds": {
+            "peanut_1": "/week1/sounds/quizs/q6/s4/peanut_1.mp3",
+            "peanut_2": "/week1/sounds/quizs/q6/s4/peanut_2.mp3",
+            "peanut_3": "/week1/sounds/quizs/q6/s4/peanut_3.mp3",
+            "peanut_4": "/week1/sounds/quizs/q6/s4/peanut_4.mp3",
+            "peanut_5": "/week1/sounds/quizs/q6/s4/peanut_5.mp3",
+            "peanut_all": "/week1/sounds/quizs/q6/s4/peanut_all.mp3"
+          }
+        }
+      }
     }
-  ]
+  }
 }

@@ -10,53 +10,57 @@ const isVowels = (char) => {
 };
 
 export default function GroupStamps({
-  stageData,
-  activityId,
-  goToNextActivity,
-  goToPrevActivity,
-  goToActivity,
+  quizData,
+  screenId,
+  goToNextScreen,
+  goToPrevScreen,
+  goToScreen,
 }) {
   const { resizedWidth, resizedHeight } = useSize();
 
   const [stampStates, setStampStates] = useState(Array(8).fill("gray"));
-  const [stampTexts, setStampTexts] = useState(stageData.word.split(""));
+  const [stampTexts, setStampTexts] = useState(quizData.word.split(""));
 
   useEffect(() => {
-    if (activityId === "2") {
+    if (screenId === "S2") {
       const updated = stampTexts.map((char) =>
         isJamoConsonant(char) ? "blue" : "red"
       );
       setStampStates(updated);
     }
-    if (activityId === "3") {
+
+    if (screenId === "S3") {
       setStampStates(Array(8).fill("gray"));
     }
-    if (activityId === "4") {
+
+    if (screenId === "S4") {
       const updated = stampTexts.map((char) =>
         isVowels(char.toLowerCase()) ? "red" : "blue"
       );
       setStampStates(updated);
 
       const timeout = setTimeout(() => {
-        goToNextActivity();
+        goToNextScreen();
       }, 3000);
 
       return () => clearTimeout(timeout);
     }
-    if (activityId === "5") {
 
+    if (screenId === "S5") {
+      // 추가 로직 여기에
     }
-  }, [activityId, stampTexts]);
+  }, [screenId, stampTexts]);
+
 
   const handleStampClick = (index) => {
-    // activityId === "4"면 클릭 동작 없음
-    if (activityId === "4") return;
+    // screenId === "4"면 클릭 동작 없음
+    if (screenId === "4") return;
 
     setStampStates((prev) => {
       const current = prev[index];
       const newStates = [...prev];
 
-      if (activityId === "3") {
+      if (screenId === "3") {
         newStates[index] = current === "green" ? "gray" : "green";
       }
 
@@ -67,10 +71,10 @@ export default function GroupStamps({
 
   const handleCheck = () => {
     const greenCount = stampStates.filter((state) => state === "green").length;
-    const correctCount = stageData.word.length; // 정답 개수 기준
+    const correctCount = quizData.word.length; // 정답 개수 기준
 
     if (greenCount === correctCount) {
-      goToNextActivity();
+      goToNextScreen();
     } else {
       console.log("틀림");
     }
@@ -144,8 +148,8 @@ export default function GroupStamps({
         onClick={() => handleStampClick(7)}
       />
 
-      {/* activityId가 3일 때만 체크 버튼 렌더링 */}
-      {activityId === "3" && (
+      {/* screenId가 3일 때만 체크 버튼 렌더링 */}
+      {screenId === "S3" && (
         <CheckButton
           onClick={handleCheck}
           style={{

@@ -4,47 +4,57 @@ import { useState } from "react";
 // 훅
 import useIntroScreen from "@/hooks/useIntroScreen";
 
-// 주차 공통 컴포넌트
-import StageManager from "@/components/common/activity/StageManager";
-import ActivityManager from "@/components/common/activity/ActivityManager";
-import CurrentStage from "@/components/common/activity/CurrentStage";
+// 액티비티 공통 컴포넌트
+import QuizManager from "@/components/common/activity/QuizManager";
+import ScreenManager from "@/components/common/activity/ScreenManager";
+import CurrentQuiz from "@/components/common/activity/CurrentQuiz";
 import BackgroundContent from "@/components/common/activity/BackgroundContent";
 import Content from "@/components/common/activity/Content";
 import Question from "@/components/common/activity/Question";
 import LinkOut from "@/components/common/activity/LinkOut";
 import BtnLanguage from "@/components/common/activity/BtnLanguage";
-import ActivityTransitionEffect from "@/components/common/activity/ActivityTransitionEffect";
-import StageTransitionEffect from "@/components/common/activity/StageTransitionEffect";
+import ScreenTransitionEffect from "@/components/common/activity/ScreenTransitionEffect";
+import QuizTransitionEffect from "@/components/common/activity/QuizTransitionEffect";
 
-// 주차 컴포넌트
-import ActivityComponents from "@/components/activities/HearMatch/ActivityComponents";
+// 액티비티 전용 컴포넌트
+import ScreenComponents from "@/components/activities/HearMatch/ScreenComponents";
 import ThumbNail from "@/components/activities/HearMatch/ThumbNail";
 import GroupStamps from "@/components/activities/HearMatch/GroupStamps";
 import GroupCap from "@/components/activities/HearMatch/GroupCap";
 
 // 스테이지 & 액티비티 배경이미지
 const backgroundSettingsMap = {
-  "1_1": { // stageId + activityId
+  "1_1": { // quizId + screenId
     backgroundImage: "/images/weeks/w2soundMapper/test.png",
     backgroundSize: "auto 110%",
     backgroundPosition: "center",
   },
-  "1": { // stageId
+  "Q1": { // quizId
     backgroundImage: "/images/weeks/w2soundMapper/bg_1.png",
     backgroundSize: "auto 110%",
     backgroundPosition: "center",
   },
-  "2": {
+  "Q2": {
     backgroundImage: "/images/weeks/w2soundMapper/bg_2.png",
     backgroundSize: "auto 110%",
     backgroundPosition: "center",
   },
-  "3": {
+  "Q3": {
     backgroundImage: "/images/weeks/w2soundMapper/bg_3.png",
     backgroundSize: "auto 110%",
     backgroundPosition: "center",
   },
-  "4": {
+  "Q4": {
+    backgroundImage: "/images/weeks/w2soundMapper/bg_4.png",
+    backgroundSize: "auto 110%",
+    backgroundPosition: "center",
+  },
+  "Q5": {
+    backgroundImage: "/images/weeks/w2soundMapper/bg_4.png",
+    backgroundSize: "auto 110%",
+    backgroundPosition: "center",
+  },
+  "Q6": {
     backgroundImage: "/images/weeks/w2soundMapper/bg_4.png",
     backgroundSize: "auto 110%",
     backgroundPosition: "center",
@@ -56,16 +66,16 @@ const backgroundSettingsMap = {
   }
 };
 
-export default function W2_SoundMapper({ data }) {
+export default function HearMatch({ data }) {
   const { isIntroVisible, endIntro } = useIntroScreen();
   const [isLanguageEnglish, setIsLanguageEnglish] = useState(true);
-  const stages = data.stages;
+  const quizObj = data;
+  const quizOrder = quizObj.quizOrder;
 
   const handleClickBtnLanguage = () => {
     setIsLanguageEnglish(prev => !prev);
   }
 
-  // 인트로
   if (isIntroVisible) {
     return (
       <BackgroundContent
@@ -78,50 +88,43 @@ export default function W2_SoundMapper({ data }) {
     );
   }
 
-  // 주차
   return (
     <>
       <LinkOut to="/">나가기</LinkOut>
-      <StageManager
-        stages={stages}
-        renderStage={(stageData, stageIndex) => {
-          const bgSettings = backgroundSettingsMap[stageData.stageId] || backgroundSettingsMap["default"];
+      <QuizManager
+        quizObj={quizObj}
+        renderQuiz={(quizData, quizId) => {
+          const bgSettings = backgroundSettingsMap[quizData.quizId] || backgroundSettingsMap["default"];
 
           return (
             <>
-              {/* 스테이지전환 효과 */}
-              <StageTransitionEffect animationKey={`stage-${stageIndex+1}`} />
+              <QuizTransitionEffect animationKey={`quiz-${quizId}`} />
 
-              <h2>이번 스테이지 단어: {stageData.word}</h2>
+              <h2>이번 퀴즈 단어: {quizData.word}</h2>
 
-              <ActivityManager
-                key={`ActivityManager-${stageIndex}`}
-                activityFlow={stageData.activities.map(a => a.id)}
-                stageData={stageData}
-                renderActivity={(activityId, goToNextActivity, goToPrevActivity, goToActivity) => {
-                  const Component = ActivityComponents[activityId];
-                  if (!Component) return <p>지원되지 않는 액티비티입니다.</p>;
+              <ScreenManager
+                key={`ScreenManager-${quizId}`}
+                quizData={quizData}
+                renderScreen={(screenId, goToNextScreen, goToPrevScreen, goToScreen) => {
+                  const screen = quizData.screenMap[screenId]; // 추가: 현재 화면 데이터
+                  const Component = ScreenComponents[screenId];
+                  if (!Component) return <p>지원되지 않는 화면입니다.</p>;
 
-                  const activity = stageData.activities.find(a => a.id === activityId);
-
-                  const isGroupCap = ["2", "3", "4", "5", "6-1", "6-2"].includes(activityId);
-                  const isGroupStamps = ["3", "4", "5", "6-1"].includes(activityId);
+                  // 그룹 컴포넌트 조건에 맞게 변경 필요시 수정
+                  const isGroupCap = ["S2", "S3", "S4", "S5", "S6-1", "S6-2"].includes(screenId);
+                  const isGroupStamps = ["S3", "S4", "S5", "S6-1"].includes(screenId);
 
                   return (
-                    /* 배경 */
                     <BackgroundContent
                       backgroundImage={bgSettings.backgroundImage}
                       backgroundSize={bgSettings.backgroundSize}
                       backgroundPosition={bgSettings.backgroundPosition}
                     >
-                      
-                      {/* 액티비티전환 효과 */}
-                      <ActivityTransitionEffect animationKey={`stage-${stageIndex+1}_activity-${activityId}`} />
+                      <ScreenTransitionEffect animationKey={`quiz-${quizId}_screen-${screenId}`} />
 
-                      {activity?.english?.trim() !== "" && (
-                        /* 지문 */
-                        <Question animationKey={activityId}>
-                          {isLanguageEnglish ? activity.english : activity.korean}
+                      {screen?.english?.trim() !== "" && (
+                        <Question animationKey={screenId}>
+                          {isLanguageEnglish ? screen.english : screen.korean}
                           <BtnLanguage
                             isLanguageEnglish={isLanguageEnglish}
                             handleClickBtnLanguage={handleClickBtnLanguage}
@@ -129,48 +132,43 @@ export default function W2_SoundMapper({ data }) {
                         </Question>
                       )}
 
-                      {/* 컨텐츠 영역 */}
-                      <Content animationKey={activityId}>
-                        {/* 액티비티 공통 GroupStamps */}
+                      <Content animationKey={screenId}>
                         {isGroupStamps && (
                           <GroupStamps
-                            stageData={stageData}
-                            activityId={activityId}
-                            goToNextActivity={goToNextActivity}
-                            goToPrevActivity={goToPrevActivity}
-                            goToActivity={goToActivity}
+                            quizData={quizData}
+                            screenId={screenId}
+                            goToNextScreen={goToNextScreen}
+                            goToPrevScreen={goToPrevScreen}
+                            goToScreen={goToScreen}
                           />
                         )}
 
-                        {/* 액티비티 공통 GroupCap */}
                         {isGroupCap && (
                           <GroupCap
-                            stageData={stageData}
-                            activityId={activityId}
-                            goToNextActivity={goToNextActivity}
-                            goToPrevActivity={goToPrevActivity}
-                            goToActivity={goToActivity}
+                            quizData={quizData}
+                            screenId={screenId}
+                            goToNextScreen={goToNextScreen}
+                            goToPrevScreen={goToPrevScreen}
+                            goToScreen={goToScreen}
                           />
                         )}
 
-                        {/* 개별 액티비티 */}
                         <Component
-                          stageData={stageData}
-                          activityId={activityId}
-                          goToNextActivity={goToNextActivity}
-                          goToPrevActivity={goToPrevActivity}
-                          goToActivity={goToActivity}
+                          quizData={quizData}
+                          screenId={screenId}
+                          goToNextScreen={goToNextScreen}
+                          goToPrevScreen={goToPrevScreen}
+                          goToScreen={goToScreen}
                         />
 
-                        <CurrentStage stageIndex={stageIndex + 1} stageLength={stages.length} />
+                        <CurrentQuiz quizIndex={quizOrder.indexOf(quizId) + 1} quizLength={quizOrder.length} />
                       </Content>
                     </BackgroundContent>
                   );
                 }}
-
               />
             </>
-          )
+          );
         }}
       />
     </>
