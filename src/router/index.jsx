@@ -3,7 +3,7 @@ import App from "@/App";
 import Home from "@/pages/Home";
 import DragSample1 from "@/pages/samples/DragSample1";
 import DrawLineSample1 from "@/pages/samples/DrawLineSample1";
-import W2SoundMapper from "@/pages/weeks/W2SoundMapper";
+import Week1 from "@/pages/weeks/Week1";
 
 // 샘플 기능 확인용
 const samplesRoutes = [
@@ -13,7 +13,7 @@ const samplesRoutes = [
 
 // 주차별 페이지
 const weeksRoutes = [
-  { path: "soundMapper", element: <W2SoundMapper /> }
+  { path: "week1", element: <Week1 /> },
 ];
 
 const router = createBrowserRouter([
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
         element: route.element,
       })),
       ...weeksRoutes.map((route) => ({
-        path: `${route.path}`,
+        path: `sadlierPhonicsB/${route.path}`,
         element: route.element,
       })),
     ],

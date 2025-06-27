@@ -1,30 +1,26 @@
 // 라이브러리
 import { useState } from "react";
-import styled from "@emotion/styled";
 
 // 훅
 import useIntroScreen from "@/hooks/useIntroScreen";
 
-// 데이터
-import SOUNDMAPPER_DATA from "./data.json";
-
 // 주차 공통 컴포넌트
-import StageManager from "@/components/common/weeks/StageManager";
-import ActivityManager from "@/components/common/weeks/ActivityManager";
-import CurrentStage from "@/components/common/weeks/CurrentStage";
-import BackgroundContent from "@/components/common/weeks/BackgroundContent";
-import Content from "@/components/common/weeks/Content";
-import Question from "@/components/common/weeks/Question";
-import LinkOut from "@/components/common/weeks/LinkOut";
-import BtnLanguage from "@/components/common/weeks/BtnLanguage";
-import ActivityTransitionEffect from "@/components/common/weeks/ActivityTransitionEffect";
-import StageTransitionEffect from "@/components/common/weeks/StageTransitionEffect";
+import StageManager from "@/components/common/activity/StageManager";
+import ActivityManager from "@/components/common/activity/ActivityManager";
+import CurrentStage from "@/components/common/activity/CurrentStage";
+import BackgroundContent from "@/components/common/activity/BackgroundContent";
+import Content from "@/components/common/activity/Content";
+import Question from "@/components/common/activity/Question";
+import LinkOut from "@/components/common/activity/LinkOut";
+import BtnLanguage from "@/components/common/activity/BtnLanguage";
+import ActivityTransitionEffect from "@/components/common/activity/ActivityTransitionEffect";
+import StageTransitionEffect from "@/components/common/activity/StageTransitionEffect";
 
 // 주차 컴포넌트
-import ActivityComponents from "@/components/weeks/W2SoundMapper/ActivityComponents";
-import ThumbNail from "@/components/weeks/w2soundMapper/ThumbNail";
-import GroupStamps from "@/components/weeks/w2soundMapper/GroupStamps";
-import GroupCap from "@/components/weeks/w2soundMapper/GroupCap";
+import ActivityComponents from "@/components/activities/HearMatch/ActivityComponents";
+import ThumbNail from "@/components/activities/HearMatch/ThumbNail";
+import GroupStamps from "@/components/activities/HearMatch/GroupStamps";
+import GroupCap from "@/components/activities/HearMatch/GroupCap";
 
 // 스테이지 & 액티비티 배경이미지
 const backgroundSettingsMap = {
@@ -60,10 +56,10 @@ const backgroundSettingsMap = {
   }
 };
 
-export default function W2_SoundMapper() {
+export default function W2_SoundMapper({ data }) {
   const { isIntroVisible, endIntro } = useIntroScreen();
   const [isLanguageEnglish, setIsLanguageEnglish] = useState(true);
-  const stages = SOUNDMAPPER_DATA.stages;
+  const stages = data.stages;
 
   const handleClickBtnLanguage = () => {
     setIsLanguageEnglish(prev => !prev);
