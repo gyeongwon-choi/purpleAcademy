@@ -1,12 +1,20 @@
 import useTimeout from "@/hooks/useTimeout";
+import BackgroundContent from "@/components/common/activity/BackgroundContent";
 
-export default function ThumbNail({ endIntro }) {
-  useTimeout(endIntro, 3000);
-
+export default function ThumbNail({ thumbnailObj, endThumbnail }) {
+  const {background, title, week} = thumbnailObj;
+  useTimeout(endThumbnail, 3000);
+  
   return (
-    <div>
-      <h3>ThumbNail</h3>
-      <button type="button" onClick={endIntro}>다음으로</button>
-    </div>
+    <BackgroundContent
+      backgroundImage={background}
+      backgroundSize="cover"
+      backgroundPosition="center"
+    >
+      <div>
+        <h3>{title}</h3>
+        <p>{week}</p>
+      </div>
+    </BackgroundContent>
   );
 }

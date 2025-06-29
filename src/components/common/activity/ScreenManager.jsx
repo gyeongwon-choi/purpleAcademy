@@ -1,7 +1,7 @@
 import useScreenNavigator from "@/hooks/useScreenNavigator";
 
-export default function ScreenManager({ quizData, renderScreen }) {
-  const screenIds = quizData.screenOrder || []; // ["S1", "S2", ...]
+export default function ScreenManager({ quizObj, renderScreen }) {
+  const screenIds = quizObj.screenOrder || []; // ["S1", "S2", ...]
   const { screenId, goToNextScreen, goToPrevScreen, goToScreen } = useScreenNavigator(screenIds);
   const screenIndex = screenIds.indexOf(screenId);
 

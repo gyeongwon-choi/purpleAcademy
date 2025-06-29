@@ -1,59 +1,78 @@
 {
   "activityType": "hearMatch",
-  "thumbnailTitle": "단모음 a, i",
-  "thumbnailWeek": "W1",
+  "thumbnail": {
+    "title": "단모음 a, i",
+    "week": "W1",
+    "background": "/images/week/week1/thumbnail/background.png"
+  },
   "effectSounds": {
-    "correct": "/week1/sounds/effects/correct.mp3"
+    "intro": "/sounds/week/week1/effects/intro/0_intro_walking_only.wav",
+    "outro": "/sounds/week/week1/effects/correoutroct/0_outro_yay_only.wav",
+    "correct": "/sounds/week/week1/effects/correct/6_correct.wav",
+    "wrong": "/sounds/week/week1/effects/wrong/5_wrong.wav",
+    "stamp": "/sounds/week/week1/effects/stamp/7_stamp.wav",
+    "paper": "/sounds/week/week1/effects/paper/1_paper unfold.wav"
   },
   "quizOrder": ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6"],
   "quizMap": {
     "Q1": {
       "quizId": "Q1",
       "word": "cap",
+      "images": {
+        "cap": "/images/week/week1/q1/cap.png",
+        "pencil": "/images/week/week1/q1/pencil.png",
+        "zipper": "/images/week/week1/q1/zipper.png"
+      },
       "screenOrder": ["S1", "S2", "S3", "S4"],
       "screenMap": {
         "S1": {
-          "english": "This is a cap.",
-          "korean": "이것은 모자입니다.",
+          "question": {
+            "english": "This is a cap.",
+            "korean": "이것은 모자입니다."
+          },
           "correct": "cap",
-          "incorrects": ["pencil", "zipper"],
           "sounds": {
-            "c": "/week1/sounds/quizs/q1/s1/c.mp3",
-            "cap": "/week1/sounds/quizs/q1/s1/cap.mp3",
-            "pencil_fake": "/week1/sounds/quizs/q1/s1/pencil_fake.mp3",
-            "zipper": "/week1/sounds/quizs/q1/s1/zipper.mp3"
+            "c": "/sounds/week/week1/quizs/q1/s1/c.mp3",
+            "cap": "/sounds/week/week1/quizs/q1/s1/cap.mp3",
+            "pencil_fake": "/sounds/week/week1/quizs/q1/s1/pencil_fake.mp3",
+            "zipper": "/sounds/week/week1/quizs/q1/s1/zipper.mp3"
           }
         },
         "S2": {
-          "english": "This is a cap.",
-          "korean": "이것은 모자입니다.",
+          "question": {
+            "english": "This is a cap.",
+            "korean": "이것은 모자입니다."
+          },
           "correct": "c",
-          "incorrects": ["p", "z"],
           "sounds": {
-            "c": "/week1/sounds/quizs/q1/s2/c.mp3",
-            "p": "/week1/sounds/quizs/q1/s2/p.mp3",
-            "z": "/week1/sounds/quizs/q1/s2/z.mp3",
-            "cap": "/week1/sounds/quizs/q1/s2/cap.mp3"
+            "c": "/sounds/week/week1/quizs/q1/s2/c.mp3",
+            "p": "/sounds/week/week1/quizs/q1/s2/p.mp3",
+            "z": "/sounds/week/week1/quizs/q1/s2/z.mp3",
+            "cap": "/sounds/week/week1/quizs/q1/s2/cap.mp3"
           }
         },
         "S3": {
-          "english": "This is a cap.",
-          "korean": "이것은 모자입니다.",
+          "question": {
+            "english": "This is a cap.",
+            "korean": "이것은 모자입니다."
+          },
           "sounds": {
-            "cap_1": "/week1/sounds/quizs/q1/s3/cap_1.mp3",
-            "cap_2": "/week1/sounds/quizs/q1/s3/cap_2.mp3",
-            "cap_3": "/week1/sounds/quizs/q1/s3/cap_3.mp3",
-            "cap_all": "/week1/sounds/quizs/q1/s3/cap_all.mp3"
+            "cap_1": "/sounds/week/week1/quizs/q1/s3/cap_1.mp3",
+            "cap_2": "/sounds/week/week1/quizs/q1/s3/cap_2.mp3",
+            "cap_3": "/sounds/week/week1/quizs/q1/s3/cap_3.mp3",
+            "cap_all": "/sounds/week/week1/quizs/q1/s3/cap_all.mp3"
           }
         },
         "S4": {
-          "english": "Let's spell 'cap'",
-          "korean": "'cap'을 철자대로 말해봐요.",
+          "question": {
+            "english": "Let's spell 'cap'",
+            "korean": "'cap'을 철자대로 말해봐요."
+          },
           "sounds": {
-            "cap_1": "/week1/sounds/quizs/q1/s4/cap_1.mp3",
-            "cap_2": "/week1/sounds/quizs/q1/s4/cap_2.mp3",
-            "cap_3": "/week1/sounds/quizs/q1/s4/cap_3.mp3",
-            "cap_all": "/week1/sounds/quizs/q1/s4/cap_all.mp3"
+            "cap_1": "/sounds/week/week1/quizs/q1/s4/cap_1.mp3",
+            "cap_2": "/sounds/week/week1/quizs/q1/s4/cap_2.mp3",
+            "cap_3": "/sounds/week/week1/quizs/q1/s4/cap_3.mp3",
+            "cap_all": "/sounds/week/week1/quizs/q1/s4/cap_all.mp3"
           }
         }
       }
@@ -61,50 +80,61 @@
     "Q2": {
       "quizId": "Q2",
       "word": "cap",
+      "images": {
+        "fish": "/images/week/week1/q2/fish.png",
+        "queen": "/images/week/week1/q2/queen.png",
+        "yarn_수정전": "/images/week/week1/q2/yarn_수정전.png"
+      },
       "screenOrder": ["S1", "S2", "S3", "S4"],
       "screenMap": {
         "S1": {
-          "english": "This is a cap.",
-          "korean": "이것은 모자입니다.",
+          "question": {
+            "english": "This is a cap.",
+            "korean": "이것은 모자입니다."
+          },
           "correct": "cap",
-          "incorrects": ["pencil", "zipper"],
           "sounds": {
-            "fish": "/week1/sounds/quizs/q2/s1/fish.mp3",
-            "queen": "/week1/sounds/quizs/q2/s1/queen.mp3",
-            "y": "/week1/sounds/quizs/q2/s1/y.mp3",
-            "yarn": "/week1/sounds/quizs/q2/s1/yarn.mp3"
+            "fish": "/sounds/week/week1/quizs/q2/s1/fish.mp3",
+            "queen": "/sounds/week/week1/quizs/q2/s1/queen.mp3",
+            "y": "/sounds/week/week1/quizs/q2/s1/y.mp3",
+            "yarn": "/sounds/week/week1/quizs/q2/s1/yarn.mp3"
           }
         },
         "S2": {
-          "english": "This is a cap.",
-          "korean": "이것은 모자입니다.",
+          "question": {
+            "english": "This is a cap.",
+            "korean": "이것은 모자입니다."
+          },
           "correct": "c",
-          "incorrects": ["p", "z"],
           "sounds": {
-            "f": "/week1/sounds/quizs/q2/s2/f.mp3",
-            "q": "/week1/sounds/quizs/q2/s2/q.mp3",
-            "y": "/week1/sounds/quizs/q2/s2/y.mp3",
-            "yarn": "/week1/sounds/quizs/q2/s2/yarn.mp3"
+            "f": "/sounds/week/week1/quizs/q2/s2/f.mp3",
+            "q": "/sounds/week/week1/quizs/q2/s2/q.mp3",
+            "y": "/sounds/week/week1/quizs/q2/s2/y.mp3",
+            "yarn": "/sounds/week/week1/quizs/q2/s2/yarn.mp3"
           }
         },
         "S3": {
-          "english": "This is a cap.",
-          "korean": "이것은 모자입니다.",
+          "question": {
+            "english": "This is a cap.",
+            "korean": "이것은 모자입니다."
+          },
           "sounds": {
-            "yarn_1": "/week1/sounds/quizs/q2/s3/yarn_1.mp3",
-            "yarn_2": "/week1/sounds/quizs/q2/s3/yarn_2.mp3",
-            "yarn_3": "/week1/sounds/quizs/q2/s3/yarn_3.mp3",
-            "yarn_all": "/week1/sounds/quizs/q2/s3/yarn_all.mp3"
+            "yarn_1": "/sounds/week/week1/quizs/q2/s3/yarn_1.mp3",
+            "yarn_2": "/sounds/week/week1/quizs/q2/s3/yarn_2.mp3",
+            "yarn_3": "/sounds/week/week1/quizs/q2/s3/yarn_3.mp3",
+            "yarn_all": "/sounds/week/week1/quizs/q2/s3/yarn_all.mp3"
           }
         },
         "S4": {
-          "english": "Let's spell 'cap'",
-          "korean": "'cap'을 철자대로 말해봐요.",
+          "question": {
+            "english": "Let's spell 'cap'",
+            "korean": "'cap'을 철자대로 말해봐요."
+          },
           "sounds": {
-            "yarn_1": "/week1/sounds/quizs/q2/s4/yarn_1.mp3",
-            "yarn_2": "/week1/sounds/quizs/q2/s4/yarn_2.mp3",
-            "yarn_3": "/week1/sounds/quizs/q2/s4/yarn_3.mp3",
-            "yarn_all": "/week1/sounds/quizs/q2/s4/yarn_all.mp3"
+            "yarn_1": "/sounds/week/week1/quizs/q2/s4/yarn_1.mp3",
+            "yarn_2": "/sounds/week/week1/quizs/q2/s4/yarn_2.mp3",
+            "yarn_3": "/sounds/week/week1/quizs/q2/s4/yarn_3.mp3",
+            "yarn_all": "/sounds/week/week1/quizs/q2/s4/yarn_all.mp3"
           }
         }
       }
@@ -112,50 +142,61 @@
     "Q3": {
       "quizId": "Q3",
       "word": "cap",
+      "images": {
+        "bus": "/images/week/week1/q3/bus.png",
+        "ham": "/images/week/week1/q3/ham.png",
+        "pig": "/images/week/week1/q3/pig.png"
+      },
       "screenOrder": ["S1", "S2", "S3", "S4"],
       "screenMap": {
         "S1": {
-          "english": "This is a cap.",
-          "korean": "이것은 모자입니다.",
+          "question": {
+            "english": "This is a cap.",
+            "korean": "이것은 모자입니다."
+          },
           "correct": "cap",
-          "incorrects": ["pencil", "zipper"],
           "sounds": {
-            "bus": "/week1/sounds/quizs/q3/s1/bus.mp3",
-            "ham": "/week1/sounds/quizs/q3/s1/ham.mp3",
-            "m": "/week1/sounds/quizs/q3/s1/m.mp3",
-            "pig": "/week1/sounds/quizs/q3/s1/pig.mp3"
+            "bus": "/sounds/week/week1/quizs/q3/s1/bus.mp3",
+            "ham": "/sounds/week/week1/quizs/q3/s1/ham.mp3",
+            "m": "/sounds/week/week1/quizs/q3/s1/m.mp3",
+            "pig": "/sounds/week/week1/quizs/q3/s1/pig.mp3"
           }
         },
         "S2": {
-          "english": "This is a cap.",
-          "korean": "이것은 모자입니다.",
+          "question": {
+            "english": "This is a cap.",
+            "korean": "이것은 모자입니다."
+          },
           "correct": "c",
-          "incorrects": ["p", "z"],
           "sounds": {
-            "g": "/week1/sounds/quizs/q3/s2/g.mp3",
-            "ham": "/week1/sounds/quizs/q3/s2/ham.mp3",
-            "m": "/week1/sounds/quizs/q3/s2/m.mp3",
-            "s": "/week1/sounds/quizs/q3/s2/s.mp3"
+            "g": "/sounds/week/week1/quizs/q3/s2/g.mp3",
+            "ham": "/sounds/week/week1/quizs/q3/s2/ham.mp3",
+            "m": "/sounds/week/week1/quizs/q3/s2/m.mp3",
+            "s": "/sounds/week/week1/quizs/q3/s2/s.mp3"
           }
         },
         "S3": {
-          "english": "This is a cap.",
-          "korean": "이것은 모자입니다.",
+          "question": {
+            "english": "This is a cap.",
+            "korean": "이것은 모자입니다."
+          },
           "sounds": {
-            "ham_1": "/week1/sounds/quizs/q3/s3/ham_1.mp3",
-            "ham_2": "/week1/sounds/quizs/q3/s3/ham_2.mp3",
-            "ham_3": "/week1/sounds/quizs/q3/s3/ham_3.mp3",
-            "ham_all": "/week1/sounds/quizs/q3/s3/ham_all.mp3"
+            "ham_1": "/sounds/week/week1/quizs/q3/s3/ham_1.mp3",
+            "ham_2": "/sounds/week/week1/quizs/q3/s3/ham_2.mp3",
+            "ham_3": "/sounds/week/week1/quizs/q3/s3/ham_3.mp3",
+            "ham_all": "/sounds/week/week1/quizs/q3/s3/ham_all.mp3"
           }
         },
         "S4": {
-          "english": "Let's spell 'cap'",
-          "korean": "'cap'을 철자대로 말해봐요.",
+          "question": {
+            "english": "Let's spell 'cap'",
+            "korean": "'cap'을 철자대로 말해봐요."
+          },
           "sounds": {
-            "ham_1": "/week1/sounds/quizs/q3/s4/ham_1.mp3",
-            "ham_2": "/week1/sounds/quizs/q3/s4/ham_2.mp3",
-            "ham_3": "/week1/sounds/quizs/q3/s4/ham_3.mp3",
-            "ham_all": "/week1/sounds/quizs/q3/s4/ham_all.mp3"
+            "ham_1": "/sounds/week/week1/quizs/q3/s4/ham_1.mp3",
+            "ham_2": "/sounds/week/week1/quizs/q3/s4/ham_2.mp3",
+            "ham_3": "/sounds/week/week1/quizs/q3/s4/ham_3.mp3",
+            "ham_all": "/sounds/week/week1/quizs/q3/s4/ham_all.mp3"
           }
         }
       }
@@ -163,50 +204,61 @@
     "Q4": {
       "quizId": "Q4",
       "word": "cap",
+      "images": {
+        "hook": "/images/week/week1/q4/hook.png",
+        "pet_수정전": "/images/week/week1/q4/pet_수정전.png",
+        "roof_수정전": "/images/week/week1/q4/roof_수정전.png"
+      },
       "screenOrder": ["S1", "S2", "S3", "S4"],
       "screenMap": {
         "S1": {
-          "english": "This is a cap.",
-          "korean": "이것은 모자입니다.",
+          "question": {
+            "english": "This is a cap.",
+            "korean": "이것은 모자입니다."
+          },
           "correct": "cap",
-          "incorrects": ["pencil", "zipper"],
           "sounds": {
-            "hook_all": "/week1/sounds/quizs/q4/s1/hook_all.mp3",
-            "k": "/week1/sounds/quizs/q4/s1/k.mp3",
-            "pet_all": "/week1/sounds/quizs/q4/s1/pet_all.mp3",
-            "roof_all": "/week1/sounds/quizs/q4/s1/roof_all.mp3"
+            "hook_all": "/sounds/week/week1/quizs/q4/s1/hook_all.mp3",
+            "k": "/sounds/week/week1/quizs/q4/s1/k.mp3",
+            "pet_all": "/sounds/week/week1/quizs/q4/s1/pet_all.mp3",
+            "roof_all": "/sounds/week/week1/quizs/q4/s1/roof_all.mp3"
           }
         },
         "S2": {
-          "english": "This is a cap.",
-          "korean": "이것은 모자입니다.",
+          "question": {
+            "english": "This is a cap.",
+            "korean": "이것은 모자입니다."
+          },
           "correct": "c",
-          "incorrects": ["p", "z"],
           "sounds": {
-            "f": "/week1/sounds/quizs/q4/s2/f.mp3",
-            "k": "/week1/sounds/quizs/q4/s2/k.mp3",
-            "t": "/week1/sounds/quizs/q4/s2/t.mp3",
-            "hook": "/week1/sounds/quizs/q4/s2/hook.mp3"
+            "f": "/sounds/week/week1/quizs/q4/s2/f.mp3",
+            "k": "/sounds/week/week1/quizs/q4/s2/k.mp3",
+            "t": "/sounds/week/week1/quizs/q4/s2/t.mp3",
+            "hook": "/sounds/week/week1/quizs/q4/s2/hook.mp3"
           }
         },
         "S3": {
-          "english": "This is a cap.",
-          "korean": "이것은 모자입니다.",
+          "question": {
+            "english": "This is a cap.",
+            "korean": "이것은 모자입니다."
+          },
           "sounds": {
-            "hook_1": "/week1/sounds/quizs/q4/s3/hook_1.mp3",
-            "hook_2": "/week1/sounds/quizs/q4/s3/hook_2.mp3",
-            "hook_3": "/week1/sounds/quizs/q4/s3/hook_3.mp3",
-            "hook_all": "/week1/sounds/quizs/q4/s3/hook_all.mp3"
+            "hook_1": "/sounds/week/week1/quizs/q4/s3/hook_1.mp3",
+            "hook_2": "/sounds/week/week1/quizs/q4/s3/hook_2.mp3",
+            "hook_3": "/sounds/week/week1/quizs/q4/s3/hook_3.mp3",
+            "hook_all": "/sounds/week/week1/quizs/q4/s3/hook_all.mp3"
           }
         },
         "S4": {
-          "english": "Let's spell 'cap'",
-          "korean": "'cap'을 철자대로 말해봐요.",
+          "question": {
+            "english": "Let's spell 'cap'",
+            "korean": "'cap'을 철자대로 말해봐요."
+          },
           "sounds": {
-            "hook_1": "/week1/sounds/quizs/q4/s4/hook_1.mp3",
-            "hook_2": "/week1/sounds/quizs/q4/s4/hook_2.mp3",
-            "hook_3": "/week1/sounds/quizs/q4/s4/hook_3.mp3",
-            "hook_all": "/week1/sounds/quizs/q4/s4/hook_all.mp3"
+            "hook_1": "/sounds/week/week1/quizs/q4/s4/hook_1.mp3",
+            "hook_2": "/sounds/week/week1/quizs/q4/s4/hook_2.mp3",
+            "hook_3": "/sounds/week/week1/quizs/q4/s4/hook_3.mp3",
+            "hook_all": "/sounds/week/week1/quizs/q4/s4/hook_all.mp3"
           }
         }
       }
@@ -214,52 +266,63 @@
     "Q5": {
       "quizId": "Q5",
       "word": "cap",
+      "images": {
+        "robot": "/images/week/week1/q5/robot.png",
+        "seven": "/images/week/week1/q5/seven.png",
+        "wagon": "/images/week/week1/q5/wagon.png"
+      },
       "screenOrder": ["S1", "S2", "S3", "S4"],
       "screenMap": {
         "S1": {
-          "english": "This is a cap.",
-          "korean": "이것은 모자입니다.",
+          "question": {
+            "english": "This is a cap.",
+            "korean": "이것은 모자입니다."
+          },
           "correct": "cap",
-          "incorrects": ["pencil", "zipper"],
           "sounds": {
-            "robot_fake": "/week1/sounds/quizs/q5/s1/robot_fake.mp3",
-            "seven": "/week1/sounds/quizs/q5/s1/seven.mp3",
-            "v": "/week1/sounds/quizs/q5/s1/v.mp3",
-            "wagon": "/week1/sounds/quizs/q5/s1/wagon.mp3"
+            "robot_fake": "/sounds/week/week1/quizs/q5/s1/robot_fake.mp3",
+            "seven": "/sounds/week/week1/quizs/q5/s1/seven.mp3",
+            "v": "/sounds/week/week1/quizs/q5/s1/v.mp3",
+            "wagon": "/sounds/week/week1/quizs/q5/s1/wagon.mp3"
           }
         },
         "S2": {
-          "english": "This is a cap.",
-          "korean": "이것은 모자입니다.",
+          "question": {
+            "english": "This is a cap.",
+            "korean": "이것은 모자입니다."
+          },
           "correct": "c",
-          "incorrects": ["p", "z"],
           "sounds": {
-            "b": "/week1/sounds/quizs/q5/s2/b.mp3",
-            "g": "/week1/sounds/quizs/q5/s2/g.mp3",
-            "v": "/week1/sounds/quizs/q5/s2/v.mp3",
-            "seven": "/week1/sounds/quizs/q5/s2/seven.mp3"
+            "b": "/sounds/week/week1/quizs/q5/s2/b.mp3",
+            "g": "/sounds/week/week1/quizs/q5/s2/g.mp3",
+            "v": "/sounds/week/week1/quizs/q5/s2/v.mp3",
+            "seven": "/sounds/week/week1/quizs/q5/s2/seven.mp3"
           }
         },
         "S3": {
-          "english": "This is a cap.",
-          "korean": "이것은 모자입니다.",
+          "question": {
+            "english": "This is a cap.",
+            "korean": "이것은 모자입니다."
+          },
           "sounds": {
-            "seven_1": "/week1/sounds/quizs/q5/s3/seven_1.mp3",
-            "seven_2": "/week1/sounds/quizs/q5/s3/seven_2.mp3",
-            "seven_3": "/week1/sounds/quizs/q5/s3/seven_3.mp3",
-            "seven_4": "/week1/sounds/quizs/q5/s3/seven_4.mp3",
-            "seven_all": "/week1/sounds/quizs/q5/s3/seven_all.mp3"
+            "seven_1": "/sounds/week/week1/quizs/q5/s3/seven_1.mp3",
+            "seven_2": "/sounds/week/week1/quizs/q5/s3/seven_2.mp3",
+            "seven_3": "/sounds/week/week1/quizs/q5/s3/seven_3.mp3",
+            "seven_4": "/sounds/week/week1/quizs/q5/s3/seven_4.mp3",
+            "seven_all": "/sounds/week/week1/quizs/q5/s3/seven_all.mp3"
           }
         },
         "S4": {
-          "english": "Let's spell 'cap'",
-          "korean": "'cap'을 철자대로 말해봐요.",
+          "question": {
+            "english": "Let's spell 'cap'",
+            "korean": "'cap'을 철자대로 말해봐요."
+          },
           "sounds": {
-            "seven_1": "/week1/sounds/quizs/q5/s4/seven_1.mp3",
-            "seven_2": "/week1/sounds/quizs/q5/s4/seven_2.mp3",
-            "seven_3": "/week1/sounds/quizs/q5/s4/seven_3.mp3",
-            "seven_4": "/week1/sounds/quizs/q5/s4/seven_4.mp3",
-            "seven_all": "/week1/sounds/quizs/q5/s4/seven_all.mp3"
+            "seven_1": "/sounds/week/week1/quizs/q5/s4/seven_1.mp3",
+            "seven_2": "/sounds/week/week1/quizs/q5/s4/seven_2.mp3",
+            "seven_3": "/sounds/week/week1/quizs/q5/s4/seven_3.mp3",
+            "seven_4": "/sounds/week/week1/quizs/q5/s4/seven_4.mp3",
+            "seven_all": "/sounds/week/week1/quizs/q5/s4/seven_all.mp3"
           }
         }
       }
@@ -267,54 +330,65 @@
     "Q6": {
       "quizId": "Q6",
       "word": "cap",
+      "images": {
+        "camel": "/images/week/week1/q6/camel.png",
+        "peanut": "/images/week/week1/q6/peanut.png",
+        "water_수정전": "/images/week/week1/q6/water_수정전.png"
+      },
       "screenOrder": ["S1", "S2", "S3", "S4"],
       "screenMap": {
         "S1": {
-          "english": "This is a cap.",
-          "korean": "이것은 모자입니다.",
+          "question": {
+            "english": "This is a cap.",
+            "korean": "이것은 모자입니다."
+          },
           "correct": "cap",
-          "incorrects": ["pencil", "zipper"],
           "sounds": {
-            "seven_1": "/week1/sounds/quizs/q6/s1/seven_1.mp3",
-            "seven_2": "/week1/sounds/quizs/q6/s1/seven_2.mp3",
-            "seven_3": "/week1/sounds/quizs/q6/s1/seven_3.mp3",
-            "seven_4": "/week1/sounds/quizs/q6/s1/seven_4.mp3"
+            "seven_1": "/sounds/week/week1/quizs/q6/s1/seven_1.mp3",
+            "seven_2": "/sounds/week/week1/quizs/q6/s1/seven_2.mp3",
+            "seven_3": "/sounds/week/week1/quizs/q6/s1/seven_3.mp3",
+            "seven_4": "/sounds/week/week1/quizs/q6/s1/seven_4.mp3"
           }
         },
         "S2": {
-          "english": "This is a cap.",
-          "korean": "이것은 모자입니다.",
+          "question": {
+            "english": "This is a cap.",
+            "korean": "이것은 모자입니다."
+          },
           "correct": "c",
-          "incorrects": ["p", "z"],
           "sounds": {
-            "m": "/week1/sounds/quizs/q6/s2/m.mp3",
-            "n": "/week1/sounds/quizs/q6/s2/n.mp3",
-            "t": "/week1/sounds/quizs/q6/s2/t.mp3",
-            "peanut": "/week1/sounds/quizs/q6/s2/peanut.mp3"
+            "m": "/sounds/week/week1/quizs/q6/s2/m.mp3",
+            "n": "/sounds/week/week1/quizs/q6/s2/n.mp3",
+            "t": "/sounds/week/week1/quizs/q6/s2/t.mp3",
+            "peanut": "/sounds/week/week1/quizs/q6/s2/peanut.mp3"
           }
         },
         "S3": {
-          "english": "This is a cap.",
-          "korean": "이것은 모자입니다.",
+          "question": {
+            "english": "This is a cap.",
+            "korean": "이것은 모자입니다."
+          },
           "sounds": {
-            "peanut_1": "/week1/sounds/quizs/q6/s3/peanut_1.mp3",
-            "peanut_2": "/week1/sounds/quizs/q6/s3/peanut_2.mp3",
-            "peanut_3": "/week1/sounds/quizs/q6/s3/peanut_3.mp3",
-            "peanut_4": "/week1/sounds/quizs/q6/s3/peanut_4.mp3",
-            "peanut_5": "/week1/sounds/quizs/q6/s3/peanut_5.mp3",
-            "peanut_all": "/week1/sounds/quizs/q6/s3/peanut_all.mp3"
+            "peanut_1": "/sounds/week/week1/quizs/q6/s3/peanut_1.mp3",
+            "peanut_2": "/sounds/week/week1/quizs/q6/s3/peanut_2.mp3",
+            "peanut_3": "/sounds/week/week1/quizs/q6/s3/peanut_3.mp3",
+            "peanut_4": "/sounds/week/week1/quizs/q6/s3/peanut_4.mp3",
+            "peanut_5": "/sounds/week/week1/quizs/q6/s3/peanut_5.mp3",
+            "peanut_all": "/sounds/week/week1/quizs/q6/s3/peanut_all.mp3"
           }
         },
         "S4": {
-          "english": "Let's spell 'cap'",
-          "korean": "'cap'을 철자대로 말해봐요.",
+          "question": {
+            "english": "Let's spell 'cap'",
+            "korean": "'cap'을 철자대로 말해봐요."
+          },
           "sounds": {
-            "peanut_1": "/week1/sounds/quizs/q6/s4/peanut_1.mp3",
-            "peanut_2": "/week1/sounds/quizs/q6/s4/peanut_2.mp3",
-            "peanut_3": "/week1/sounds/quizs/q6/s4/peanut_3.mp3",
-            "peanut_4": "/week1/sounds/quizs/q6/s4/peanut_4.mp3",
-            "peanut_5": "/week1/sounds/quizs/q6/s4/peanut_5.mp3",
-            "peanut_all": "/week1/sounds/quizs/q6/s4/peanut_all.mp3"
+            "peanut_1": "/sounds/week/week1/quizs/q6/s4/peanut_1.mp3",
+            "peanut_2": "/sounds/week/week1/quizs/q6/s4/peanut_2.mp3",
+            "peanut_3": "/sounds/week/week1/quizs/q6/s4/peanut_3.mp3",
+            "peanut_4": "/sounds/week/week1/quizs/q6/s4/peanut_4.mp3",
+            "peanut_5": "/sounds/week/week1/quizs/q6/s4/peanut_5.mp3",
+            "peanut_all": "/sounds/week/week1/quizs/q6/s4/peanut_all.mp3"
           }
         }
       }

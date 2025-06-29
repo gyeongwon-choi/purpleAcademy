@@ -16,7 +16,7 @@ const StyledBg = styled.div(props => ({
 }));
 
 const BackgroundContent = ({
-  backgroundImage = "/images/weeks/w2soundMapper/test.png",
+  backgroundImage,
   backgroundSize,
   backgroundPosition,
   backgroundRepeat,
