@@ -15,6 +15,7 @@ const StyledQuestion = styled.div`
   border: 1px solid #ccc;
   border-radius: 30px;
   z-index: 100;
+  font-size: 26px;
 `;
 
 const Question = ({ children }) => {

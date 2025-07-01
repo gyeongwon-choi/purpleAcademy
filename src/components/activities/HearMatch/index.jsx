@@ -1,9 +1,6 @@
 // 라이브러리
 import { useState } from "react";
 
-// 훅
-import useThumbnailScreen from "@/hooks/useThumbnailScreen";
-
 // 액티비티 공통 컴포넌트
 import QuizManager from "@/components/common/activity/QuizManager";
 import ScreenManager from "@/components/common/activity/ScreenManager";
@@ -15,9 +12,6 @@ import LinkOut from "@/components/common/activity/LinkOut";
 import BtnLanguage from "@/components/common/activity/BtnLanguage";
 import ScreenTransitionEffect from "@/components/common/activity/ScreenTransitionEffect";
 import QuizTransitionEffect from "@/components/common/activity/QuizTransitionEffect";
-
-// 액티비티 전용 컴포넌트
-import ThumbNail from "@/components/activities/HearMatch/ThumbNail";
 
 // 화면 로직 컴포넌트
 import Screens from "@/pages/weeks/Week1/Screens";
@@ -57,7 +51,6 @@ const backgroundSettingsMap = {
 };
 
 export default function HearMatch({ data }) {
-  const { isThumbnailVisible, endThumbnail } = useThumbnailScreen();
   const [isLanguageEnglish, setIsLanguageEnglish] = useState(true);
   const dataObj = data;
   const quizOrder = dataObj.quizOrder;
@@ -66,12 +59,6 @@ export default function HearMatch({ data }) {
     setIsLanguageEnglish((prev) => !prev);
   };
 
-  // 썸네일
-  if (isThumbnailVisible) {
-    return <ThumbNail endThumbnail={endThumbnail} thumbnailObj={dataObj.thumbnail} />;
-  }
-
-  // 퀴즈 전체
   return (
     <>
       <LinkOut to="/">나가기</LinkOut>
