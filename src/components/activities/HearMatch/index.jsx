@@ -16,44 +16,10 @@ import QuizTransitionEffect from "@/components/common/activity/QuizTransitionEff
 // 화면 로직 컴포넌트
 import Screens from "@/pages/weeks/Week1/Screens";
 
-// 퀴즈 배경이미지
-const backgroundSettingsMap = {
-  Q1: {
-    backgroundImage: "/images/activity/w2soundMapper/bg_1.png",
-    backgroundSize: "auto 110%",
-    backgroundPosition: "center",
-  },
-  Q2: {
-    backgroundImage: "/images/activity/w2soundMapper/bg_2.png",
-    backgroundSize: "auto 110%",
-    backgroundPosition: "center",
-  },
-  Q3: {
-    backgroundImage: "/images/activity/w2soundMapper/bg_3.png",
-    backgroundSize: "auto 110%",
-    backgroundPosition: "center",
-  },
-  Q4: {
-    backgroundImage: "/images/activity/w2soundMapper/bg_4.png",
-    backgroundSize: "auto 110%",
-    backgroundPosition: "center",
-  },
-  Q5: {
-    backgroundImage: "/images/activity/w2soundMapper/bg_1.png",
-    backgroundSize: "auto 110%",
-    backgroundPosition: "center",
-  },
-  Q6: {
-    backgroundImage: "/images/activity/w2soundMapper/bg_2.png",
-    backgroundSize: "auto 110%",
-    backgroundPosition: "center",
-  },
-};
-
 export default function HearMatch({ data }) {
   const [isLanguageEnglish, setIsLanguageEnglish] = useState(true);
   const dataObj = data;
-  const quizOrder = dataObj.quizOrder;
+  const quizOrder = dataObj.quiz.order;
 
   const handleClickBtnLanguage = () => {
     setIsLanguageEnglish((prev) => !prev);
@@ -65,10 +31,6 @@ export default function HearMatch({ data }) {
       <QuizManager
         dataObj={dataObj}
         renderQuiz={(quizObj, quizId) => {
-          const bgSettings =
-            backgroundSettingsMap[quizObj.quizId] ||
-            backgroundSettingsMap["default"];
-
           return (
             <>
               <QuizTransitionEffect animationKey={`quiz-${quizId}`} />
@@ -88,9 +50,9 @@ export default function HearMatch({ data }) {
 
                   return (
                     <BackgroundContent
-                      backgroundImage={bgSettings.backgroundImage}
-                      backgroundSize={bgSettings.backgroundSize}
-                      backgroundPosition={bgSettings.backgroundPosition}
+                      backgroundImage={quizObj.bg}
+                      backgroundSize={"auto 110%"}
+                      backgroundPosition={"center"}
                     >
                       <ScreenTransitionEffect
                         animationKey={`quiz-${quizId}_screen-${screenId}`}

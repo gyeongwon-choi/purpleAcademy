@@ -4,15 +4,15 @@ export default function QuizManager({ dataObj, renderQuiz }) {
   const { quizId, goToNextQuiz, goToPrevQuiz } = useQuizNavigator(dataObj);
 
   // 현재 퀴즈 순서 배열
-  const quizOrder = dataObj.quizOrder;
+  const quizOrder = dataObj.quiz.order;
 
   // 현재 인덱스 구하기
   const currentIndex = quizOrder.indexOf(quizId);
 
   return (
     <div>
-      {/* quizMap에서 현재 quizId에 해당하는 퀴즈 데이터 전달 */}
-      {renderQuiz(dataObj.quizMap[quizId], quizId)}
+      {/* quizs에서 현재 quizId에 해당하는 퀴즈 데이터 전달 */}
+      {renderQuiz(dataObj.quiz.quizs[quizId], quizId)}
 
       <button
         onClick={goToPrevQuiz}

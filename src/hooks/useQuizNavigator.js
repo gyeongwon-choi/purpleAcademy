@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-export default function useQuizNavigator(quiz) {
-  const quizOrder = quiz.quizOrder; // quizOrder 배열 꺼내기
+export default function useQuizNavigator(data) {
+  const quizOrder = data.quiz.order; // quizOrder 배열 꺼내기
   const [quizId, setQuizId] = useState(quizOrder[0]); // 초기값 Q1 등 첫 퀴즈 ID
 
   // 현재 quizId의 인덱스 구하기

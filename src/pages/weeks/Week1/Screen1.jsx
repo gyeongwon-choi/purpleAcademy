@@ -65,9 +65,9 @@ const Screen1 = ({ correct, images, sounds }) => {
 
     gsap.fromTo(
       bunnyRef.current,
-      { x: -resizedWidth * 0.5 },
+      { x: -resizedWidth * 0 },
       {
-        x: resizedWidth * 0.3,
+        x: resizedWidth * 0.2,
         duration: 3,
         ease: "power1.inOut",
         onStart: startWalkAnimation,
@@ -79,8 +79,6 @@ const Screen1 = ({ correct, images, sounds }) => {
   return (
     <>
       <Bunny
-        src={images.cap}
-        alt="캡모자"
         resizedWidth={resizedWidth}
         resizedHeight={resizedHeight}
         ref={bunnyRef}
@@ -124,9 +122,9 @@ const Screen1 = ({ correct, images, sounds }) => {
 export default Screen1;
 
 const Bunny = styled.div((props) => ({
-  width: `${props.resizedWidth * 0.1}px`,
+  width: `${props.resizedWidth * 0.2}px`,
   position: "absolute",
-  left: `${props.resizedWidth * 0.4}px`,
+  left: `${props.resizedWidth * 0 - props.resizedWidth * 0.2}px`,
   top: `${props.resizedHeight * 0.45}px`,
 
   img: {
