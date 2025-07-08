@@ -4,13 +4,17 @@ import { gsap, useGSAP } from "@/libs/gsapSetup";
 import styled from "@emotion/styled";
 import { useEffect, useRef } from "react";
 
-const Screen1 = ({ correct, images, sounds }) => {
+const Screen1 = ({ quizObj, screenId }) => {
+  if(screenId !== "S1") return;
   const { resizedWidth, resizedHeight } = useSize();
   const bunnyRef = useRef(null);
   const bunnyImgsRef = useRef([]);
   const walkIntervalRef = useRef(null);
   const scratchIntervalRef = useRef(null);
   const startedRef = useRef(false);
+
+  console.log(quizObj);
+  const quizImages = quizObj.images;
 
   // 걷는 애니메이션
   const startWalkAnimation = () => {
@@ -115,6 +119,29 @@ const Screen1 = ({ correct, images, sounds }) => {
           style={{ opacity: 0 }}
         />
       </Bunny>
+      
+      <AnswerBox resizedWidth={resizedWidth} resizedHeight={resizedHeight}>
+        <AnswerBg 
+          resizedWidth={resizedWidth} resizedHeight={resizedHeight}
+          src="/images/week/week1/activity/answerBg_big.png"
+          alt=""
+        />
+        <AnswerImg
+          resizedWidth={resizedWidth} resizedHeight={resizedHeight}
+          src={quizImages.cap}
+          alt=""
+        />
+        <TreasureImg
+          resizedWidth={resizedWidth} resizedHeight={resizedHeight}
+          src="/images/week/week1/activity/treasure.png"
+          alt=""
+        />
+        <SpeakerBtn
+          resizedWidth={resizedWidth} resizedHeight={resizedHeight}
+          src="/images/week/week1/activity/speaker.svg"
+          alt=""
+        />
+      </AnswerBox>
     </>
   );
 };
@@ -135,4 +162,44 @@ const Bunny = styled.div((props) => ({
     left: "0px",
     top: "0px",
   },
+}));
+
+const AnswerBox = styled.div((props) => ({
+  width: `${props.resizedWidth * 0.2}px`,
+  height: `${props.resizedHeight * 0.2}px`,
+  position: "absolute",
+  left: `${props.resizedWidth * 0.2}px`,
+  top: `${props.resizedHeight * 0.45}px`,
+
+  img: {
+    width: "100%",
+    height: "auto",
+    objectFit: "contain",
+  },
+}));
+
+const AnswerBg = styled.img((props) => ({
+  /* width: `${props.resizedWidth * 0.2}px`,
+  height: `${props.resizedHeight * 0.2}px`,
+  position: "absolute",
+  left: `${props.resizedWidth * 0.2}px`,
+  top: `${props.resizedHeight * 0.45}px`, */
+}));
+const AnswerImg = styled.img((props) => ({
+  width: `${props.resizedWidth * 0.2}px`,
+  position: "absolute",
+  left: `${props.resizedWidth * 0.2}px`,
+  top: `${props.resizedHeight * 0.45}px`,
+}));
+const TreasureImg = styled.img((props) => ({
+  width: `${props.resizedWidth * 0.2}px`,
+  position: "absolute",
+  left: `${props.resizedWidth * 0.2}px`,
+  top: `${props.resizedHeight * 0.45}px`,
+}));
+const SpeakerBtn = styled.img((props) => ({
+  width: `${props.resizedWidth * 0.2}px`,
+  position: "absolute",
+  left: `${props.resizedWidth * 0.2}px`,
+  top: `${props.resizedHeight * 0.45}px`,
 }));

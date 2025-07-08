@@ -44,9 +44,7 @@ export default function HearMatch({ data }) {
                   goToPrevScreen,
                   goToScreen
                 ) => {
-                  const screen = quizObj.screenMap[screenId]; // 추가: 현재 화면 데이터
-                  //const Component = ScreenComponents[screenId];
-                  //if (!Component) return <p>지원되지 않는 화면입니다.</p>;
+                  const screen = quizObj.screenMap[screenId]; 
 
                   return (
                     <BackgroundContent

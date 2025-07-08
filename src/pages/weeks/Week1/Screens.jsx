@@ -10,37 +10,20 @@ export default function Screens({
   goToPrevScreen,
   goToScreen,
 }) {
-  const [currentScreenComponent, setCurrentScreenComponent] = useState(null);
-  const images = quizObj.images;
-
-  useEffect(() => {
-    // 각 화면에 맞는 로직 설정
-    const executeLogic = () => {
-      switch (screenId) {
-        case "S1":
-          setCurrentScreenComponent(<Screen1 correct={quizObj.screenMap.S1.correct} images={images} sounds={quizObj.screenMap.S1.sounds} />);
-          break;
-        case "S2":
-          setCurrentScreenComponent(<Screen2 />);
-          break;
-        case "S3":
-          setCurrentScreenComponent(<Screen3 />);
-          break;
-        case "S4":
-          setCurrentScreenComponent(<Screen4 />);
-          break;
-        default:
-          setCurrentScreenComponent(<div>잘못된 화면입니다.</div>);
-          break;
-      }
-    };
-
-    executeLogic();
-  }, [screenId]);
+  const commonProps = {
+    quizObj,
+    screenId,
+    goToNextScreen,
+    goToPrevScreen,
+    goToScreen,
+  };
 
   return (
     <>
-      {currentScreenComponent}
+      <Screen1 {...commonProps} />
+      {/* <Screen2 {...commonProps} />
+      <Screen3 {...commonProps} />
+      <Screen4 {...commonProps} /> */}
     </>
   );
 }
