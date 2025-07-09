@@ -16,10 +16,10 @@ export default function Home() {
       <nav style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
         <ul>
           <li>
-            <Link to="/sadlierPhonicsB/week1">1주차</Link>
+            <Link to="/week1">1주차</Link>
           </li>
           <li>
-            <Link to="/sadlierPhonicsB/week2">2주차</Link>
+            <Link to="/week2">2주차</Link>
           </li>
         </ul>
       </nav>

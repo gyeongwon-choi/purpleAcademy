@@ -27,11 +27,13 @@ const router = createBrowserRouter([
         element: route.element,
       })),
       ...weeksRoutes.map((route) => ({
-        path: `sadlierPhonicsB/${route.path}`,
+        path: `/${route.path}`,
         element: route.element,
       })),
     ],
   },
-]);
+], {
+  basename: import.meta.env.VITE_DIRECTORY?.replace(/\/$/, "")
+});
 
 export default router;

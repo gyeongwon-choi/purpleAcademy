@@ -12,7 +12,7 @@ const StyledBg = styled.div(props => ({
   backgroundImage: `url(${props.backgroundImage})`,
   backgroundRepeat: props.backgroundRepeat || "no-repeat",
   backgroundPosition: props.backgroundPosition || "center",
-  backgroundSize: props.backgroundSize || "auto 110%",
+  backgroundSize: props.backgroundSize || "cover",
 }));
 
 const BackgroundContent = ({

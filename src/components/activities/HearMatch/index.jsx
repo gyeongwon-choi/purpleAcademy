@@ -49,7 +49,7 @@ export default function HearMatch({ data }) {
                   return (
                     <BackgroundContent
                       backgroundImage={quizObj.bg}
-                      backgroundSize={"auto 110%"}
+                      backgroundSize={"cover"}
                       backgroundPosition={"center"}
                     >
                       <ScreenTransitionEffect

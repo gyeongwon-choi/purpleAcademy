@@ -1,5 +1,5 @@
 import useSize from "@/hooks/useSize";
-import useTimeout from "@/hooks/useTimeout";
+//import useTimeout from "@/hooks/useTimeout";
 
 import styled from "@emotion/styled";
 
@@ -7,10 +7,10 @@ import BackgroundContent from "@/components/common/activity/BackgroundContent";
 
 import Content from "@/components/common/activity/Content";
 
-export default function ThumbNail({ thumbnailObj, endThumbnail }) {
+export default function ThumbNail({ thumbnailObj, endThumbnail, handleBtnStart }) {
   const { resizedWidth, resizedHeight } = useSize();
   const {background, char, board, title, week} = thumbnailObj;
-  useTimeout(endThumbnail, 3000);
+  //useTimeout(endThumbnail, 3000);
   
   return (
     <BackgroundContent
@@ -23,6 +23,7 @@ export default function ThumbNail({ thumbnailObj, endThumbnail }) {
         <Board src={board} resizedWidth={resizedWidth} resizedHeight={resizedHeight} />
         <Title resizedWidth={resizedWidth} resizedHeight={resizedHeight}>{title}</Title>
         <Week resizedWidth={resizedWidth} resizedHeight={resizedHeight}>{week}</Week>
+        <Button type="button" resizedWidth={resizedWidth} resizedHeight={resizedHeight} onClick={handleBtnStart}>START</Button>
       </Content>
     </BackgroundContent>
   );
@@ -55,4 +56,15 @@ const Week = styled.p(props => ({
   fontFamily: "OneMobilePopOtf",
   fontSize: `${props.resizedWidth * 0.07}px`,
   whiteSpace: "nowrap",
+}));
+const Button = styled.p(props => ({
+  position: "absolute",
+  left: `${props.resizedWidth * 0.4}px`,
+  top: `${props.resizedHeight * 0.51}px`,
+  fontFamily: "OneMobilePopOtf",
+  fontSize: `${props.resizedWidth * 0.07}px`,
+  whiteSpace: "nowrap",
+  backgroundColor: "#ddd",
+  padding: "20px",
+  cursor: "pointer"
 }));
