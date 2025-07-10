@@ -16,7 +16,7 @@ import QuizTransitionEffect from "@/components/common/activity/QuizTransitionEff
 // 화면 로직 컴포넌트
 import Screens from "@/pages/weeks/Week1/Screens";
 
-export default function HearMatch({ data }) {
+export default function HearMatch({ data, audioControls }) {
   const [isLanguageEnglish, setIsLanguageEnglish] = useState(true);
   const dataObj = data;
   const quizOrder = dataObj.quiz.order;
@@ -30,7 +30,7 @@ export default function HearMatch({ data }) {
       <LinkOut to="/">나가기</LinkOut>
       <QuizManager
         dataObj={dataObj}
-        renderQuiz={(quizObj, quizId) => {
+        renderQuiz={(quizObj, quizId, goToNextQuiz, goToPrevQuiz, goToQuiz, effectSounds) => {
           return (
             <>
               <QuizTransitionEffect animationKey={`quiz-${quizId}`} />
@@ -44,7 +44,7 @@ export default function HearMatch({ data }) {
                   goToPrevScreen,
                   goToScreen
                 ) => {
-                  const screen = quizObj.screenMap[screenId]; 
+                  const screen = quizObj.screenMap[screenId];
 
                   return (
                     <BackgroundContent
@@ -72,9 +72,18 @@ export default function HearMatch({ data }) {
                         <Screens
                           screenId={screenId}
                           quizObj={quizObj}
-                          goToNextScreen={goToNextScreen}
-                          goToPrevScreen={goToPrevScreen}
-                          goToScreen={goToScreen}
+                          quizControls={{
+                            goToNextQuiz,
+                            goToPrevQuiz,
+                            goToQuiz
+                          }}
+                          screenControls={{
+                            goToNextScreen,
+                            goToPrevScreen,
+                            goToScreen
+                          }}
+                          audioControls={audioControls}
+                          effectSounds={effectSounds}
                         />
 
                         <CurrentQuiz

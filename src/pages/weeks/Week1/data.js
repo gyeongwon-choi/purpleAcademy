@@ -13,14 +13,14 @@ const data = {
     board: `${activityDir}/thumbnail_board.png`,
     char: `${activityDir}/thumbnail_char.png`
   },
-  effectSounds: {
-    intro: `${effectSoundsDir}/intro/0_intro_walking_only.wav`,
-    outro: `${effectSoundsDir}/outro/0_outro_yay_only.wav`,
-    correct: `${effectSoundsDir}/correct/6_correct.wav`,
-    wrong: `${effectSoundsDir}/wrong/5_wrong.wav`,
-    stamp: `${effectSoundsDir}/stamp/7_stamp.wav`,
-    paper: `${effectSoundsDir}/paper/1_paper unfold.wav`
-  },
+  effectSounds: [
+    { name: "intro", src: `${effectSoundsDir}/intro/0_intro_walking_only.wav` },
+    { name: "outro", src: `${effectSoundsDir}/outro/0_outro_yay_only.wav` },
+    { name: "correct", src: `${effectSoundsDir}/correct/6_correct.wav` },
+    { name: "wrong", src: `${effectSoundsDir}/wrong/5_wrong.wav` },
+    { name: "stamp", src: `${effectSoundsDir}/stamp/7_stamp.wav` },
+    { name: "paper", src: `${effectSoundsDir}/paper/1_paper_unfold.wav` },
+  ],
   quiz: {
     bg: `${activityDir}/quiz_bg.png`,
     order: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6"],
@@ -41,27 +41,26 @@ const data = {
               english: "click bunny!",
               korean: "버니를 클릭하여 음가를 듣고 같은 자음으로 시작하는 단어 그림을 골라보아요!"
             },
-            correct: "cap",
-            soundExample: { name: "c", src: `${quizSoundsDir}/q1/s1/c.mp3` },
             sounds: [
               { name: "cap", src: `${quizSoundsDir}/q1/s1/cap.mp3` },
               { name: "pencil_fake", src: `${quizSoundsDir}/q1/s1/pencil_fake.mp3` },
               { name: "zipper", src: `${quizSoundsDir}/q1/s1/zipper.mp3` }
-            ]
-
+            ],
+            correct: "cap",
+            soundExample: { name: "c", src: `${quizSoundsDir}/q1/s1/c.mp3` },
           },
           S2: {
             question: {
               english: "This is a cap.",
               korean: "이것은 모자입니다."
             },
-            correct: "c",
-            soundCorrect: { name: "cap", src: `${quizSoundsDir}/q1/s2/cap.mp3` },
             sounds: [
               { name: "c", src: `${quizSoundsDir}/q1/s2/c.mp3` },
               { name: "p", src: `${quizSoundsDir}/q1/s2/p.mp3` },
               { name: "z", src: `${quizSoundsDir}/q1/s2/z.mp3` }
-            ]
+            ],
+            correct: "c",
+            soundCorrect: { name: "cap", src: `${quizSoundsDir}/q1/s2/cap.mp3` },
           },
           S3: {
             question: {
@@ -73,7 +72,8 @@ const data = {
               { name: "cap_2", src: `${quizSoundsDir}/q1/s3/cap_2.mp3` },
               { name: "cap_3", src: `${quizSoundsDir}/q1/s3/cap_3.mp3` },
               { name: "cap_all", src: `${quizSoundsDir}/q1/s3/cap_all.mp3` }
-            ]
+            ],
+            soundPosition: "first",
           },
           S4: {
             question: {
@@ -92,7 +92,7 @@ const data = {
       Q2: {
         quizId: "Q2",
         bg: `${activityDir}/quiz_bg.png`,
-        word: "cap",
+        word: "yarn",
         images: [
           { name: "fish", src: `${quizImagesDir}/q2/fish.png` },
           { name: "queen", src: `${quizImagesDir}/q2/queen.png` },
@@ -105,26 +105,26 @@ const data = {
               english: "This is a cap.",
               korean: "이것은 모자입니다."
             },
-            correct: "cap",
-            soundExample: { name: "y", src: `${quizSoundsDir}/q2/s1/y.mp3` },
             sounds: [
               { name: "fish", src: `${quizSoundsDir}/q2/s1/fish.mp3` },
               { name: "queen", src: `${quizSoundsDir}/q2/s1/queen.mp3` },
               { name: "yarn", src: `${quizSoundsDir}/q2/s1/yarn.mp3` }
-            ]
+            ],
+            correct: "yarn",
+            soundExample: { name: "y", src: `${quizSoundsDir}/q2/s1/y.mp3` },
           },
           S2: {
             question: {
               english: "This is a cap.",
               korean: "이것은 모자입니다."
             },
-            correct: "c",
-            soundCorrect: { name: "yarn", src: `${quizSoundsDir}/q2/s2/yarn.mp3` },
             sounds: [
               { name: "f", src: `${quizSoundsDir}/q2/s2/f.mp3` },
               { name: "q", src: `${quizSoundsDir}/q2/s2/q.mp3` },
               { name: "y", src: `${quizSoundsDir}/q2/s2/y.mp3` }
-            ]
+            ],
+            correct: "c",
+            soundCorrect: { name: "yarn", src: `${quizSoundsDir}/q2/s2/yarn.mp3` },
           },
           S3: {
             question: {
@@ -136,7 +136,8 @@ const data = {
               { name: "yarn_2", src: `${quizSoundsDir}/q2/s3/yarn_2.mp3` },
               { name: "yarn_3", src: `${quizSoundsDir}/q2/s3/yarn_3.mp3` },
               { name: "yarn_all", src: `${quizSoundsDir}/q2/s3/yarn_all.mp3` }
-            ]
+            ],
+            soundPosition: "first",
           },
           S4: {
             question: {
@@ -155,7 +156,7 @@ const data = {
       Q3: {
         quizId: "Q3",
         bg: `${activityDir}/quiz_bg.png`,
-        word: "cap",
+        word: "ham",
         images: [
           { name: "bus", src: `${quizImagesDir}/q3/bus.png` },
           { name: "ham", src: `${quizImagesDir}/q3/ham.png` },
@@ -168,26 +169,26 @@ const data = {
               english: "This is a cap.",
               korean: "이것은 모자입니다."
             },
-            correct: "cap",
-            soundExample: { name: "m", src: `${quizSoundsDir}/q3/s1/m.mp3` },
             sounds: [
               { name: "bus", src: `${quizSoundsDir}/q3/s1/bus.mp3` },
               { name: "ham", src: `${quizSoundsDir}/q3/s1/ham.mp3` },
               { name: "pig", src: `${quizSoundsDir}/q3/s1/pig.mp3` }
-            ]
+            ],
+            correct: "ham",
+            soundExample: { name: "m", src: `${quizSoundsDir}/q3/s1/m.mp3` },
           },
           S2: {
             question: {
               english: "This is a cap.",
               korean: "이것은 모자입니다."
             },
-            correct: "c",
-            soundCorrect: { name: "ham", src: `${quizSoundsDir}/q3/s2/ham.mp3` },
             sounds: [
               { name: "g", src: `${quizSoundsDir}/q3/s2/g.mp3` },
               { name: "m", src: `${quizSoundsDir}/q3/s2/m.mp3` },
               { name: "s", src: `${quizSoundsDir}/q3/s2/s.mp3` }
-            ]
+            ],
+            correct: "c",
+            soundCorrect: { name: "ham", src: `${quizSoundsDir}/q3/s2/ham.mp3` },
           },
           S3: {
             question: {
@@ -199,7 +200,8 @@ const data = {
               { name: "ham_2", src: `${quizSoundsDir}/q3/s3/ham_2.mp3` },
               { name: "ham_3", src: `${quizSoundsDir}/q3/s3/ham_3.mp3` },
               { name: "ham_all", src: `${quizSoundsDir}/q3/s3/ham_all.mp3` }
-            ]
+            ],
+            soundPosition: "first",
           },
           S4: {
             question: {
@@ -218,7 +220,7 @@ const data = {
       Q4: {
         quizId: "Q4",
         bg: `${activityDir}/quiz_bg.png`,
-        word: "cap",
+        word: "hook",
         images: [
           { name: "hook", src: `${quizImagesDir}/q4/hook.png` },
           { name: "pet_수정전", src: `${quizImagesDir}/q4/pet_수정전.png` },
@@ -231,26 +233,26 @@ const data = {
               english: "This is a cap.",
               korean: "이것은 모자입니다."
             },
-            correct: "cap",
-            soundExample: { name: "k", src: `${quizSoundsDir}/q4/s1/k.mp3` },
             sounds: [
               { name: "hook_all", src: `${quizSoundsDir}/q4/s1/hook_all.mp3` },
               { name: "pet_all", src: `${quizSoundsDir}/q4/s1/pet_all.mp3` },
               { name: "roof_all", src: `${quizSoundsDir}/q4/s1/roof_all.mp3` }
-            ]
+            ],
+            correct: "hook_all",
+            soundExample: { name: "k", src: `${quizSoundsDir}/q4/s1/k.mp3` },
           },
           S2: {
             question: {
               english: "This is a cap.",
               korean: "이것은 모자입니다."
             },
-            correct: "c",
-            soundCorrect: { name: "hook", src: `${quizSoundsDir}/q4/s2/hook.mp3` },
             sounds: [
               { name: "f", src: `${quizSoundsDir}/q4/s2/f.mp3` },
               { name: "k", src: `${quizSoundsDir}/q4/s2/k.mp3` },
               { name: "t", src: `${quizSoundsDir}/q4/s2/t.mp3` }
-            ]
+            ],
+            correct: "c",
+            soundCorrect: { name: "hook", src: `${quizSoundsDir}/q4/s2/hook.mp3` },
           },
           S3: {
             question: {
@@ -262,7 +264,8 @@ const data = {
               { name: "hook_2", src: `${quizSoundsDir}/q4/s3/hook_2.mp3` },
               { name: "hook_3", src: `${quizSoundsDir}/q4/s3/hook_3.mp3` },
               { name: "hook_all", src: `${quizSoundsDir}/q4/s3/hook_all.mp3` }
-            ]
+            ],
+            soundPosition: "last",
           },
           S4: {
             question: {
@@ -281,7 +284,7 @@ const data = {
       Q5: {
         quizId: "Q5",
         bg: `${activityDir}/quiz_bg.png`,
-        word: "cap",
+        word: "seven",
         images: [
           { name: "robot", src: `${quizImagesDir}/q5/robot.png` },
           { name: "seven", src: `${quizImagesDir}/q5/seven.png` },
@@ -294,26 +297,26 @@ const data = {
               english: "This is a cap.",
               korean: "이것은 모자입니다."
             },
-            correct: "cap",
-            soundExample: { name: "v", src: `${quizSoundsDir}/q5/s1/v.mp3` },
             sounds: [
               { name: "robot_fake", src: `${quizSoundsDir}/q5/s1/robot_fake.mp3` },
               { name: "seven", src: `${quizSoundsDir}/q5/s1/seven.mp3` },
               { name: "wagon", src: `${quizSoundsDir}/q5/s1/wagon.mp3` }
-            ]
+            ],
+            correct: "seven",
+            soundExample: { name: "v", src: `${quizSoundsDir}/q5/s1/v.mp3` },
           },
           S2: {
             question: {
               english: "This is a cap.",
               korean: "이것은 모자입니다."
             },
-            correct: "c",
-            soundCorrect: { name: "seven", src: `${quizSoundsDir}/q5/s2/seven.mp3` },
             sounds: [
               { name: "b", src: `${quizSoundsDir}/q5/s2/b.mp3` },
               { name: "g", src: `${quizSoundsDir}/q5/s2/g.mp3` },
               { name: "v", src: `${quizSoundsDir}/q5/s2/v.mp3` }
-            ]
+            ],
+            correct: "v",
+            soundCorrect: { name: "seven", src: `${quizSoundsDir}/q5/s2/seven.mp3` },
           },
           S3: {
             question: {
@@ -326,7 +329,8 @@ const data = {
               { name: "seven_3", src: `${quizSoundsDir}/q5/s3/seven_3.mp3` },
               { name: "seven_4", src: `${quizSoundsDir}/q5/s3/seven_4.mp3` },
               { name: "seven_all", src: `${quizSoundsDir}/q5/s3/seven_all.mp3` }
-            ]
+            ],
+            soundPosition: "middle",
           },
           S4: {
             question: {
@@ -346,7 +350,7 @@ const data = {
       Q6: {
         quizId: "Q6",
         bg: `${activityDir}/quiz_bg.png`,
-        word: "cap",
+        word: "peanut",
         images: [
           { name: "camel", src: `${quizImagesDir}/q6/camel.png` },
           { name: "peanut", src: `${quizImagesDir}/q6/peanut.png` },
@@ -360,26 +364,26 @@ const data = {
               english: "This is a cap.",
               korean: "이것은 모자입니다."
             },
-            correct: "cap",
-            soundExample: { name: "n", src: `${quizSoundsDir}/q6/s1/n.mp3` },
             sounds: [
               { name: "camel", src: `${quizSoundsDir}/q6/s1/camel.mp3` },
               { name: "peanut", src: `${quizSoundsDir}/q6/s1/peanut.mp3` },
               { name: "water", src: `${quizSoundsDir}/q6/s1/water.mp3` }
-            ]
+            ],
+            correct: "peanut",
+            soundExample: { name: "n", src: `${quizSoundsDir}/q6/s1/n.mp3` },
           },
           S2: {
             question: {
               english: "This is a cap.",
               korean: "이것은 모자입니다."
             },
-            correct: "c",
-            soundCorrect: { name: "peanut", src: `${quizSoundsDir}/q6/s2/peanut.mp3` },
             sounds: [
               { name: "m", src: `${quizSoundsDir}/q6/s2/m.mp3` },
               { name: "n", src: `${quizSoundsDir}/q6/s2/n.mp3` },
               { name: "t", src: `${quizSoundsDir}/q6/s2/t.mp3` }
-            ]
+            ],
+            correct: "t",
+            soundCorrect: { name: "peanut", src: `${quizSoundsDir}/q6/s2/peanut.mp3` },
           },
           S3: {
             question: {
@@ -393,7 +397,8 @@ const data = {
               { name: "peanut_4", src: `${quizSoundsDir}/q6/s3/peanut_4.mp3` },
               { name: "peanut_5", src: `${quizSoundsDir}/q6/s3/peanut_5.mp3` },
               { name: "peanut_all", src: `${quizSoundsDir}/q6/s3/peanut_all.mp3` }
-            ]
+            ],
+            soundPosition: "last",
           },
           S4: {
             question: {

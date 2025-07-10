@@ -60,9 +60,9 @@ const Week = styled.p(props => ({
 const Button = styled.p(props => ({
   position: "absolute",
   left: `${props.resizedWidth * 0.4}px`,
-  top: `${props.resizedHeight * 0.51}px`,
+  top: `${props.resizedHeight * 0.9}px`,
   fontFamily: "OneMobilePopOtf",
-  fontSize: `${props.resizedWidth * 0.07}px`,
+  fontSize: `${props.resizedWidth * 0.02}px`,
   whiteSpace: "nowrap",
   backgroundColor: "#ddd",
   padding: "20px",

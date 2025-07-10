@@ -38,6 +38,9 @@ const useAudio = (fileList) => {
     playMultiple: (file) => playerRef.current?.playMultiple(file), // 여러 음원 동시 재생
     playInSequence: (files) => playerRef.current?.playInSequence(files), // 여러 음원 순차적 재생
     stopAll: () => playerRef.current?.stopAll(), // 전부 정지
+    setOnEachStarted: (cb) => playerRef.current?.setOnEachStarted(cb), // 개별 음원 종료 콜백
+    setOnEachEnded: (cb) => playerRef.current?.setOnEachEnded(cb), // 개별 음원 종료 콜백
+    setOnAllEnded: (cb) => playerRef.current?.setOnAllEnded(cb), // 여러 음원 종료 콜백
   };
 };
 

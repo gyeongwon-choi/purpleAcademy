@@ -5,6 +5,24 @@ export class AudioPlayer {
     this.multiSources = [];
     this.queue = [];
     this.isPlayingQueue = false;
+
+    // 콜백 초기화
+    this.onEachEnded = null;
+    this.onEachEnded = null;
+    this.onAllEnded = null;
+  }
+
+  // 콜백 등록 메서드
+  setOnEachStarted(callback) {
+    this.onEachStarted = callback;
+  }
+
+  setOnEachEnded(callback) {
+    this.onEachEnded = callback;
+  }
+
+  setOnAllEnded(callback) {
+    this.onAllEnded = callback;
   }
 
   // 하나만 재생
@@ -19,6 +37,10 @@ export class AudioPlayer {
       source.buffer = buffer;
       source.loop = loop;
       source.connect(this.env.ctx.destination);
+      source.onended = () => {
+        this.onEachEnded?.();
+      };
+      this.onEachStarted?.();
       source.start(0);
       this.singleSource = source;
     } else {
@@ -27,6 +49,10 @@ export class AudioPlayer {
 
       audio.loop = loop;
       audio.currentTime = 0;
+      audio.onended = () => {
+        this.onEachEnded?.();
+      };
+      this.onEachStarted?.();
       audio.play();
       this.singleSource = audio;
     }
@@ -41,6 +67,10 @@ export class AudioPlayer {
       const source = this.env.ctx.createBufferSource();
       source.buffer = buffer;
       source.connect(this.env.ctx.destination);
+      source.onended = () => {
+        this.onEachEnded?.();
+      };
+      this.onEachStarted?.();
       source.start(0);
       this.multiSources.push(source);
     } else {
@@ -49,10 +79,15 @@ export class AudioPlayer {
 
       const audio = new Audio(original.src);
       audio.currentTime = 0;
+      audio.onended = () => {
+        this.onEachEnded?.();
+      };
+      this.onEachStarted?.();
       audio.play();
       this.multiSources.push(audio);
     }
   }
+
 
   // 전부 정지
   stopAll() {
@@ -89,13 +124,15 @@ export class AudioPlayer {
   _playNextInQueue(delay) {
     if (!this.queue.length) {
       this.isPlayingQueue = false;
+      this.onAllEnded?.(); // 모든 큐 끝났을 때 콜백
       return;
     }
 
     const nextFile = this.queue.shift();
 
     const playNext = () => {
-      // delay 후 재귀 호출
+      //this.onEachEnded?.(); // 음원 하나 끝났을 때 콜백
+
       if (delay > 0) {
         setTimeout(() => this._playNextInQueue(delay), delay);
       } else {
@@ -114,6 +151,7 @@ export class AudioPlayer {
       source.buffer = buffer;
       source.connect(this.env.ctx.destination);
       source.onended = playNext;
+      this.onEachStarted?.();
       source.start(0);
       this.singleSource = source;
     } else {
@@ -126,6 +164,7 @@ export class AudioPlayer {
       const audio = new Audio(original.src);
       audio.currentTime = 0;
       audio.onended = playNext;
+      this.onEachStarted?.();
       audio.play();
       this.singleSource = audio;
     }
