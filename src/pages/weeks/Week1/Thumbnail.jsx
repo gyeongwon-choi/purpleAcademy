@@ -45,7 +45,7 @@ const Title = styled.h2(props => ({
   position: "absolute",
   left: `${props.resizedWidth * 0.3}px`,
   top: `${props.resizedHeight * 0.39}px`,
-  fontFamily: "OneMobilePopOtf",
+  fontFamily: "OneMobilePop-Regular",
   fontSize: `${props.resizedWidth * 0.07}px`,
   whiteSpace: "nowrap",
 }));
@@ -53,7 +53,7 @@ const Week = styled.p(props => ({
   position: "absolute",
   left: `${props.resizedWidth * 0.4}px`,
   top: `${props.resizedHeight * 0.51}px`,
-  fontFamily: "OneMobilePopOtf",
+  fontFamily: "OneMobilePop-Regular",
   fontSize: `${props.resizedWidth * 0.07}px`,
   whiteSpace: "nowrap",
 }));
@@ -61,7 +61,7 @@ const Button = styled.p(props => ({
   position: "absolute",
   left: `${props.resizedWidth * 0.4}px`,
   top: `${props.resizedHeight * 0.9}px`,
-  fontFamily: "OneMobilePopOtf",
+  fontFamily: "OneMobilePop-Regular",
   fontSize: `${props.resizedWidth * 0.02}px`,
   whiteSpace: "nowrap",
   backgroundColor: "#ddd",

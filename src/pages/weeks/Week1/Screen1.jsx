@@ -182,7 +182,7 @@ const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControl
         />
         <SpeakerBtn
           resizedWidth={resizedWidth} resizedHeight={resizedHeight}
-          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/speaker.svg`}
+          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/speakerBtn.png`}
           alt=""
           onClick={() => { playSingle(quizSounds[0].src) }}
         />
@@ -208,7 +208,7 @@ const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControl
         />
         <SpeakerBtn
           resizedWidth={resizedWidth} resizedHeight={resizedHeight}
-          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/speaker.svg`}
+          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/speakerBtn.png`}
           alt=""
           onClick={() => { playSingle(quizSounds[1].src) }}
         />
@@ -234,7 +234,7 @@ const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControl
         />
         <SpeakerBtn
           resizedWidth={resizedWidth} resizedHeight={resizedHeight}
-          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/speaker.svg`}
+          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/speakerBtn.png`}
           alt=""
           onClick={() => { playSingle(quizSounds[2].src) }}
         />

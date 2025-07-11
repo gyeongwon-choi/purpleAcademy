@@ -64,7 +64,7 @@ const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControl
         />
         <SpeakerBtn
           resizedWidth={resizedWidth} resizedHeight={resizedHeight}
-          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/speaker.svg`}
+          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/speakerBtn.png`}
           alt=""
           pos="pos-0"
           onClick={() => { playSingle(quizSounds[0].src) }}
@@ -78,12 +78,12 @@ const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControl
           //data-answer={quizSounds[0].name}
           //onClick={(e) => { handleClickAnswer(e) }}
         >
-          <img src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/word_blue.svg`} alt="" />
+          <img src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/word_green.png`} alt="" />
           <span>{quizSounds[0].name}</span>
         </Word>
         <SpeakerBtn
           resizedWidth={resizedWidth} resizedHeight={resizedHeight}
-          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/speaker.svg`}
+          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/speakerBtn.png`}
           alt=""
           pos={randomPositions[0]}
         />
@@ -93,12 +93,12 @@ const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControl
           pos={randomPositions[1]}
           onClick={() => { playSingle(quizSounds[1].src) }}
         >
-          <img src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/word_orange.svg`} alt="" />
+          <img src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/word_orange.png`} alt="" />
           <span>{quizSounds[1].name}</span>
         </Word>
         <SpeakerBtn
           resizedWidth={resizedWidth} resizedHeight={resizedHeight}
-          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/speaker.svg`}
+          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/speakerBtn.png`}
           alt=""
           pos={randomPositions[1]}
         />
@@ -108,12 +108,12 @@ const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControl
           pos={randomPositions[2]}
           onClick={() => { playSingle(quizSounds[2].src) }}
         >
-          <img src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/word_pink.svg`} alt="" />
+          <img src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/word_pink.png`} alt="" />
           <span>{quizSounds[2].name}</span>
         </Word>
         <SpeakerBtn
           resizedWidth={resizedWidth} resizedHeight={resizedHeight}
-          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/speaker.svg`}
+          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/speakerBtn.png`}
           alt=""
           pos={randomPositions[2]}
         />
@@ -229,7 +229,7 @@ const Word = styled.div((props) => {
     left: `70%`,
     top: `${position.top}`,
     color: "#fff",
-    fontFamily: "OneMobilePopOtf",
+    fontFamily: "OneMobilePop-Regular",
     fontSize: `${resizedWidth * 0.07}px`,
     paddingBottom: `2%`,
     display: "flex",
