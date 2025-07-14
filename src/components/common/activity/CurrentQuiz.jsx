@@ -2,29 +2,32 @@ import styled from "@emotion/styled";
 import useSize from "@/hooks/useSize";
 
 const StyledCurrentQuiz = styled.div`
-  width: ${({ resizedWidth }) => resizedWidth * 0.08}px;
-  height: ${({ resizedHeight }) => resizedHeight * 0.04}px;
-  background-color: #fff;
+  width: ${({ resizedWidth }) => resizedWidth * 0.11}px;
+  height: ${({ resizedHeight }) => resizedHeight * 0.06}px;
   position: absolute;
-  top: ${({ resizedHeight }) => resizedHeight * 0.95}px;
-  right: ${({ resizedWidth }) => resizedWidth * 0}px;
+  bottom: ${({ resizedHeight }) => resizedHeight * 0.01}px;
+  right: ${({ resizedWidth }) => resizedWidth * 0.01}px;
+  background-image: url(${({ bgSrc }) => bgSrc});
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #ccc;
-  border-radius: 30px;
   z-index: 100;
-  pointer-events: none;
-  color: #000;
-  font-family: "Lexend-SemiBold";
-  font-size: ${({ resizedHeight }) => resizedHeight * 0.025}px;
+  color: #fff;
+  font-family: "SBAggroB";
+  font-size: ${({ resizedHeight }) => resizedHeight * 0.03}px;
 `;
 
-const CurrentQuiz = ({ quizIndex, quizLength }) => {
+const CurrentQuiz = ({ quizIndex, quizLength, currentQuizObj }) => {
   const { resizedWidth, resizedHeight } = useSize();
+  const { defaultSrc, recordingSrc } = currentQuizObj.imgSrc;
+
+  const bgSrc = true ? defaultSrc : recordingSrc; // todo : recording state
 
   return (
-    <StyledCurrentQuiz resizedWidth={resizedWidth} resizedHeight={resizedHeight}>
+    <StyledCurrentQuiz resizedWidth={resizedWidth} resizedHeight={resizedHeight} bgSrc={bgSrc} >
       {quizIndex} / {quizLength}
     </StyledCurrentQuiz>
   );

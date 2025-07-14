@@ -6,6 +6,7 @@ import useAudio from "@/hooks/useAudio";
 import useThumbnailScreen from "@/hooks/useThumbnailScreen";
 
 import HearMatch from "@/components/activities/HearMatch";
+import LinkOut from "@/components/common/activity/LinkOut";
 import ThumbNail from "./Thumbnail";
 import WEEK1_DATA from "./data";
 
@@ -28,9 +29,23 @@ export default function Week1() {
       .filter((screen) => screen.soundExample) // soundExample이 있는 경우만
       .map((screen) => screen.soundExample.src)
   );
+  /* 객체말고 배열 내 객체 */
+  /* const quizSoundExampleSrcs = Object.values(WEEK1_DATA.quiz.quizs).flatMap((quizItem) =>
+    Object.values(quizItem.screenMap).flatMap((screen) =>
+      screen.soundExamples
+        ? screen.soundExamples.map((example) => example.src)
+        : []
+    )
+  ); */
+  // 퀴즈 정답 음원 경로 배열
+  const quizSoundCorrectSrcs = Object.values(WEEK1_DATA.quiz.quizs).flatMap((quizItem) =>
+    Object.values(quizItem.screenMap)
+      .filter((screen) => screen.soundCorrect) // soundCorrect가 있는 경우만
+      .map((screen) => screen.soundCorrect.src)
+  );
 
   // 음원 로딩을 위해 경로만 배열로 통합
-  const soundSrcs = [...effectSoundSrcs, ...quizSoundSrcs, ...quizSoundExampleSrcs];
+  const soundSrcs = [...effectSoundSrcs, ...quizSoundSrcs, ...quizSoundExampleSrcs, ...quizSoundCorrectSrcs];
 
   // 음원은 한번에 로딩해서 사용, 내부적으로 기기체크
   const { ready, playSingle, playMultiple, playInSequence, stopAll, setOnEachStarted, setOnEachEnded, setOnAllEnded } = useAudio(soundSrcs);
@@ -74,13 +89,15 @@ export default function Week1() {
   if (isThumbnailVisible) {
     return (
       <>
-        <ThumbNail endThumbnail={endThumbnail} thumbnailObj={WEEK1_DATA.thumbnail} handleBtnStart={handleBtnStart} />
+        <LinkOut to="/" imageSrc={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/prevBtn.png`}>나가기</LinkOut>
+        <ThumbNail thumbnailObj={WEEK1_DATA.thumbnail} handleBtnStart={handleBtnStart} />
       </>
     );
   }
 
   return (
     <>
+      <LinkOut to="/" imageSrc={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/prevBtn.png`}>나가기</LinkOut>
       <HearMatch
         data={WEEK1_DATA}
         audioControls={{

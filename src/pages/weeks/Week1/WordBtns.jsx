@@ -6,8 +6,8 @@ import useUiInteractionEnableStore from '@/store/useUiInteractionEnableStore';
 
 import styled from "@emotion/styled";
 
-const Screen2 = ({ quizObj, screenId, quizControls, screenControls, audioControls, effectSounds }) => {
-  if (screenId !== "S2") return;
+const WordBtns = ({ quizObj, screenId, quizControls, screenControls, audioControls, effectSounds }) => {
+  if (!["S2", "S3"].includes(screenId)) return;
   const { resizedWidth, resizedHeight } = useSize();
   const bunnyImgsRef = useRef({
     default: null,
@@ -20,10 +20,8 @@ const Screen2 = ({ quizObj, screenId, quizControls, screenControls, audioControl
   const { goToNextScreen, goToPrevScreen, goToScreen } = screenControls;
   const { playSingle, playMultiple, playInSequence, stopAll } = audioControls;
 
-  const quizImages = quizObj.images;
-  const quizSounds = quizObj.screenMap[screenId].sounds;
-  const quizCorrectSound = quizObj.screenMap[screenId].soundCorrect;
-  const correctValue = quizObj.screenMap[screenId].correct;
+  const quizSounds = quizObj.screenMap["S2"].sounds;
+  const correctValue = quizObj.screenMap["S2"].correct;
 
   // 보기 나타나는 순서 (공통1)
   const randomPositions = useMemo(() => {
@@ -33,6 +31,8 @@ const Screen2 = ({ quizObj, screenId, quizControls, screenControls, audioControl
 
   // 보기 이미지 선택
   const handleClickAnswer = (e) => {
+    if (["S3"].includes(screenId)) return;
+    
     if (e.currentTarget.dataset.answer === correctValue) { // 정답
 
       playSingle(effectSounds.find(e => e.name === "correct").src);
@@ -61,57 +61,12 @@ const Screen2 = ({ quizObj, screenId, quizControls, screenControls, audioControl
 
   return (
     <>
-      <Bunny
-        resizedWidth={resizedWidth}
-        resizedHeight={resizedHeight}
-      >
-        <img
-          ref={el => bunnyImgsRef.current.default = el}
-          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/s2_char.png`}
-          alt=""
-          className="active"
-        />
-
-        <img
-          ref={el => bunnyImgsRef.current.wrong = el}
-          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/char_wrong.png`}
-          alt=""
-        />
-
-        <img
-          ref={el => bunnyImgsRef.current.correct = el}
-          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/char_correct.png`}
-          alt=""
-        />
-      </Bunny>
-
-      {/* <AnswerBox resizedWidth={resizedWidth} resizedHeight={resizedHeight}>
-        <AnswerBg
-          resizedWidth={resizedWidth} resizedHeight={resizedHeight}
-          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/answerBg_big.png`}
-          alt=""
-        />
-        <AnswerImg
-          resizedWidth={resizedWidth} resizedHeight={resizedHeight}
-          src={quizImages[0].src}
-          alt=""
-        />
-        <SpeakerBtn
-          resizedWidth={resizedWidth} resizedHeight={resizedHeight}
-          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/speakerBtn.png`}
-          alt=""
-          pos="pos-0"
-          onClick={() => { playSingle(quizCorrectSound.src) }}
-        />
-      </AnswerBox> */}
-
-      {/* <BtnsBox resizedWidth={resizedWidth} resizedHeight={resizedHeight}>
+      <BtnsBox resizedWidth={resizedWidth} resizedHeight={resizedHeight}>
         <BtnsBg
           resizedWidth={resizedWidth} resizedHeight={resizedHeight}
           src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/btns_wrap.png`}
           alt=""
         />
-
         <Word
           resizedWidth={resizedWidth}
           resizedHeight={resizedHeight}
@@ -166,61 +121,12 @@ const Screen2 = ({ quizObj, screenId, quizControls, screenControls, audioControl
           pos={randomPositions[2]}
           onClick={() => { playSingle(quizSounds[2].src) }}
         />
-      </BtnsBox> */}
+      </BtnsBox>
     </>
   );
 };
 
-export default Screen2;
-
-const Bunny = styled.div((props) => ({
-  width: `${props.resizedWidth * 0.15}px`,
-  position: "absolute",
-  left: `${props.resizedWidth * 0.001}px`,
-  top: `${props.resizedHeight * 0.55}px`,
-
-  img: {
-    width: "100%",
-    height: "auto",
-    objectFit: "contain",
-    position: "absolute",
-    left: "0px",
-    top: "0px",
-    opacity: 0,
-  },
-
-  "img.active": {
-    opacity: 1,
-  },
-
-}));
-
-const AnswerBox = styled.div((props) => {
-  const { resizedWidth, resizedHeight } = props;
-
-  return {
-    width: `${resizedWidth * 0.65}px`,
-    height: `${resizedHeight * 0.7}px`,
-    position: "absolute",
-    left: `${resizedWidth * 0.15}px`,
-    top: `${resizedHeight * 0.15}px`,
-  };
-});
-
-const AnswerBg = styled.img((props) => ({
-  width: "100%",
-  height: "100%",
-  objectFit: "contain"
-}));
-const AnswerImg = styled.img((props) => ({
-  width: `50%`,
-  height: `50%`,
-  objectFit: "contain",
-  position: "absolute",
-  left: `50%`,
-  top: `55%`,
-  transform: "translate(-50%,-50%)",
-}));
+export default WordBtns;
 
 const SpeakerBtn = styled.img((props) => {
   const { resizedWidth, resizedHeight, pos } = props;

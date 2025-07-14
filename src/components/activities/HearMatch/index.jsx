@@ -8,7 +8,6 @@ import CurrentQuiz from "@/components/common/activity/CurrentQuiz";
 import BackgroundContent from "@/components/common/activity/BackgroundContent";
 import Content from "@/components/common/activity/Content";
 import Question from "@/components/common/activity/Question";
-import LinkOut from "@/components/common/activity/LinkOut";
 import BtnLanguage from "@/components/common/activity/BtnLanguage";
 import ScreenTransitionEffect from "@/components/common/activity/ScreenTransitionEffect";
 import QuizTransitionEffect from "@/components/common/activity/QuizTransitionEffect";
@@ -20,6 +19,7 @@ export default function HearMatch({ data, audioControls }) {
   const [isLanguageEnglish, setIsLanguageEnglish] = useState(true);
   const dataObj = data;
   const quizOrder = dataObj.quiz.order;
+  const currentQuizObj = dataObj.quiz.currentQuizObj;
 
   const handleClickBtnLanguage = () => {
     setIsLanguageEnglish((prev) => !prev);
@@ -27,7 +27,6 @@ export default function HearMatch({ data, audioControls }) {
 
   return (
     <>
-      <LinkOut to="/">나가기</LinkOut>
       <QuizManager
         dataObj={dataObj}
         renderQuiz={(quizObj, quizId, goToNextQuiz, goToPrevQuiz, goToQuiz, effectSounds) => {
@@ -89,6 +88,7 @@ export default function HearMatch({ data, audioControls }) {
                         <CurrentQuiz
                           quizIndex={quizOrder.indexOf(quizId) + 1}
                           quizLength={quizOrder.length}
+                          currentQuizObj={currentQuizObj}
                         />
                       </Content>
                     </BackgroundContent>

@@ -4,7 +4,7 @@ import { gsap, useGSAP } from "@/libs/gsapSetup";
 
 import styled from "@emotion/styled";
 
-const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControls, effectSounds }) => {
+const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControls, effectSounds, setIsWrong, setIsCorrect }) => {
   if (screenId !== "S1") return;
   const { resizedWidth, resizedHeight } = useSize();
   const bunnyRef = useRef(null);
@@ -18,13 +18,13 @@ const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControl
   const { goToNextQuiz, goToPrevQuiz, goToQuiz } = quizControls;
   const { goToNextScreen, goToPrevScreen, goToScreen } = screenControls;
   const { playSingle, playMultiple, playInSequence, stopAll } = audioControls;
-
+  
   const quizImages = quizObj.images;
   const quizSounds = quizObj.screenMap[screenId].sounds;
   const quizSampleSound = quizObj.screenMap[screenId].soundExample;
   const correctValue = quizObj.screenMap[screenId].correct;
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (!resizedWidth || !resizedHeight || startedRef.current) return;
 
     startedRef.current = true;
@@ -76,7 +76,7 @@ const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControl
       },
     });
 
-  }, [resizedWidth, resizedHeight]);
+  }, [resizedWidth, resizedHeight]); */
 
   // 보기 나타나는 순서 (공통1)
   const randomPositions = useMemo(() => {
@@ -86,8 +86,9 @@ const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControl
 
   // 보기 이미지 선택
   const handleClickAnswer = (e) => {
-    if (e.target.dataset.answer === correctValue) { // 정답
+    if (e.currentTarget.dataset.answer === correctValue) { // 정답
       playSingle(effectSounds.find(e => e.name === "correct").src);
+      setIsCorrect(true);
 
       bunnyImgsRef.current.move.concat(bunnyImgsRef.current.scrab).forEach((img) => {
         img?.classList.remove("active");
@@ -100,6 +101,7 @@ const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControl
 
     } else { // 오답
       playSingle(effectSounds.find(e => e.name === "wrong").src);
+      setIsWrong(true);
 
       bunnyImgsRef.current.move.concat(bunnyImgsRef.current.scrab).forEach((img) => {
         img?.classList.remove("active");
@@ -109,6 +111,7 @@ const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControl
       setTimeout(() => {
         bunnyImgsRef.current.wrong?.classList.remove("active");
         bunnyImgsRef.current.scrab[1]?.classList.add("active");
+        setIsWrong(false);
       }, 500);
 
     }
@@ -116,7 +119,7 @@ const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControl
 
   return (
     <>
-      <Bunny
+      {/* <Bunny
         resizedWidth={resizedWidth}
         resizedHeight={resizedHeight}
         ref={bunnyRef}
@@ -160,7 +163,7 @@ const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControl
           src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/char_correct.png`}
           alt=""
         />
-      </Bunny>
+      </Bunny> */}
 
       <AnswerBox resizedWidth={resizedWidth} resizedHeight={resizedHeight} pos={randomPositions[0]}>
         <AnswerBg
@@ -179,6 +182,7 @@ const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControl
           resizedWidth={resizedWidth} resizedHeight={resizedHeight}
           src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/treasure.png`}
           alt=""
+          pos={randomPositions[0]}
         />
         <SpeakerBtn
           resizedWidth={resizedWidth} resizedHeight={resizedHeight}
@@ -205,6 +209,7 @@ const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControl
           resizedWidth={resizedWidth} resizedHeight={resizedHeight}
           src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/treasure.png`}
           alt=""
+          pos={randomPositions[1]}
         />
         <SpeakerBtn
           resizedWidth={resizedWidth} resizedHeight={resizedHeight}
@@ -231,6 +236,7 @@ const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControl
           resizedWidth={resizedWidth} resizedHeight={resizedHeight}
           src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/treasure.png`}
           alt=""
+          pos={randomPositions[2]}
         />
         <SpeakerBtn
           resizedWidth={resizedWidth} resizedHeight={resizedHeight}
@@ -245,7 +251,7 @@ const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControl
 
 export default Screen1;
 
-const Bunny = styled.div((props) => ({
+/* const Bunny = styled.div((props) => ({
   width: `${props.resizedWidth * 0.15}px`,
   position: "absolute",
   left: `${props.resizedWidth * 0.001}px`,
@@ -266,31 +272,31 @@ const Bunny = styled.div((props) => ({
     opacity: 1,
   },
 
-}));
+})); */
 
 const AnswerBox = styled.div((props) => {
   const { resizedWidth, resizedHeight, pos } = props;
 
   const positionMap = {
     "pos-1": {
-      left: resizedWidth * 0.06,
-      top: resizedHeight * 0.2,
+      left: resizedWidth * 0.01,
+      top: resizedHeight * 0.15,
     },
     "pos-2": {
-      left: resizedWidth * 0.35,
-      top: resizedHeight * 0.2,
+      left: resizedWidth * 0.34,
+      top: resizedHeight * 0.15,
     },
     "pos-3": {
-      left: resizedWidth * 0.65,
-      top: resizedHeight * 0.2,
+      left: resizedWidth * 0.67,
+      top: resizedHeight * 0.15,
     },
   };
 
   const position = positionMap[pos];
 
   return {
-    width: `${resizedWidth * 0.3}px`,
-    height: `${resizedHeight * 0.3}px`,
+    width: `${resizedWidth * 0.32}px`,
+    height: `${resizedHeight * 0.35}px`,
     position: "absolute",
     left: `${position.left}px`,
     top: `${position.top}px`,
@@ -300,31 +306,49 @@ const AnswerBox = styled.div((props) => {
 const AnswerBg = styled.img((props) => ({
   width: "100%",
   height: "100%",
-  objectFit: "contain"
+  objectFit: "contain",
 }));
 const AnswerImg = styled.img((props) => ({
-  width: `60%`,
-  height: `60%`,
+  width: `55%`,
+  height: `55%`,
   objectFit: "contain",
   position: "absolute",
   left: `50%`,
-  top: `50%`,
+  top: `54%`,
   transform: "translate(-50%,-50%)",
   cursor: "pointer"
 }));
-const TreasureImg = styled.img((props) => ({
-  width: `${props.resizedWidth * 0.09}px`,
-  position: "absolute",
-  left: `50%`,
-  top: `130%`,
-  transform: "translate(-50%,0%)",
-  zIndex: "1"
-}));
+const TreasureImg = styled.img((props) => {
+  const { resizedWidth, pos } = props;
+
+  const positionMap = {
+    "pos-1": {
+      left: "75%",
+    },
+    "pos-2": {
+      left: "50%",
+    },
+    "pos-3": {
+      left: "25%",
+    },
+  };
+
+  const position = positionMap[pos];
+
+  return {
+    width: `${resizedWidth * 0.09}px`,
+    position: "absolute",
+    left: `${position.left}`,
+    top: `120%`,
+    transform: "translate(-50%,0%)",
+    zIndex: "1"
+  };
+});
 const SpeakerBtn = styled.img((props) => ({
-  width: `20%`,
+  width: `12%`,
   position: "absolute",
-  left: `80%`,
-  top: `90%`,
+  right: `12%`,
+  bottom: `5%`,
   zIndex: "2",
   cursor: "pointer"
 }));

@@ -9,9 +9,11 @@ const data = {
   thumbnail: {
     title: "단모음 a, i",
     week: "W1",
-    background: `${activityDir}/thumbnail_bg.png`,
-    board: `${activityDir}/thumbnail_board.png`,
-    char: `${activityDir}/thumbnail_char.png`
+    backgroundSrc: `${activityDir}/thumbnail_bg.png`,
+    boardSrc: `${activityDir}/thumbnail_board.png`,
+    charSrc: `${activityDir}/thumbnail_char.png`,
+    startBtnSrc: `${activityDir}/thumbnail_startBtn.png`,
+    weekTextColor: `#b247de`,
   },
   effectSounds: [
     { name: "intro", src: `${effectSoundsDir}/intro/0_intro_walking_only.wav` },
@@ -22,7 +24,12 @@ const data = {
     { name: "paper", src: `${effectSoundsDir}/paper/1_paper_unfold.wav` },
   ],
   quiz: {
-    bg: `${activityDir}/quiz_bg.png`,
+    currentQuizObj: {
+      imgSrc: {
+        defaultSrc: `${activityDir}/quiz_progress.png`,
+        recordingSrc: `${activityDir}/quiz_progress_recording.png`
+      }
+    },
     order: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6"],
     quizs: {
       Q1: {
@@ -123,7 +130,7 @@ const data = {
               { name: "q", src: `${quizSoundsDir}/q2/s2/q.mp3` },
               { name: "y", src: `${quizSoundsDir}/q2/s2/y.mp3` }
             ],
-            correct: "c",
+            correct: "y",
             soundCorrect: { name: "yarn", src: `${quizSoundsDir}/q2/s2/yarn.mp3` },
           },
           S3: {
@@ -187,7 +194,7 @@ const data = {
               { name: "m", src: `${quizSoundsDir}/q3/s2/m.mp3` },
               { name: "s", src: `${quizSoundsDir}/q3/s2/s.mp3` }
             ],
-            correct: "c",
+            correct: "m",
             soundCorrect: { name: "ham", src: `${quizSoundsDir}/q3/s2/ham.mp3` },
           },
           S3: {
@@ -201,7 +208,7 @@ const data = {
               { name: "ham_3", src: `${quizSoundsDir}/q3/s3/ham_3.mp3` },
               { name: "ham_all", src: `${quizSoundsDir}/q3/s3/ham_all.mp3` }
             ],
-            soundPosition: "first",
+            soundPosition: "last",
           },
           S4: {
             question: {

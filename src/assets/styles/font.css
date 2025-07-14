@@ -63,8 +63,8 @@
 }
 
 @font-face {
-  font-family: "Lexend-SemiBOld";
-  src: url("../fonts/Lexend-SemiBOld.woff") format("woff");
+  font-family: "Lexend-SemiBold";
+  src: url("../fonts/Lexend-SemiBold.woff") format("woff");
   font-weight: 600;
   font-style: normal;
 }
@@ -78,5 +78,24 @@
   font-family: "Lexend-ExtraBold";
   src: url("../fonts/Lexend-ExtraBold.woff") format("woff");
   font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SBAggroL";
+  src: url("../fonts/SBAggroL.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SBAggroM";
+  src: url("../fonts/SBAggroM.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SBAggroB";
+  src: url("../fonts/SBAggroB.woff") format("woff");
+  font-weight: 700;
   font-style: normal;
 }
