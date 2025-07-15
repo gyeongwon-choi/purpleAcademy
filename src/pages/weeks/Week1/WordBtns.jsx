@@ -6,7 +6,7 @@ import useUiInteractionEnableStore from '@/store/useUiInteractionEnableStore';
 
 import styled from "@emotion/styled";
 
-const WordBtns = ({ quizObj, screenId, quizControls, screenControls, audioControls, effectSounds }) => {
+const WordBtns = ({ quizObj, screenId, quizControls, screenControls, audioControls, effectSounds, setIsWrong, setIsCorrect }) => {
   if (!["S2", "S3"].includes(screenId)) return;
   const { resizedWidth, resizedHeight } = useSize();
   const bunnyImgsRef = useRef({
@@ -34,7 +34,7 @@ const WordBtns = ({ quizObj, screenId, quizControls, screenControls, audioContro
     if (["S3"].includes(screenId)) return;
     
     if (e.currentTarget.dataset.answer === correctValue) { // 정답
-
+      setIsCorrect(true);
       playSingle(effectSounds.find(e => e.name === "correct").src);
 
       bunnyImgsRef.current.default?.classList.remove("active");
@@ -42,10 +42,11 @@ const WordBtns = ({ quizObj, screenId, quizControls, screenControls, audioContro
 
       setTimeout(() => {
         goToNextScreen();
+        setIsCorrect(false);
       }, 500);
 
     } else { // 오답
-
+      setIsWrong(true);
       playSingle(effectSounds.find(e => e.name === "wrong").src);
 
       bunnyImgsRef.current.default?.classList.remove("active");
@@ -54,6 +55,7 @@ const WordBtns = ({ quizObj, screenId, quizControls, screenControls, audioContro
       setTimeout(() => {
         bunnyImgsRef.current.wrong?.classList.remove("active");
         bunnyImgsRef.current.default?.classList.add("active");
+        setIsWrong(false);
       }, 500);
 
     }

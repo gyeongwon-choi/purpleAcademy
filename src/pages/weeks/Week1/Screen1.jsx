@@ -24,7 +24,7 @@ const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControl
   const quizSampleSound = quizObj.screenMap[screenId].soundExample;
   const correctValue = quizObj.screenMap[screenId].correct;
 
-  /* useEffect(() => {
+  useEffect(() => {
     if (!resizedWidth || !resizedHeight || startedRef.current) return;
 
     startedRef.current = true;
@@ -76,7 +76,7 @@ const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControl
       },
     });
 
-  }, [resizedWidth, resizedHeight]); */
+  }, [resizedWidth, resizedHeight]);
 
   // 보기 나타나는 순서 (공통1)
   const randomPositions = useMemo(() => {
@@ -119,7 +119,7 @@ const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControl
 
   return (
     <>
-      {/* <Bunny
+      <Bunny
         resizedWidth={resizedWidth}
         resizedHeight={resizedHeight}
         ref={bunnyRef}
@@ -163,7 +163,7 @@ const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControl
           src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/char_correct.png`}
           alt=""
         />
-      </Bunny> */}
+      </Bunny>
 
       <AnswerBox resizedWidth={resizedWidth} resizedHeight={resizedHeight} pos={randomPositions[0]}>
         <AnswerBg
@@ -251,7 +251,7 @@ const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControl
 
 export default Screen1;
 
-/* const Bunny = styled.div((props) => ({
+const Bunny = styled.div((props) => ({
   width: `${props.resizedWidth * 0.15}px`,
   position: "absolute",
   left: `${props.resizedWidth * 0.001}px`,
@@ -272,7 +272,7 @@ export default Screen1;
     opacity: 1,
   },
 
-})); */
+}));
 
 const AnswerBox = styled.div((props) => {
   const { resizedWidth, resizedHeight, pos } = props;

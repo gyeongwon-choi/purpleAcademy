@@ -6,7 +6,7 @@ import useUiInteractionEnableStore from '@/store/useUiInteractionEnableStore';
 
 import styled from "@emotion/styled";
 
-const Screen2 = ({ quizObj, screenId, quizControls, screenControls, audioControls, effectSounds }) => {
+const Screen2 = ({ quizObj, screenId, quizControls, screenControls, audioControls, effectSounds, isWrong, isCorrect }) => {
   if (screenId !== "S2") return;
   const { resizedWidth, resizedHeight } = useSize();
   const bunnyImgsRef = useRef({
@@ -24,6 +24,26 @@ const Screen2 = ({ quizObj, screenId, quizControls, screenControls, audioControl
   const quizSounds = quizObj.screenMap[screenId].sounds;
   const quizCorrectSound = quizObj.screenMap[screenId].soundCorrect;
   const correctValue = quizObj.screenMap[screenId].correct;
+
+  useEffect(() => {
+    if (isCorrect) {
+      bunnyImgsRef.current.default?.classList.remove("active");
+      bunnyImgsRef.current.correct?.classList.add("active");
+    } else {
+      bunnyImgsRef.current.correct?.classList.remove("active");
+      bunnyImgsRef.current.default?.classList.add("active");
+    }
+  }, [isCorrect]);
+
+  useEffect(() => {
+    if (isWrong) {
+      bunnyImgsRef.current.default?.classList.remove("active");
+      bunnyImgsRef.current.wrong?.classList.add("active");
+    } else {
+      bunnyImgsRef.current.wrong?.classList.remove("active");
+      bunnyImgsRef.current.default?.classList.add("active");
+    }
+  }, [isWrong]);
 
   // 보기 나타나는 순서 (공통1)
   const randomPositions = useMemo(() => {
