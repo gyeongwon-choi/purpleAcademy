@@ -12,10 +12,7 @@ import BtnLanguage from "@/components/common/activity/BtnLanguage";
 import ScreenTransitionEffect from "@/components/common/activity/ScreenTransitionEffect";
 import QuizTransitionEffect from "@/components/common/activity/QuizTransitionEffect";
 
-// 화면 로직 컴포넌트
-import Screens from "@/pages/weeks/Week1/Screens";
-
-export default function HearMatch({ data, audioControls }) {
+export default function HearMatch({ data, audioControls, ScreensComponent }) {
   const [isLanguageEnglish, setIsLanguageEnglish] = useState(true);
   const dataObj = data;
   const quizOrder = dataObj.quiz.order;
@@ -68,9 +65,9 @@ export default function HearMatch({ data, audioControls }) {
                       )}
 
                       <Content animationKey={screenId}>
-                        <Screens
-                          screenId={screenId}
+                        <ScreensComponent
                           quizObj={quizObj}
+                          screenId={screenId}
                           quizControls={{
                             goToNextQuiz,
                             goToPrevQuiz,
@@ -83,13 +80,15 @@ export default function HearMatch({ data, audioControls }) {
                           }}
                           audioControls={audioControls}
                           effectSounds={effectSounds}
+                          quizOrder={quizOrder}
+                          currentQuizObj={currentQuizObj}
                         />
 
-                        <CurrentQuiz
+                        {/* <CurrentQuiz
                           quizIndex={quizOrder.indexOf(quizId) + 1}
                           quizLength={quizOrder.length}
                           currentQuizObj={currentQuizObj}
-                        />
+                        /> */}
                       </Content>
                     </BackgroundContent>
                   );

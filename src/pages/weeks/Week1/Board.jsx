@@ -69,11 +69,11 @@ const Board = ({ quizObj, screenId, quizControls, screenControls, audioControls,
   }
 
   if (screenId === "S3") {
-    console.log(quizWord);
+    /* console.log(quizWord);
     console.log(correctWord);
     console.log(quizSoundPosition);
 
-    console.log(highlightCharInText(quizWord, correctWord, quizSoundPosition));
+    console.log(highlightCharInText(quizWord, correctWord, quizSoundPosition)); */
   }
 
   return (

@@ -9,6 +9,7 @@ import HearMatch from "@/components/activities/HearMatch";
 import LinkOut from "@/components/common/activity/LinkOut";
 import ThumbNail from "./Thumbnail";
 import WEEK1_DATA from "./data";
+import Screens from "./Screens";
 
 export default function Week1() {
   const { isThumbnailVisible, endThumbnail } = useThumbnailScreen();
@@ -106,6 +107,7 @@ export default function Week1() {
           playInSequence,
           stopAll,
         }}
+        ScreensComponent={Screens}
       />
     </>
   );

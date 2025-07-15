@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import useSize from "@/hooks/useSize";
 
+import CurrentQuiz from "@/components/common/activity/CurrentQuiz";
+
 import Bunnys from "./Bunnys";
 import Screen1 from "./Screen1";
-import Screen2 from "./Screen2";
-import Screen3 from "./Screen3";
-import Screen4 from "./Screen4";
 import WordBtns from "./WordBtns";
 import Board from "./Board";
 import LetsRecordBtn from "./LetsRecordBtn";
@@ -18,11 +17,15 @@ export default function Screens({
   quizControls,
   screenControls,
   audioControls,
-  effectSounds
+  effectSounds,
+  quizOrder,
+  currentQuizObj
 }) {
   const [isWrong, setIsWrong] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
+  
+  const quizId = quizObj.quizId;
 
   const commonProps = {
     quizObj,
@@ -36,22 +39,24 @@ export default function Screens({
     isCorrect,
     setIsCorrect,
     isRecording,
-    setIsRecording
+    setIsRecording,
   };
 
   return (
     <>
-      {/* <Bunnys {...commonProps} /> */}
+      <Bunnys {...commonProps} />
       <Screen1 {...commonProps} />
-      <Screen2 {...commonProps} />
-      <Screen3 {...commonProps} />
-      <Screen4 {...commonProps} />
       <WordBtns {...commonProps} />
       <Board {...commonProps} />
       <LetsRecordBtn {...commonProps} />
       <RecordingBtns {...commonProps} />
       <NextBtn {...commonProps} />
-      {/* <Screen4 {...commonProps} /> */}
+      <CurrentQuiz
+        quizIndex={quizOrder.indexOf(quizId) + 1}
+        quizLength={quizOrder.length}
+        currentQuizObj={currentQuizObj}
+        isRecording={isRecording}
+      />
     </>
   );
 }

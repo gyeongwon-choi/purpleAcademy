@@ -11,7 +11,12 @@ const NextBtn = ({ quizObj, screenId, quizControls, screenControls, audioControl
 
   const { resizedWidth, resizedHeight } = useSize();
 
+  const { goToNextQuiz, goToPrevQuiz, goToQuiz } = quizControls;
   const { goToNextScreen, goToPrevScreen, goToScreen } = screenControls;
+
+  const handleClickNextBtn = () => {
+    //true ? goToNextQuiz() : true;
+  }
 
   return (
     <>
@@ -19,7 +24,7 @@ const NextBtn = ({ quizObj, screenId, quizControls, screenControls, audioControl
         resizedWidth={resizedWidth} resizedHeight={resizedHeight}
         src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/nextBtn.png`}
         alt=""
-        onClick={() => { goToNextScreen() }}
+        onClick={() => { handleClickNextBtn() }}
       />
     </>
   );

@@ -20,11 +20,11 @@ const StyledCurrentQuiz = styled.div`
   font-size: ${({ resizedHeight }) => resizedHeight * 0.03}px;
 `;
 
-const CurrentQuiz = ({ quizIndex, quizLength, currentQuizObj }) => {
+const CurrentQuiz = ({ quizIndex, quizLength, currentQuizObj, isRecording }) => {
   const { resizedWidth, resizedHeight } = useSize();
   const { defaultSrc, recordingSrc } = currentQuizObj.imgSrc;
-
-  const bgSrc = true ? defaultSrc : recordingSrc; // todo : recording state
+  
+  const bgSrc = isRecording ? recordingSrc : defaultSrc;
 
   return (
     <StyledCurrentQuiz resizedWidth={resizedWidth} resizedHeight={resizedHeight} bgSrc={bgSrc} >
