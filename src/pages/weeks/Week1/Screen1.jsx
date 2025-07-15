@@ -96,6 +96,7 @@ const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControl
       bunnyImgsRef.current.correct?.classList.add("active");
 
       setTimeout(() => {
+        setIsCorrect(false);
         goToNextScreen();
       }, 500);
 
