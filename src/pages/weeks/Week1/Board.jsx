@@ -1,20 +1,13 @@
-import { useEffect, useMemo, useRef, useState } from "react";
 import useSize from "@/hooks/useSize";
-import { gsap, useGSAP } from "@/libs/gsapSetup";
-
-import useUiInteractionEnableStore from '@/store/useUiInteractionEnableStore';
 
 import styled from "@emotion/styled";
 
-const Board = ({ quizObj, screenId, quizControls, screenControls, audioControls, effectSounds }) => {
+const Board = ({ quizObj, screenId, audioControls }) => {
   if (!["S2", "S3", "S4"].includes(screenId)) return;
 
   const { resizedWidth, resizedHeight } = useSize();
 
-  const { setInteractionEnabled } = useUiInteractionEnableStore();
-  const { goToNextQuiz, goToPrevQuiz, goToQuiz } = quizControls;
-  const { goToNextScreen, goToPrevScreen, goToScreen } = screenControls;
-  const { playSingle, playMultiple, playInSequence, stopAll } = audioControls;
+  const { playSingle } = audioControls;
 
   const quizImages = quizObj.images;
   const quizCorrectSound = quizObj.screenMap["S2"].soundCorrect;
@@ -68,14 +61,6 @@ const Board = ({ quizObj, screenId, quizControls, screenControls, audioControls,
     });
   }
 
-  if (screenId === "S3") {
-    /* console.log(quizWord);
-    console.log(correctWord);
-    console.log(quizSoundPosition);
-
-    console.log(highlightCharInText(quizWord, correctWord, quizSoundPosition)); */
-  }
-
   return (
     <>
       <AnswerBox resizedWidth={resizedWidth} resizedHeight={resizedHeight}>
@@ -122,12 +107,12 @@ const AnswerBox = styled.div((props) => {
   };
 });
 
-const AnswerBg = styled.img((props) => ({
+const AnswerBg = styled.img(() => ({
   width: "100%",
   height: "100%",
   objectFit: "contain"
 }));
-const AnswerImg = styled.img((props) => ({
+const AnswerImg = styled.img(() => ({
   width: `50%`,
   height: `50%`,
   objectFit: "contain",
@@ -138,7 +123,7 @@ const AnswerImg = styled.img((props) => ({
 }));
 
 const SpeakerBtn = styled.img((props) => {
-  const { resizedWidth, resizedHeight, pos } = props;
+  const { resizedWidth, pos } = props;
 
   const positionMap = {
     "pos-0": {
@@ -175,7 +160,7 @@ const SpeakerBtn = styled.img((props) => {
 });
 
 const AnswerText = styled.div((props) => {
-  const { resizedWidth, resizedHeight } = props;
+  const { resizedWidth } = props;
 
   return {
     position: "absolute",

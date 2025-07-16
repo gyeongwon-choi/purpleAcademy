@@ -1,17 +1,13 @@
-import { useEffect, useMemo, useRef, useState } from "react";
 import useSize from "@/hooks/useSize";
-import { gsap, useGSAP } from "@/libs/gsapSetup";
-
-import useUiInteractionEnableStore from '@/store/useUiInteractionEnableStore';
 
 import styled from "@emotion/styled";
 
-const LetsRecordBtn = ({ quizObj, screenId, quizControls, screenControls, audioControls, effectSounds }) => {
+const LetsRecordBtn = ({ screenId, screenControls }) => {
   if (!["S3"].includes(screenId)) return;
 
   const { resizedWidth, resizedHeight } = useSize();
 
-  const { goToNextScreen, goToPrevScreen, goToScreen } = screenControls;
+  const { goToNextScreen } = screenControls;
 
   return (
     <>

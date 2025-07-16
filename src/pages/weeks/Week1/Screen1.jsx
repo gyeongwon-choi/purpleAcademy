@@ -1,19 +1,16 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo } from "react";
 import useSize from "@/hooks/useSize";
-import { gsap, useGSAP } from "@/libs/gsapSetup";
 
 import styled from "@emotion/styled";
 
-const Screen1 = ({ quizObj, screenId, quizControls, screenControls, audioControls, effectSounds, setIsWrong, setIsCorrect }) => {
+const Screen1 = ({ quizObj, screenId, screenControls, audioControls, effectSounds, setIsWrong, setIsCorrect }) => {
   if (screenId !== "S1") return;
   const { resizedWidth, resizedHeight } = useSize();
-  const { goToNextQuiz, goToPrevQuiz, goToQuiz } = quizControls;
-  const { goToNextScreen, goToPrevScreen, goToScreen } = screenControls;
-  const { playSingle, playMultiple, playInSequence, stopAll } = audioControls;
+  const { goToNextScreen } = screenControls;
+  const { playSingle } = audioControls;
   
   const quizImages = quizObj.images;
   const quizSounds = quizObj.screenMap[screenId].sounds;
-  const quizSampleSound = quizObj.screenMap[screenId].soundExample;
   const correctValue = quizObj.screenMap[screenId].correct;
 
   // 보기 나타나는 순서 (공통1)

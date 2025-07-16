@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import useSize from "@/hooks/useSize";
+import { useState } from "react";
 
 import CurrentQuiz from "@/components/common/activity/CurrentQuiz";
 

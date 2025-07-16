@@ -1,18 +1,13 @@
-import { useEffect, useMemo, useRef, useState } from "react";
 import useSize from "@/hooks/useSize";
-import { gsap, useGSAP } from "@/libs/gsapSetup";
-
-import useUiInteractionEnableStore from '@/store/useUiInteractionEnableStore';
 
 import styled from "@emotion/styled";
 
-const NextBtn = ({ quizObj, screenId, quizControls, screenControls, audioControls, effectSounds }) => {
+const NextBtn = ({ screenId, quizControls, screenControls }) => {
   if (!["S4"].includes(screenId)) return;
 
   const { resizedWidth, resizedHeight } = useSize();
 
-  const { goToNextQuiz, goToPrevQuiz, goToQuiz } = quizControls;
-  const { goToNextScreen, goToPrevScreen, goToScreen } = screenControls;
+  const { goToNextQuiz } = quizControls;
 
   const handleClickNextBtn = () => {
     //true ? goToNextQuiz() : true;

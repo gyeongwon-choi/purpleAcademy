@@ -1,12 +1,9 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef } from "react";
 import useSize from "@/hooks/useSize";
-import { gsap, useGSAP } from "@/libs/gsapSetup";
-
-import useUiInteractionEnableStore from '@/store/useUiInteractionEnableStore';
 
 import styled from "@emotion/styled";
 
-const WordBtns = ({ quizObj, screenId, quizControls, screenControls, audioControls, effectSounds, setIsWrong, setIsCorrect }) => {
+const WordBtns = ({ quizObj, screenId, screenControls, audioControls, effectSounds, setIsWrong, setIsCorrect }) => {
   if (!["S2", "S3"].includes(screenId)) return;
   const { resizedWidth, resizedHeight } = useSize();
   const bunnyImgsRef = useRef({
@@ -15,10 +12,8 @@ const WordBtns = ({ quizObj, screenId, quizControls, screenControls, audioContro
     correct: null,
   });
 
-  const { setInteractionEnabled } = useUiInteractionEnableStore();
-  const { goToNextQuiz, goToPrevQuiz, goToQuiz } = quizControls;
-  const { goToNextScreen, goToPrevScreen, goToScreen } = screenControls;
-  const { playSingle, playMultiple, playInSequence, stopAll } = audioControls;
+  const { goToNextScreen } = screenControls;
+  const { playSingle } = audioControls;
 
   const quizSounds = quizObj.screenMap["S2"].sounds;
   const correctValue = quizObj.screenMap["S2"].correct;
@@ -131,7 +126,7 @@ const WordBtns = ({ quizObj, screenId, quizControls, screenControls, audioContro
 export default WordBtns;
 
 const SpeakerBtn = styled.img((props) => {
-  const { resizedWidth, resizedHeight, pos } = props;
+  const { resizedWidth, pos } = props;
 
   const positionMap = {
     "pos-0": {
@@ -168,7 +163,7 @@ const SpeakerBtn = styled.img((props) => {
 });
 
 const Word = styled.div((props) => {
-  const { resizedWidth, resizedHeight, pos, word } = props;
+  const { resizedWidth, pos, word } = props;
 
   const positionMap = {
     "pos-1": {
@@ -313,7 +308,7 @@ const BtnsBox = styled.div((props) => {
     top: `${resizedHeight * 0.18}px`,
   };
 });
-const BtnsBg = styled.img((props) => ({
+const BtnsBg = styled.img(() => ({
   width: "100%",
   height: "100%",
   objectFit: "contain"

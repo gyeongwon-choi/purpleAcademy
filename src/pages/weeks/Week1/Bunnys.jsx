@@ -7,10 +7,7 @@ import styled from "@emotion/styled";
 const Bunnys = ({
   quizObj,
   screenId,
-  quizControls,
-  screenControls,
   audioControls,
-  effectSounds,
   isWrong,
   isCorrect,
   setIsWrong,
@@ -32,11 +29,8 @@ const Bunnys = ({
     correct: null,
   });
   const bunnyMoveRef = useRef(false);
-  const { goToNextQuiz, goToPrevQuiz, goToQuiz } = quizControls;
-  const { goToNextScreen, goToPrevScreen, goToScreen } = screenControls;
-  const { playSingle, playMultiple, playInSequence, stopAll } = audioControls;
+  const { playSingle } = audioControls;
 
-  const quizImages = quizObj.images;
   const quizSampleSound = quizObj.screenMap[screenId].soundExample;
 
   useEffect(() => {
