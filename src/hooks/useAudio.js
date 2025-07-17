@@ -22,19 +22,29 @@ const useAudio = (fileList) => {
     init();
 
     const unlockAudio = async () => {
-      await envRef.current?.resume();
+      if (envRef.current) {
+        await envRef.current.resume();
+      }
     };
 
-    document.addEventListener("click", unlockAudio, { once: true });
+    // 사용자 클릭 이벤트 시 resume()을 여러 번 호출
+    const clickListener = () => {
+      unlockAudio();
+      document.removeEventListener("click", clickListener);
+    };
+
+    // 'click' 이벤트를 여러 번 처리
+    document.addEventListener("click", clickListener);
 
     return () => {
-      document.removeEventListener("click", unlockAudio);
+      document.removeEventListener("click", clickListener);
     };
   }, [fileList]);
 
   return {
     ready, // 음원 로딩 상태
-    playSingle: (file, loop = false) => playerRef.current?.playSingle(file, loop), // 하나만 재생
+    playSingle: (file, loop = false) =>
+      playerRef.current?.playSingle(file, loop), // 하나만 재생
     playMultiple: (file) => playerRef.current?.playMultiple(file), // 여러 음원 동시 재생
     playInSequence: (files) => playerRef.current?.playInSequence(files), // 여러 음원 순차적 재생
     stopAll: () => playerRef.current?.stopAll(), // 전부 정지
