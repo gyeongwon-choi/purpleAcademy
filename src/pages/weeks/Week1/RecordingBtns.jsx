@@ -16,13 +16,13 @@ const RecordingBtns = ({
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
 
-  //const { playSingle, playMultiple, playInSequence, stopAll } = audioControls;
-
   const handleClickRecord = () => {
     if (recording) {
       stopRecording();
+      setIsRecording(false);
     } else {
       startRecording();
+      setIsRecording(true);
     }
   };
 

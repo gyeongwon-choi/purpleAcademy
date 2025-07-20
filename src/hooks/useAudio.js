@@ -43,6 +43,7 @@ const useAudio = (fileList) => {
 
   return {
     ready, // 음원 로딩 상태
+    envRef, // envRef 반환
     playSingle: (file, loop = false) =>
       playerRef.current?.playSingle(file, loop), // 하나만 재생
     playMultiple: (file) => playerRef.current?.playMultiple(file), // 여러 음원 동시 재생

@@ -49,7 +49,7 @@ export default function Week1() {
   const soundSrcs = [...effectSoundSrcs, ...quizSoundSrcs, ...quizSoundExampleSrcs, ...quizSoundCorrectSrcs];
 
   // 음원은 한번에 로딩해서 사용, 내부적으로 기기체크
-  const { ready, playSingle, playMultiple, playInSequence, stopAll, setOnEachStarted, setOnEachEnded, setOnAllEnded } = useAudio(soundSrcs);
+  const { ready, envRef, playSingle, playMultiple, playInSequence, stopAll, setOnEachStarted, setOnEachEnded, setOnAllEnded } = useAudio(soundSrcs);
 
   // 음원재생중 인터렉션 막기
   useEffect(() => {
@@ -76,7 +76,25 @@ export default function Week1() {
   }, [ready, setOnEachStarted, setOnEachEnded, setOnAllEnded]);
 
   // 액티비티 start 버튼
-  const handleBtnStart = () => {
+  const handleBtnStart = async () => {
+
+    try {
+      // 1. 첫 번째 클릭 시 getUserMedia() 호출 (마이크 권한 요청)
+      await navigator.mediaDevices.getUserMedia({ audio: true });
+
+      // 2. AudioContext를 활성화 (iOS에서만 필요)
+      if (envRef.current) {
+        await envRef.current.resume();  // AudioContext를 활성화 시킴
+      }
+
+      // 3. 이후 다른 음성 파일들을 재생할 수 있도록 준비
+      console.log("오디오 권한 활성화됨");
+
+      // **추가**: 이곳에서 음성을 재생할 수 있도록 관련 함수나 코드 호출 가능
+
+    } catch (err) {
+      console.error("오디오 권한 활성화 실패:", err);
+    }
 
     // 썸네일 종료
     endThumbnail();
