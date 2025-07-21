@@ -72,6 +72,7 @@ const Screen1 = ({ quizObj, screenId, screenControls, audioControls, effectSound
               data-answer={sound.name}
               onClick={(e) => handleClickAnswer(e)}
               data-action="click"
+              data-priority="0"
             >
               <AnswerImg src={img.src} alt="" />
               {inActivityState && isCorrect && (

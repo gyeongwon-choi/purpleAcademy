@@ -54,7 +54,7 @@ export default function Week1() {
   // 음원은 한번에 로딩해서 사용, 내부적으로 기기체크
   const { ready, envRef, playSingle, playMultiple, playInSequence, stopAll, setOnEachStarted, setOnEachEnded, setOnAllEnded, playFromBlob, setOnRecordPlayEnded } = useAudio(soundSrcs);
 
-  const { isRecording, startRecording, stopRecording, audioBlob } = useRecorder();
+  const { isRecording, startRecording, stopRecording, audioBlob, emptyBlob } = useRecorder();
 
   // 음원재생중 인터렉션 막기
   useEffect(() => {
@@ -138,7 +138,8 @@ export default function Week1() {
           isRecording,
           startRecording,
           stopRecording,
-          audioBlob
+          audioBlob,
+          emptyBlob
         }}
       />
     </>

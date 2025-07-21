@@ -287,7 +287,7 @@ const Bunny = styled.div((props) => {
 
   // S4 위치 조정
   if (screenId === "S4") {
-    left = resizedWidth * 0.7;
+    left = resizedWidth * 0.71;
     top = resizedHeight * 0.55;
   }
 
