@@ -7,9 +7,10 @@ export class AudioPlayer {
     this.isPlayingQueue = false;
 
     // 콜백 초기화
-    this.onEachEnded = null;
+    this.onEachStarted = null;
     this.onEachEnded = null;
     this.onAllEnded = null;
+    this.onRecordPlayEnded = null;
   }
 
   // 콜백 등록 메서드
@@ -24,6 +25,11 @@ export class AudioPlayer {
   setOnAllEnded(callback) {
     this.onAllEnded = callback;
   }
+
+  setOnRecordPlayEnded(callback) {
+    this.onRecordPlayEnded = callback;
+  }
+
 
   // 하나만 재생
   playSingle(file, loop = false) {
@@ -94,7 +100,7 @@ export class AudioPlayer {
       try {
         this.singleSource.stop?.();
         this.singleSource.pause?.();
-      } catch {}
+      } catch { }
       this.singleSource = null;
     }
 
@@ -102,12 +108,46 @@ export class AudioPlayer {
       try {
         s.stop?.();
         s.pause?.();
-      } catch {}
+      } catch { }
     });
     this.multiSources = [];
 
     this.queue = [];
     this.isPlayingQueue = false;
+  }
+
+  // Blob (녹음 파일) 직접 재생
+  playFromBlob(blob) {
+    this.stopAll();
+
+    const url = URL.createObjectURL(blob);
+
+    if (this.env.os === "ios") {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.env.ctx.decodeAudioData(reader.result, (buffer) => {
+          const source = this.env.ctx.createBufferSource();
+          source.buffer = buffer;
+          source.connect(this.env.ctx.destination);
+          source.onended = () => {
+            this.onRecordPlayEnded?.();
+          }
+          this.onEachStarted?.();
+          source.start(0);
+          this.singleSource = source;
+        });
+      };
+      reader.readAsArrayBuffer(blob);
+    } else {
+      const audio = new Audio(url);
+      audio.currentTime = 0;
+      audio.onended = () => {
+        this.onRecordPlayEnded?.();
+      };
+      this.onEachStarted?.();
+      audio.play();
+      this.singleSource = audio;
+    }
   }
 
   // 여러 음원 순차적으로 재생

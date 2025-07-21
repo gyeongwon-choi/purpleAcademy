@@ -7,7 +7,7 @@ const Screen1 = ({ quizObj, screenId, screenControls, audioControls, effectSound
   if (screenId !== "S1") return;
   const { resizedWidth, resizedHeight } = useSize();
   const { goToNextScreen } = screenControls;
-  const { playSingle } = audioControls;
+  const { playSingle, playInSequence } = audioControls;
   
   const quizImages = quizObj.images;
   const quizSounds = quizObj.screenMap[screenId].sounds;
@@ -66,7 +66,7 @@ const Screen1 = ({ quizObj, screenId, screenControls, audioControls, effectSound
           resizedWidth={resizedWidth} resizedHeight={resizedHeight}
           src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/speakerBtn.png`}
           alt=""
-          onClick={() => { playSingle(quizSounds[0].src) }}
+          onClick={() => { playInSequence([quizSounds[0].src, quizSounds[1].src, quizSounds[2].src]) }}
         />
       </AnswerBox>
 
@@ -93,7 +93,7 @@ const Screen1 = ({ quizObj, screenId, screenControls, audioControls, effectSound
           resizedWidth={resizedWidth} resizedHeight={resizedHeight}
           src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/speakerBtn.png`}
           alt=""
-          onClick={() => { playSingle(quizSounds[1].src) }}
+          onClick={() => { playInSequence([quizSounds[0].src, quizSounds[1].src, quizSounds[2].src]) }}
         />
       </AnswerBox>
 
@@ -120,7 +120,7 @@ const Screen1 = ({ quizObj, screenId, screenControls, audioControls, effectSound
           resizedWidth={resizedWidth} resizedHeight={resizedHeight}
           src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/speakerBtn.png`}
           alt=""
-          onClick={() => { playSingle(quizSounds[2].src) }}
+          onClick={() => { playInSequence([quizSounds[0].src, quizSounds[1].src, quizSounds[2].src]) }}
         />
       </AnswerBox>
     </>

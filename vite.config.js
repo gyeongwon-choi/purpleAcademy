@@ -14,6 +14,6 @@ export default defineConfig({
   server: {
     host: '0.0.0.0', // 외부 IP 접속 허용
     port: 5555, // 원하는 포트
-    allowedHosts: ['73df0aca1b7a.ngrok-free.app'], // 모든 호스트 허용
+    allowedHosts: ['1f807de4cd20.ngrok-free.app'], // 모든 호스트 허용
   },
 })

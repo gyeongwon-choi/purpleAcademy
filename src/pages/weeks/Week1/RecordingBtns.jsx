@@ -1,6 +1,8 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useRecorder from "@/hooks/useRecorder";
 import useSize from "@/hooks/useSize";
+
+import useUiInteractionEnableStore from '@/store/useUiInteractionEnableStore';
 
 import styled from "@emotion/styled";
 
@@ -11,13 +13,14 @@ const RecordingBtns = ({
   setIsRecording,
 }) => {
   if (!["S4"].includes(screenId)) return;
-  const { recording, audioURL, startRecording, stopRecording } = useRecorder();
+  const { ready, playFromBlob, stopAll, setOnRecordPlayEnded } = audioControls;
+  const { recording, audioURL, startRecording, stopRecording, audioBlob } = useRecorder();
   const { resizedWidth, resizedHeight } = useSize();
+  const { setInteractionEnabled } = useUiInteractionEnableStore();
   const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef(null);
 
   const handleClickRecord = () => {
-    if (recording) {
+    if (isRecording) {
       stopRecording();
       setIsRecording(false);
     } else {
@@ -27,20 +30,31 @@ const RecordingBtns = ({
   };
 
   const handleClickPlay = () => {
-    if (!audioURL) return;
+    if (!audioBlob) {
+      console.warn("녹음된 오디오가 아직 준비되지 않았습니다.");
+      return;
+    }
 
     if (isPlaying) {
-      audioRef.current?.pause();
+      stopAll();
       setIsPlaying(false);
     } else {
-      const audio = new Audio(audioURL);
-      audioRef.current = audio;
-      audio.play();
+      stopAll(); // 혹시 다른 재생 중일 수 있으니 선 정지
+      playFromBlob(audioBlob);
       setIsPlaying(true);
-
-      audio.onended = () => setIsPlaying(false);
     }
   };
+
+  useEffect(() => {
+    if (!ready) return;
+
+    setOnRecordPlayEnded(() => {
+      //console.log("녹음음원종료");
+      setInteractionEnabled(true);
+      setIsPlaying(false);
+    });
+
+  }, [ready, setOnRecordPlayEnded]);
 
   return (
     <>
@@ -48,17 +62,15 @@ const RecordingBtns = ({
         <BtnsBg
           resizedWidth={resizedWidth}
           resizedHeight={resizedHeight}
-          src={`${
-            import.meta.env.VITE_DIRECTORY
-          }/images/week/week1/activity/btns_wrap_record.png`}
+          src={`${import.meta.env.VITE_DIRECTORY
+            }/images/week/week1/activity/btns_wrap_record.png`}
           alt=""
         />
         <RecordBtn
           resizedWidth={resizedWidth}
           resizedHeight={resizedHeight}
-          src={`${
-            import.meta.env.VITE_DIRECTORY
-          }/images/week/week1/activity/recordBtn_text.png`}
+          src={`${import.meta.env.VITE_DIRECTORY
+            }/images/week/week1/activity/recordBtn_text.png`}
           alt=""
           onClick={() => {
             handleClickRecord();
@@ -67,9 +79,8 @@ const RecordingBtns = ({
         <PlayBtn
           resizedWidth={resizedWidth}
           resizedHeight={resizedHeight}
-          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/${
-            isPlaying ? "recordPauseBtn_text" : "recordPlayBtn_text"
-          }.png`}
+          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/${isPlaying ? "recordPauseBtn_text" : "recordPlayBtn_text"
+            }.png`}
           alt=""
           onClick={() => {
             handleClickPlay();
@@ -106,6 +117,7 @@ const PlayBtn = styled.img((props) => {
     transform: "translate(-50%,0)",
     zIndex: "2",
     cursor: "pointer",
+    pointerEvents: "auto"
   };
 });
 

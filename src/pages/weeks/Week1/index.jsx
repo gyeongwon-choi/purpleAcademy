@@ -49,7 +49,7 @@ export default function Week1() {
   const soundSrcs = [...effectSoundSrcs, ...quizSoundSrcs, ...quizSoundExampleSrcs, ...quizSoundCorrectSrcs];
 
   // 음원은 한번에 로딩해서 사용, 내부적으로 기기체크
-  const { ready, envRef, playSingle, playMultiple, playInSequence, stopAll, setOnEachStarted, setOnEachEnded, setOnAllEnded } = useAudio(soundSrcs);
+  const { ready, envRef, playSingle, playMultiple, playInSequence, stopAll, setOnEachStarted, setOnEachEnded, setOnAllEnded, playFromBlob, setOnRecordPlayEnded } = useAudio(soundSrcs);
 
   // 음원재생중 인터렉션 막기
   useEffect(() => {
@@ -73,7 +73,12 @@ export default function Week1() {
       setInteractionEnabled(true);
     });
 
-  }, [ready, setOnEachStarted, setOnEachEnded, setOnAllEnded]);
+    /* setOnRecordPlayEnded(() => {
+      console.log("녹음음원종료");
+      setInteractionEnabled(true);
+    }); */
+
+  }, [ready, setOnEachStarted, setOnEachEnded, setOnAllEnded, setOnRecordPlayEnded]);
 
   // 액티비티 start 버튼
   const handleBtnStart = async () => {
@@ -120,10 +125,13 @@ export default function Week1() {
       <HearMatch
         data={WEEK1_DATA}
         audioControls={{
+          ready,
           playSingle,
           playMultiple,
           playInSequence,
           stopAll,
+          playFromBlob,
+          setOnRecordPlayEnded
         }}
         ScreensComponent={Screens}
       />
