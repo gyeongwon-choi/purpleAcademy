@@ -1,60 +1,14 @@
 @charset "UTF-8";
 /* 프리텐다드 */
 @font-face {
-  font-family: "Pretendard";
-  src: url("../fonts/Pretendard-Thin.woff") format("woff");
-  font-weight: 100;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Pretendard";
-  src: url("../fonts/Pretendard-ExtraLight.woff") format("woff");
-  font-weight: 200;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Pretendard";
-  src: url("../fonts/Pretendard-Light.woff") format("woff");
-  font-weight: 300;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Pretendard";
-  src: url("../fonts/Pretendard-Regular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Pretendard";
-  src: url("../fonts/Pretendard-Medium.woff") format("woff");
-  font-weight: 500;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Pretendard";
-  src: url("../fonts/Pretendard-SemiBold.woff") format("woff");
-  font-weight: 600;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Pretendard";
-  src: url("../fonts/Pretendard-Bold.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Pretendard";
-  src: url("../fonts/Pretendard-ExtraBold.woff") format("woff");
-  font-weight: 800;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Pretendard";
-  src: url("../fonts/Pretendard-Black.woff") format("woff");
-  font-weight: 900;
-  font-style: normal;
+	font-family: "Pretendard";
+	font-weight: 45 920;
+	font-style: normal;
+	font-display: swap;
+	src: url('../fonts/PretendardVariable.woff2') format('woff2-variations');
 }
 
+/* OneMobilePop */
 @font-face {
   font-family: "OneMobilePop-Regular";
   src: url("../fonts/ONE-Mobile-POP-OTF.woff") format("woff");
@@ -62,6 +16,7 @@
   font-style: normal;
 }
 
+/* Lexend */
 @font-face {
   font-family: "Lexend-SemiBold";
   src: url("../fonts/Lexend-SemiBold.woff") format("woff");
@@ -81,6 +36,7 @@
   font-style: normal;
 }
 
+/* 어그로체 */
 @font-face {
   font-family: "SBAggroL";
   src: url("../fonts/SBAggroL.woff") format("woff");

@@ -1,8 +1,10 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import useSize from "@/hooks/useSize";
 import { gsap, useGSAP } from "@/libs/gsapSetup";
 
 import styled from "@emotion/styled";
+
+const ACTIVITY_IMG_PATH = `${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity`;
 
 const Bunnys = ({
   quizObj,
@@ -12,10 +14,12 @@ const Bunnys = ({
   isCorrect,
   setIsWrong,
   setIsCorrect,
-  isRecording
+  isComplete,
+  recordControls
 }) => {
-  if (!["S1", "S2", "S3", "S4"].includes(screenId)) return;
   const { resizedWidth, resizedHeight } = useSize();
+  const { isRecording } = recordControls;
+  
   const bunnyRef = useRef(null);
   const bunnyImgsRef = useRef({
     s1: { move: [], scrab: [] },
@@ -24,6 +28,7 @@ const Bunnys = ({
     s4: {
       default: null,
       recording: null,
+      complete: null,
     },
     wrong: null,
     correct: null,
@@ -59,7 +64,7 @@ const Bunnys = ({
       {
         duration: 2,
         onUpdate() {
-          const frameIndex = Math.floor(this.time() / 0.12) % 3;
+          const frameIndex = Math.floor(this.time() / 0.22) % 3;
           hideAllImages();
           bunnyImgsRef.current.s1.move.forEach((img, idx) => {
             if (img) img.classList.toggle("active", idx === frameIndex);
@@ -75,7 +80,7 @@ const Bunnys = ({
       {
         duration: 2,
         onUpdate() {
-          const frameIndex = Math.floor(this.time() / 0.3) % 2;
+          const frameIndex = Math.floor(this.time() / 0.4) % 2;
           bunnyImgsRef.current.s1.move.forEach((img) => {
             if (img) img.classList.remove("active");
           });
@@ -146,15 +151,17 @@ const Bunnys = ({
   // 버니 레코딩
   useEffect(() => {
     if (screenId !== "S4") return;
-    
-    if (isRecording) {
-      bunnyImgsRef.current.s4.default?.classList.remove("active");
+
+    hideAllImages();
+
+    if (isComplete) {
+      bunnyImgsRef.current.s4.complete?.classList.add("active");
+    } else if (isRecording) {
       bunnyImgsRef.current.s4.recording?.classList.add("active");
     } else {
-      bunnyImgsRef.current.s4.recording?.classList.remove("active");
       bunnyImgsRef.current.s4.default?.classList.add("active");
     }
-  }, [screenId, isRecording]);
+  }, [screenId, isRecording, isComplete]);
 
   // 모든 이미지 숨김
   const hideAllImages = () => {
@@ -190,57 +197,43 @@ const Bunnys = ({
         {/* s1 move 이미지 */}
         <img
           ref={(el) => (bunnyImgsRef.current.s1.move[0] = el)}
-          src={`${
-            import.meta.env.VITE_DIRECTORY
-          }/images/week/week1/activity/s1_char_move_1.png`}
+          src={`${ACTIVITY_IMG_PATH}/s1_char_move_1.png`}
           alt=""
         />
         <img
           ref={(el) => (bunnyImgsRef.current.s1.move[1] = el)}
-          src={`${
-            import.meta.env.VITE_DIRECTORY
-          }/images/week/week1/activity/s1_char_move_2.png`}
+          src={`${ACTIVITY_IMG_PATH}/s1_char_move_2.png`}
           alt=""
         />
         <img
           ref={(el) => (bunnyImgsRef.current.s1.move[2] = el)}
-          src={`${
-            import.meta.env.VITE_DIRECTORY
-          }/images/week/week1/activity/s1_char_move_3.png`}
+          src={`${ACTIVITY_IMG_PATH}/s1_char_move_3.png`}
           alt=""
         />
 
         {/* s1 scrab 이미지 */}
         <img
           ref={(el) => (bunnyImgsRef.current.s1.scrab[0] = el)}
-          src={`${
-            import.meta.env.VITE_DIRECTORY
-          }/images/week/week1/activity/s1_char_question_1.png`}
+          src={`${ACTIVITY_IMG_PATH}/s1_char_question_1.png`}
           alt=""
         />
         <img
           ref={(el) => (bunnyImgsRef.current.s1.scrab[1] = el)}
-          src={`${
-            import.meta.env.VITE_DIRECTORY
-          }/images/week/week1/activity/s1_char_question_2.png`}
+          src={`${ACTIVITY_IMG_PATH}/s1_char_question_2.png`}
           alt=""
         />
 
         {/* s2 이미지 */}
         <img
           ref={(el) => (bunnyImgsRef.current.s2 = el)}
-          src={`${
-            import.meta.env.VITE_DIRECTORY
-          }/images/week/week1/activity/s2_char.png`}
+          src={`${ACTIVITY_IMG_PATH}/s2_char.png`}
           alt=""
         />
 
         {/* s3 이미지 */}
         <img
           ref={(el) => (bunnyImgsRef.current.s3 = el)}
-          src={`${
-            import.meta.env.VITE_DIRECTORY
-          }/images/week/week1/activity/s3_char.png`}
+          src={`${ACTIVITY_IMG_PATH}/s3_char.png`}
           alt=""
           className="active"
         />
@@ -248,36 +241,34 @@ const Bunnys = ({
         {/* s4 기본 이미지 */}
         <img
           ref={(el) => (bunnyImgsRef.current.s4.default = el)}
-          src={`${
-            import.meta.env.VITE_DIRECTORY
-          }/images/week/week1/activity/s4_char.png`}
+          src={`${ACTIVITY_IMG_PATH}/s4_char.png`}
           alt=""
           className="active"
         />
         {/* s4 녹음중 이미지 */}
         <img
           ref={(el) => (bunnyImgsRef.current.s4.recording = el)}
-          src={`${
-            import.meta.env.VITE_DIRECTORY
-          }/images/week/week1/activity/s4_char_recording.png`}
+          src={`${ACTIVITY_IMG_PATH}/s4_char_recording.png`}
+          alt=""
+        />
+        {/* s4 완료 이미지 */}
+        <img
+          ref={(el) => (bunnyImgsRef.current.s4.complete = el)}
+          src={`${ACTIVITY_IMG_PATH}/s4_char_complete.png`}
           alt=""
         />
 
-        {/* wrong 이미지 */}
+        {/* wrong 이미지, 화면마다 버니위치가 달라서 wrong이미지 다름 */}
         <img
           ref={(el) => (bunnyImgsRef.current.wrong = el)}
-          src={`${
-            import.meta.env.VITE_DIRECTORY
-          }/images/week/week1/activity/char_wrong.png`}
+          src={`${ACTIVITY_IMG_PATH}/${screenId.toLowerCase()}_char_wrong.png`}
           alt=""
         />
 
-        {/* correct 이미지 */}
+        {/* correct 이미지, 화면마다 버니위치가 달라서 correct이미지 다름 */}
         <img
           ref={(el) => (bunnyImgsRef.current.correct = el)}
-          src={`${
-            import.meta.env.VITE_DIRECTORY
-          }/images/week/week1/activity/char_correct.png`}
+          src={`${ACTIVITY_IMG_PATH}/${screenId.toLowerCase()}_char_correct.png`}
           alt=""
         />
       </Bunny>

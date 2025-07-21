@@ -1,11 +1,16 @@
-import { useMemo, useRef } from "react";
+import { useRef, useState } from "react";
 import useSize from "@/hooks/useSize";
+import useShuffledArray from "@/hooks/useShuffledArray";
+import useInActivityWatcher from "@/hooks/useInActivityWatcher";
 
 import styled from "@emotion/styled";
+import InactivityNotice from "@/components/common/activity/InactivityNotice";
+
+const ACTIVITY_IMG_PATH = `${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity`;
 
 const WordBtns = ({ quizObj, screenId, screenControls, audioControls, effectSounds, setIsWrong, setIsCorrect }) => {
-  if (!["S2", "S3"].includes(screenId)) return;
   const { resizedWidth, resizedHeight } = useSize();
+  const [inActivityState, setInActivityState] = useState(false);
   const bunnyImgsRef = useRef({
     default: null,
     wrong: null,
@@ -18,16 +23,22 @@ const WordBtns = ({ quizObj, screenId, screenControls, audioControls, effectSoun
   const quizSounds = quizObj.screenMap["S2"].sounds;
   const correctValue = quizObj.screenMap["S2"].correct;
 
+  // 30초간 액션 없을 시 (data-action="click" 속성이 있는 요소 클릭 시 리셋)
+  useInActivityWatcher({
+    timeout: 30000,
+    onTimeout: () => {
+      setInActivityState(true);
+    },
+  });
+
   // 보기 나타나는 순서 (공통1)
-  const randomPositions = useMemo(() => {
-    const shuffled = ["pos-1", "pos-2", "pos-3"].sort(() => Math.random() - 0.5);
-    return shuffled;
-  }, []);
+  const randomPositions = useShuffledArray(["pos-1", "pos-2", "pos-3"]);
+  const colorImages = ["word_green.png", "word_orange.png", "word_pink.png"];
 
   // 보기 이미지 선택
   const handleClickAnswer = (e) => {
     if (["S3"].includes(screenId)) return;
-    
+
     if (e.currentTarget.dataset.answer === correctValue) { // 정답
       setIsCorrect(true);
       playSingle(effectSounds.find(e => e.name === "correct").src);
@@ -61,63 +72,51 @@ const WordBtns = ({ quizObj, screenId, screenControls, audioControls, effectSoun
       <BtnsBox resizedWidth={resizedWidth} resizedHeight={resizedHeight}>
         <BtnsBg
           resizedWidth={resizedWidth} resizedHeight={resizedHeight}
-          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/btns_wrap.png`}
+          src={`${ACTIVITY_IMG_PATH}/btns_wrap.png`}
           alt=""
         />
-        <Word
-          resizedWidth={resizedWidth}
-          resizedHeight={resizedHeight}
-          pos={randomPositions[0]}
-          word={`${quizSounds[0].name}`}
-          data-answer={quizSounds[0].name}
-          onClick={(e) => { handleClickAnswer(e) }}
-        >
-          <img src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/word_green.png`} alt="" />
-          <span>{quizSounds[0].name}</span>
-        </Word>
-        <SpeakerBtn
-          resizedWidth={resizedWidth} resizedHeight={resizedHeight}
-          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/speakerBtn.png`}
-          alt=""
-          pos={randomPositions[0]}
-          onClick={() => { playSingle(quizSounds[0].src) }}
-        />
-        <Word
-          resizedWidth={resizedWidth}
-          resizedHeight={resizedHeight}
-          pos={randomPositions[1]}
-          word={`${quizSounds[1].name}`}
-          data-answer={quizSounds[1].name}
-          onClick={(e) => { handleClickAnswer(e) }}
-        >
-          <img src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/word_orange.png`} alt="" />
-          <span>{quizSounds[1].name}</span>
-        </Word>
-        <SpeakerBtn
-          resizedWidth={resizedWidth} resizedHeight={resizedHeight}
-          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/speakerBtn.png`}
-          alt=""
-          pos={randomPositions[1]}
-          onClick={() => { playSingle(quizSounds[1].src) }}
-        />
-        <Word
-          resizedWidth={resizedWidth}
-          resizedHeight={resizedHeight}
-          pos={randomPositions[2]}
-          word={`${quizSounds[2].name}`}
-          data-answer={quizSounds[2].name}
-          onClick={(e) => { handleClickAnswer(e) }}
-        >
-          <img src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/word_pink.png`} alt="" />
-          <span>{quizSounds[2].name}</span>
-        </Word>
-        <SpeakerBtn
-          resizedWidth={resizedWidth} resizedHeight={resizedHeight}
-          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/speakerBtn.png`}
-          alt=""
-          pos={randomPositions[2]}
-          onClick={() => { playSingle(quizSounds[2].src) }}
-        />
+        {quizSounds.map((sound, i) => {
+          const pos = randomPositions[i];
+          const isCorrect = sound.name === correctValue;
+
+          return (
+            <div key={sound.name}>
+              <Word
+                resizedWidth={resizedWidth}
+                resizedHeight={resizedHeight}
+                pos={pos}
+                word={sound.name}
+                data-answer={sound.name}
+                data-action="click"
+                onClick={handleClickAnswer}
+              >
+                <img src={`${ACTIVITY_IMG_PATH}/${colorImages[i]}`} alt="" />
+                <span>{sound.name}</span>
+
+                {inActivityState && isCorrect && screenId === "S2" && (
+                  <InactivityNotice
+                    styleProps={`
+                    position: absolute;
+                    width: 50%;
+                    height: 50%;
+                    right: 0%;
+                    bottom: 0%;
+                  `}
+                  />
+                )}
+              </Word>
+
+              <SpeakerBtn
+                resizedWidth={resizedWidth}
+                resizedHeight={resizedHeight}
+                src={`${ACTIVITY_IMG_PATH}/speakerBtn.png`}
+                alt=""
+                pos={pos}
+                onClick={() => playSingle(sound.src)}
+              />
+            </div>
+          );
+        })}
       </BtnsBox>
     </>
   );

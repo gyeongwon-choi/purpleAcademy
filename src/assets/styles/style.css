@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 :root {
-  --ff-primary: "Pretendard-Regular", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ff-primary: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --fs-base: 10px;
 }
 
@@ -11,6 +11,7 @@ html {
 
 body {
   font-family: var(--ff-primary);
+  font-weight: 400;
   font-size: 1.4rem;
   overflow: hidden;
 }

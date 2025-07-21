@@ -2,18 +2,18 @@ import useSize from "@/hooks/useSize";
 
 import styled from "@emotion/styled";
 
+const ACTIVITY_IMG_PATH = `${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity`;
+
 const Board = ({ quizObj, screenId, audioControls }) => {
-  if (!["S2", "S3", "S4"].includes(screenId)) return;
-
   const { resizedWidth, resizedHeight } = useSize();
-
-  const { playSingle } = audioControls;
-
+  const { playSingle, playInSequence } = audioControls;
   const quizImages = quizObj.images;
   const quizCorrectSound = quizObj.screenMap["S2"].soundCorrect;
   const quizWord = quizObj.word;
   const correctWord = quizObj.screenMap["S2"].correct;
   const quizSoundPosition = quizObj.screenMap["S3"].soundPosition;
+   const s3_sounds = quizObj.screenMap["S3"].sounds.map(el => el.src);
+   const s4_sounds = quizObj.screenMap["S4"].sounds.map(el => el.src);
 
   // 음가 위치 찾기
   const getCharIndices = (text, targetChar, positionType) => {
@@ -61,12 +61,22 @@ const Board = ({ quizObj, screenId, audioControls }) => {
     });
   }
 
+  const handleClickSpeaker = (id) => {
+    if(id === "S2") {
+      playSingle(quizCorrectSound.src);
+    }else if (id === "S3") {
+      playInSequence(s3_sounds);
+    }else if (id === "S4") {
+      playInSequence(s4_sounds);
+    }
+  }
+
   return (
     <>
       <AnswerBox resizedWidth={resizedWidth} resizedHeight={resizedHeight}>
         <AnswerBg
           resizedWidth={resizedWidth} resizedHeight={resizedHeight}
-          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/answerBg_big.png`}
+          src={`${ACTIVITY_IMG_PATH}/answerBg_big.png`}
           alt=""
         />
         <AnswerImg
@@ -76,10 +86,10 @@ const Board = ({ quizObj, screenId, audioControls }) => {
         />
         <SpeakerBtn
           resizedWidth={resizedWidth} resizedHeight={resizedHeight}
-          src={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/speakerBtn.png`}
+          src={`${ACTIVITY_IMG_PATH}/speakerBtn.png`}
           alt=""
           pos="pos-0"
-          onClick={() => { playSingle(quizCorrectSound.src) }}
+          onClick={() => { handleClickSpeaker(screenId) }}
         />
         {screenId !== "S2" && (
           <>

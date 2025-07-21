@@ -30,7 +30,6 @@ export class AudioPlayer {
     this.onRecordPlayEnded = callback;
   }
 
-
   // 하나만 재생
   playSingle(file, loop = false) {
     this.stopAll();
@@ -96,6 +95,8 @@ export class AudioPlayer {
 
   // 전부 정지
   stopAll() {
+    let wasPlaying = !!this.singleSource || this.multiSources.length > 0 || this.queue.length > 0;
+
     if (this.singleSource) {
       try {
         this.singleSource.stop?.();
@@ -114,6 +115,13 @@ export class AudioPlayer {
 
     this.queue = [];
     this.isPlayingQueue = false;
+
+    // 👉 콜백 수동 호출
+    if (wasPlaying) {
+      this.onEachEnded?.();
+      this.onAllEnded?.();
+      this.onRecordPlayEnded?.(); // 녹음 재생 중이었을 수도 있음
+    }
   }
 
   // Blob (녹음 파일) 직접 재생

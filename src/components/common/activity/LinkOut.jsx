@@ -6,11 +6,11 @@ const LinkOut = ({ children, imageSrc, ...rest }) => {
   const { resizedWidth, resizedHeight } = useSize();
 
   const style = {
-    width: (resizedWidth * 100) / 1194,
-    height: (resizedHeight * 100) / 834,
+    width: (resizedWidth * 60) / 1194,
+    height: (resizedHeight * 60) / 834,
     position: "absolute",
-    top: "1%",
-    left: "1%",
+    top: "2.5%",
+    left: "0%",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",

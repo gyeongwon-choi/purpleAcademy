@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import useUiInteractionEnableStore from '@/store/useUiInteractionEnableStore';
 
 import useAudio from "@/hooks/useAudio";
+import useRecorder from "@/hooks/useRecorder";
 import useThumbnailScreen from "@/hooks/useThumbnailScreen";
 
 import HearMatch from "@/components/activities/HearMatch";
@@ -10,6 +11,8 @@ import LinkOut from "@/components/common/activity/LinkOut";
 import ThumbNail from "./Thumbnail";
 import WEEK1_DATA from "./data";
 import Screens from "./Screens";
+
+const ACTIVITY_IMG_PATH = `${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity`;
 
 export default function Week1() {
   const { isThumbnailVisible, endThumbnail } = useThumbnailScreen();
@@ -51,6 +54,8 @@ export default function Week1() {
   // 음원은 한번에 로딩해서 사용, 내부적으로 기기체크
   const { ready, envRef, playSingle, playMultiple, playInSequence, stopAll, setOnEachStarted, setOnEachEnded, setOnAllEnded, playFromBlob, setOnRecordPlayEnded } = useAudio(soundSrcs);
 
+  const { isRecording, startRecording, stopRecording, audioBlob } = useRecorder();
+
   // 음원재생중 인터렉션 막기
   useEffect(() => {
     if (!ready) return;
@@ -73,12 +78,7 @@ export default function Week1() {
       setInteractionEnabled(true);
     });
 
-    /* setOnRecordPlayEnded(() => {
-      console.log("녹음음원종료");
-      setInteractionEnabled(true);
-    }); */
-
-  }, [ready, setOnEachStarted, setOnEachEnded, setOnAllEnded, setOnRecordPlayEnded]);
+  }, [ready, setOnEachStarted, setOnEachEnded, setOnAllEnded]);
 
   // 액티비티 start 버튼
   const handleBtnStart = async () => {
@@ -113,7 +113,7 @@ export default function Week1() {
   if (isThumbnailVisible) {
     return (
       <>
-        <LinkOut to="/" imageSrc={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/prevBtn.png`}>나가기</LinkOut>
+        <LinkOut to="/" imageSrc={`${ACTIVITY_IMG_PATH}/prevBtn.png`}>나가기</LinkOut>
         <ThumbNail thumbnailObj={WEEK1_DATA.thumbnail} handleBtnStart={handleBtnStart} />
       </>
     );
@@ -121,7 +121,7 @@ export default function Week1() {
 
   return (
     <>
-      <LinkOut to="/" imageSrc={`${import.meta.env.VITE_DIRECTORY}/images/week/week1/activity/prevBtn.png`}>나가기</LinkOut>
+      <LinkOut to="/" imageSrc={`${ACTIVITY_IMG_PATH}/prevBtn.png`}>나가기</LinkOut>
       <HearMatch
         data={WEEK1_DATA}
         audioControls={{
@@ -134,6 +134,12 @@ export default function Week1() {
           setOnRecordPlayEnded
         }}
         ScreensComponent={Screens}
+        recordControls={{
+          isRecording,
+          startRecording,
+          stopRecording,
+          audioBlob
+        }}
       />
     </>
   );

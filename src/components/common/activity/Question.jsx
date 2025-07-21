@@ -12,10 +12,12 @@ const StyledQuestion = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #ccc;
+  border: 1px solid #bcbec0;
   border-radius: 30px;
   z-index: 100;
-  font-size: 26px;
+  font-size: ${({ resizedWidth }) => resizedWidth * 0.02}px;
+  font-family: Pretendard;
+  font-weight: 500;
 `;
 
 const Question = ({ children }) => {

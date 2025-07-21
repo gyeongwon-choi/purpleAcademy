@@ -3,8 +3,7 @@ import { useRef, useState } from "react";
 export default function useRecorder() {
   const mediaRecorderRef = useRef(null);
   const chunksRef = useRef([]);
-  const [recording, setRecording] = useState(false);
-  const [audioURL, setAudioURL] = useState(null);
+  const [isRecording, setIsRecording] = useState(false);
   const [audioBlob, setAudioBlob] = useState(null);
 
   const startRecording = async () => {
@@ -21,12 +20,10 @@ export default function useRecorder() {
       mediaRecorder.onstop = () => {
         const blob = new Blob(chunksRef.current, { type: "audio/wav" });
         setAudioBlob(blob);
-        const url = URL.createObjectURL(blob);
-        setAudioURL(url);
       };
 
       mediaRecorder.start();
-      setRecording(true);
+      setIsRecording(true);
     } catch (err) {
       console.error("녹음 시작 실패:", err);
     }
@@ -35,13 +32,12 @@ export default function useRecorder() {
   const stopRecording = () => {
     if (mediaRecorderRef.current) {
       mediaRecorderRef.current.stop();
-      setRecording(false);
+      setIsRecording(false);
     }
   };
 
   return {
-    recording,
-    audioURL,
+    isRecording,
     audioBlob,
     startRecording,
     stopRecording,

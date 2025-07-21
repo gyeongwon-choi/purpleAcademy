@@ -12,7 +12,7 @@ import BtnLanguage from "@/components/common/activity/BtnLanguage";
 import ScreenTransitionEffect from "@/components/common/activity/ScreenTransitionEffect";
 import QuizTransitionEffect from "@/components/common/activity/QuizTransitionEffect";
 
-export default function HearMatch({ data, audioControls, ScreensComponent }) {
+export default function HearMatch({ data, audioControls, ScreensComponent, recordControls }) {
   const [isLanguageEnglish, setIsLanguageEnglish] = useState(true);
   const dataObj = data;
   const quizOrder = dataObj.quiz.order;
@@ -53,15 +53,17 @@ export default function HearMatch({ data, audioControls, ScreensComponent }) {
                       />
 
                       {screen?.question?.english?.trim() !== "" && (
-                        <Question animationKey={screenId}>
-                          {isLanguageEnglish
-                            ? screen?.question?.english
-                            : screen?.question?.korean}
-                          <BtnLanguage
-                            isLanguageEnglish={isLanguageEnglish}
-                            handleClickBtnLanguage={handleClickBtnLanguage}
-                          />
-                        </Question>
+                        <>
+                          <Question animationKey={screenId}>
+                            {isLanguageEnglish
+                              ? screen?.question?.english
+                              : screen?.question?.korean}
+                            <BtnLanguage
+                              isLanguageEnglish={isLanguageEnglish}
+                              handleClickBtnLanguage={handleClickBtnLanguage}
+                            />
+                          </Question>
+                        </>
                       )}
 
                       <Content animationKey={screenId}>
@@ -82,6 +84,7 @@ export default function HearMatch({ data, audioControls, ScreensComponent }) {
                           effectSounds={effectSounds}
                           quizOrder={quizOrder}
                           currentQuizObj={currentQuizObj}
+                          recordControls={recordControls}
                         />
 
                         {/* <CurrentQuiz
