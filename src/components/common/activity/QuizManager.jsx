@@ -16,7 +16,8 @@ export default function QuizManager({ dataObj, renderQuiz }) {
       {/* quizs에서 현재 quizId에 해당하는 퀴즈 데이터 전달 */}
       {renderQuiz(dataObj.quiz.quizs[quizId], quizId, goToNextQuiz, goToPrevQuiz, goToQuiz, effectSounds)}
 
-      <button
+      {/* dev */}
+      {/* <button
         onClick={goToPrevQuiz}
         disabled={currentIndex === 0}
         style={{ position: "fixed", bottom: "20px", left: "15%", zIndex: 1000 }}
@@ -30,7 +31,7 @@ export default function QuizManager({ dataObj, renderQuiz }) {
         style={{ position: "fixed", bottom: "20px", left: "20%", zIndex: 1000 }}
       >
         다음 퀴즈
-      </button>
+      </button> */}
     </div>
   );
 }

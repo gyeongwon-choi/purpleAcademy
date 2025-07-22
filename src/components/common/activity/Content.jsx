@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 const StyledContent = styled.div`
   position: absolute;
-  background-color: rgba(0,0,0,0.3);
+  //background-color: rgba(0,0,0,0.3); /* dev */
   width: ${({ resizedWidth }) => resizedWidth}px;
   height: ${({ resizedHeight }) => resizedHeight}px;
   bottom: ${({ resizedWidth, resizedHeight }) =>

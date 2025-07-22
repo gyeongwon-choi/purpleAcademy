@@ -4,6 +4,25 @@ const effectSoundsDir = `${rootDir}/sounds/week/week1/effects`; // 효과음 사
 const quizImagesDir = `${rootDir}/images/week/week1`; // 퀴즈 이미지 경로
 const quizSoundsDir = `${rootDir}/sounds/week/week1/quizs`; // 퀴즈 음성 경로
 
+const question = {
+  s1: {
+    english : "Listen to the sound, and choose a word picture that begins with the same consonant.",
+    korean : "소리를 듣고, 같은 자음으로  시작하는 단어 그림을 고르세요.",
+  },
+  s2: {
+    english : "Choose AlphaB that corresponds to the first sound sound.",
+    korean : "첫 자음 소리에 해당하는 알파벳을 고르세요.",
+  },
+  s3: {
+    english : "Check the sounds, letters, and meanings of the words.",
+    korean : "단어의 소리와 글자, 의미를 확인하세요.",
+  },
+  s4: {
+    english : "Press the record button. Say the word.",
+    korean : "녹음 버튼을 눌러, 단어를 말해보아요.",
+  },
+}
+
 const data = {
   activityType: "hearMatch",
   thumbnail: {
@@ -45,8 +64,8 @@ const data = {
         screenMap: {
           S1: {
             question: {
-              english: "click bunny!",
-              korean: "버니를 클릭하여 음가를 듣고 같은 자음으로 시작하는 단어 그림을 골라보아요!"
+              english: `${question.s1.english}`,
+              korean: `${question.s1.korean}`
             },
             sounds: [
               { name: "cap", src: `${quizSoundsDir}/q1/s1/cap.mp3` },
@@ -58,8 +77,8 @@ const data = {
           },
           S2: {
             question: {
-              english: "This is a cap.",
-              korean: "이것은 모자입니다."
+              english: `${question.s2.english}`,
+              korean: `${question.s2.korean}`
             },
             sounds: [
               { name: "c", src: `${quizSoundsDir}/q1/s2/c.mp3` },
@@ -71,8 +90,8 @@ const data = {
           },
           S3: {
             question: {
-              english: "This is a cap.",
-              korean: "이것은 모자입니다."
+              english: `${question.s3.english}`,
+              korean: `${question.s3.korean}`
             },
             sounds: [
               { name: "cap_1", src: `${quizSoundsDir}/q1/s3/cap_1.mp3` },
@@ -84,8 +103,8 @@ const data = {
           },
           S4: {
             question: {
-              english: "Let's spell 'cap'",
-              korean: "'cap'을 철자대로 말해봐요."
+              english: `${question.s4.english}`,
+              korean: `${question.s4.korean}`
             },
             sounds: [
               { name: "cap_1", src: `${quizSoundsDir}/q1/s4/cap_1.mp3` },
@@ -109,8 +128,8 @@ const data = {
         screenMap: {
           S1: {
             question: {
-              english: "This is a cap.",
-              korean: "이것은 모자입니다."
+              english: `${question.s1.english}`,
+              korean: `${question.s1.korean}`
             },
             sounds: [
               { name: "fish", src: `${quizSoundsDir}/q2/s1/fish.mp3` },
@@ -122,8 +141,8 @@ const data = {
           },
           S2: {
             question: {
-              english: "This is a cap.",
-              korean: "이것은 모자입니다."
+              english: `${question.s2.english}`,
+              korean: `${question.s2.korean}`
             },
             sounds: [
               { name: "f", src: `${quizSoundsDir}/q2/s2/f.mp3` },
@@ -135,8 +154,8 @@ const data = {
           },
           S3: {
             question: {
-              english: "This is a cap.",
-              korean: "이것은 모자입니다."
+              english: `${question.s3.english}`,
+              korean: `${question.s3.korean}`
             },
             sounds: [
               { name: "yarn_1", src: `${quizSoundsDir}/q2/s3/yarn_1.mp3` },
@@ -148,8 +167,8 @@ const data = {
           },
           S4: {
             question: {
-              english: "Let's spell 'cap'",
-              korean: "'cap'을 철자대로 말해봐요."
+              english: `${question.s4.english}`,
+              korean: `${question.s4.korean}`
             },
             sounds: [
               { name: "yarn_1", src: `${quizSoundsDir}/q2/s4/yarn_1.mp3` },
@@ -173,8 +192,8 @@ const data = {
         screenMap: {
           S1: {
             question: {
-              english: "This is a cap.",
-              korean: "이것은 모자입니다."
+              english: `${question.s1.english}`,
+              korean: `${question.s1.korean}`
             },
             sounds: [
               { name: "bus", src: `${quizSoundsDir}/q3/s1/bus.mp3` },
@@ -186,8 +205,8 @@ const data = {
           },
           S2: {
             question: {
-              english: "This is a cap.",
-              korean: "이것은 모자입니다."
+              english: `${question.s2.english}`,
+              korean: `${question.s2.korean}`
             },
             sounds: [
               { name: "g", src: `${quizSoundsDir}/q3/s2/g.mp3` },
@@ -199,8 +218,8 @@ const data = {
           },
           S3: {
             question: {
-              english: "This is a cap.",
-              korean: "이것은 모자입니다."
+              english: `${question.s3.english}`,
+              korean: `${question.s3.korean}`
             },
             sounds: [
               { name: "ham_1", src: `${quizSoundsDir}/q3/s3/ham_1.mp3` },
@@ -212,8 +231,8 @@ const data = {
           },
           S4: {
             question: {
-              english: "Let's spell 'cap'",
-              korean: "'cap'을 철자대로 말해봐요."
+              english: `${question.s4.english}`,
+              korean: `${question.s4.korean}`
             },
             sounds: [
               { name: "ham_1", src: `${quizSoundsDir}/q3/s4/ham_1.mp3` },
@@ -237,8 +256,8 @@ const data = {
         screenMap: {
           S1: {
             question: {
-              english: "This is a cap.",
-              korean: "이것은 모자입니다."
+              english: `${question.s1.english}`,
+              korean: `${question.s1.korean}`
             },
             sounds: [
               { name: "hook_all", src: `${quizSoundsDir}/q4/s1/hook_all.mp3` },
@@ -250,8 +269,8 @@ const data = {
           },
           S2: {
             question: {
-              english: "This is a cap.",
-              korean: "이것은 모자입니다."
+              english: `${question.s2.english}`,
+              korean: `${question.s2.korean}`
             },
             sounds: [
               { name: "f", src: `${quizSoundsDir}/q4/s2/f.mp3` },
@@ -263,8 +282,8 @@ const data = {
           },
           S3: {
             question: {
-              english: "This is a cap.",
-              korean: "이것은 모자입니다."
+              english: `${question.s3.english}`,
+              korean: `${question.s3.korean}`
             },
             sounds: [
               { name: "hook_1", src: `${quizSoundsDir}/q4/s3/hook_1.mp3` },
@@ -276,8 +295,8 @@ const data = {
           },
           S4: {
             question: {
-              english: "Let's spell 'cap'",
-              korean: "'cap'을 철자대로 말해봐요."
+              english: `${question.s4.english}`,
+              korean: `${question.s4.korean}`
             },
             sounds: [
               { name: "hook_1", src: `${quizSoundsDir}/q4/s4/hook_1.mp3` },
@@ -301,8 +320,8 @@ const data = {
         screenMap: {
           S1: {
             question: {
-              english: "This is a cap.",
-              korean: "이것은 모자입니다."
+              english: `${question.s1.english}`,
+              korean: `${question.s1.korean}`
             },
             sounds: [
               { name: "robot_fake", src: `${quizSoundsDir}/q5/s1/robot_fake.mp3` },
@@ -314,8 +333,8 @@ const data = {
           },
           S2: {
             question: {
-              english: "This is a cap.",
-              korean: "이것은 모자입니다."
+              english: `${question.s2.english}`,
+              korean: `${question.s2.korean}`
             },
             sounds: [
               { name: "b", src: `${quizSoundsDir}/q5/s2/b.mp3` },
@@ -327,8 +346,8 @@ const data = {
           },
           S3: {
             question: {
-              english: "This is a cap.",
-              korean: "이것은 모자입니다."
+              english: `${question.s3.english}`,
+              korean: `${question.s3.korean}`
             },
             sounds: [
               { name: "seven_1", src: `${quizSoundsDir}/q5/s3/seven_1.mp3` },
@@ -341,8 +360,8 @@ const data = {
           },
           S4: {
             question: {
-              english: "Let's spell 'cap'",
-              korean: "'cap'을 철자대로 말해봐요."
+              english: `${question.s4.english}`,
+              korean: `${question.s4.korean}`
             },
             sounds: [
               { name: "seven_1", src: `${quizSoundsDir}/q5/s4/seven_1.mp3` },
@@ -368,8 +387,8 @@ const data = {
         screenMap: {
           S1: {
             question: {
-              english: "This is a cap.",
-              korean: "이것은 모자입니다."
+              english: `${question.s1.english}`,
+              korean: `${question.s1.korean}`
             },
             sounds: [
               { name: "camel", src: `${quizSoundsDir}/q6/s1/camel.mp3` },
@@ -381,8 +400,8 @@ const data = {
           },
           S2: {
             question: {
-              english: "This is a cap.",
-              korean: "이것은 모자입니다."
+              english: `${question.s2.english}`,
+              korean: `${question.s2.korean}`
             },
             sounds: [
               { name: "m", src: `${quizSoundsDir}/q6/s2/m.mp3` },
@@ -394,8 +413,8 @@ const data = {
           },
           S3: {
             question: {
-              english: "This is a cap.",
-              korean: "이것은 모자입니다."
+              english: `${question.s3.english}`,
+              korean: `${question.s3.korean}`
             },
             sounds: [
               { name: "peanut_1", src: `${quizSoundsDir}/q6/s3/peanut_1.mp3` },
@@ -409,8 +428,8 @@ const data = {
           },
           S4: {
             question: {
-              english: "Let's spell 'cap'",
-              korean: "'cap'을 철자대로 말해봐요."
+              english: `${question.s4.english}`,
+              korean: `${question.s4.korean}`
             },
             sounds: [
               { name: "peanut_1", src: `${quizSoundsDir}/q6/s4/peanut_1.mp3` },

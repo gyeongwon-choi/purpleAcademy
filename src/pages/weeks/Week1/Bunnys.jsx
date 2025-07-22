@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import useSize from "@/hooks/useSize";
+import useUiInteractionEnableStore from '@/store/useUiInteractionEnableStore';
 import { gsap, useGSAP } from "@/libs/gsapSetup";
+
 
 import styled from "@emotion/styled";
 
@@ -18,6 +20,7 @@ const Bunnys = ({
   recordControls
 }) => {
   const { resizedWidth, resizedHeight } = useSize();
+  const { setInteractionEnabled } = useUiInteractionEnableStore();
   const { isRecording } = recordControls;
   
   const bunnyRef = useRef(null);
@@ -79,6 +82,9 @@ const Bunnys = ({
       {},
       {
         duration: 2,
+        onStart() {
+          setInteractionEnabled(false);
+        },
         onUpdate() {
           const frameIndex = Math.floor(this.time() / 0.4) % 2;
           bunnyImgsRef.current.s1.move.forEach((img) => {
@@ -87,6 +93,9 @@ const Bunnys = ({
           bunnyImgsRef.current.s1.scrab.forEach((img, idx) => {
             if (img) img.classList.toggle("active", idx === frameIndex);
           });
+        },
+        onComplete() {
+          setInteractionEnabled(true);
         },
       }
     );

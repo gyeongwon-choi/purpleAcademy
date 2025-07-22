@@ -9,7 +9,8 @@ export default function ScreenManager({ quizObj, renderScreen }) {
     <div>
       {renderScreen(screenId, goToNextScreen, goToPrevScreen, goToScreen)}
 
-      <span style={{ position: "fixed", bottom: "20px", left: "0%", zIndex: "1000" }}>
+      {/* dev */}
+      {/* <span style={{ position: "fixed", bottom: "20px", left: "0%", zIndex: "1000" }}>
         화면: {screenId}
       </span>
 
@@ -27,7 +28,7 @@ export default function ScreenManager({ quizObj, renderScreen }) {
         style={{ position: "fixed", bottom: "20px", left: "10%", zIndex: "1000" }}
       >
         다음 화면
-      </button>
+      </button> */}
     </div>
   );
 }
